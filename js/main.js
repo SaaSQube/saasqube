@@ -84,23 +84,6 @@ if ("IntersectionObserver" in window) {
   reveals.forEach((el) => el.classList.add("in"));
 }
 
-/* ---------- Work filters ---------- */
-const filters = document.querySelectorAll(".filter");
-const works = document.querySelectorAll(".work");
-filters.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filters.forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
-    btn.classList.add("active");
-    btn.setAttribute("aria-selected", "true");
-    const f = btn.dataset.filter;
-    works.forEach((w) => {
-      const show = f === "all" || w.dataset.cat === f;
-      w.classList.toggle("hidden", !show);
-      if (show) w.classList.add("in");
-    });
-  });
-});
-
 /* ---------- Pricing buttons pre-select service ---------- */
 const form = document.getElementById("contact-form");
 const planToService = { Starter: "Business website", Business: "Business website", "E-commerce": "E-commerce store" };
