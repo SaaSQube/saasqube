@@ -11,6 +11,17 @@ const CONTACT = {
   address: "Tamil Nadu, India",
 };
 
+/* EmailJS: sends the contact form straight to your inbox (emailjs.com).
+   Until templateId and publicKey are filled in, "Send by email" opens the
+   visitor's email app instead. autoReplyTemplateId is optional: when set,
+   visitors who give an email address get a thank-you copy. */
+const EMAILJS = {
+  serviceId: "service_olwui3b",
+  templateId: "",            // enquiry email to you, e.g. "template_abc123"
+  autoReplyTemplateId: "",   // thank-you email to the visitor (optional)
+  publicKey: "",             // Account → General → Public Key
+};
+
 document.documentElement.classList.add("js");
 
 /* ---------- Fill contact details ---------- */
@@ -196,40 +207,94 @@ if (chosenTemplate) {
 
 /* ---------- Contact form → WhatsApp or email ---------- */
 const statusEl = form.querySelector(".form-status");
-form.addEventListener("submit", (e) => {
+const emailjsReady = () => Boolean(EMAILJS.serviceId && EMAILJS.templateId && EMAILJS.publicKey);
+const setStatus = (msg, isError = false) => { statusEl.textContent = msg; statusEl.classList.toggle("error", isError); };
+
+const sendEmailJS = (templateId, params) =>
+  fetch("https://api.emailjs.com/api/v1.0/email/send", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ service_id: EMAILJS.serviceId, template_id: templateId, user_id: EMAILJS.publicKey, template_params: params }),
+  }).then(async (res) => { if (!res.ok) throw new Error(`${res.status} ${await res.text()}`); });
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const via = e.submitter?.dataset.send || "whatsapp";
   const f = form.elements;
+  const val = (n) => f[n].value.trim();
 
   let ok = true;
   ["name", "phone"].forEach((n) => {
-    const valid = f[n].value.trim().length > 1;
+    const valid = val(n).length > 1;
     f[n].classList.toggle("invalid", !valid);
     if (!valid) ok = false;
   });
-  if (!ok) {
-    statusEl.textContent = "Please add your name and phone number so we can reach you.";
+  const emailOk = !val("email") || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email"));
+  f.email.classList.toggle("invalid", !emailOk);
+  if (!ok || !emailOk) {
+    setStatus(!ok ? "Please add your name and phone number so we can reach you." : "That email address doesn't look right. Please check it, or leave it empty.", true);
     form.querySelector(".invalid").focus();
     return;
   }
 
+  // Bots fill the hidden field: pretend it worked and send nothing.
+  if (val("company_site")) { setStatus("Thank you! We'll reply within one working day."); form.reset(); return; }
+
   const lines = [
     "Hello SaaSQube Solutions!",
-    `Name: ${f.name.value.trim()}`,
-    `Phone: ${f.phone.value.trim()}`,
-    f.business.value.trim() && `Business: ${f.business.value.trim()}`,
-    `City: ${f.city.value}`,
+    `Name: ${val("name")}`,
+    `Phone: ${val("phone")}`,
+    val("email") && `Email: ${val("email")}`,
+    val("business") && `Business: ${val("business")}`,
+    val("city") && `City: ${val("city")}`,
     `Looking for: ${f.service.value}`,
-    f.message.value.trim() && `Details: ${f.message.value.trim()}`,
+    val("message") && `Details: ${val("message")}`,
   ].filter(Boolean);
   const text = lines.join("\n");
-
-  if (via === "email") {
-    const subject = `Website enquiry — ${f.business.value.trim() || f.name.value.trim()}`;
+  const openMailApp = () => {
+    const subject = `Website enquiry — ${val("business") || val("name")}`;
     window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
-    statusEl.textContent = "Opening your email app…";
-  } else {
+  };
+
+  if (via === "whatsapp") {
     window.open(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-    statusEl.textContent = "Opening WhatsApp… Thank you! We'll reply within one working day.";
+    setStatus("Opening WhatsApp… Thank you! We'll reply within one working day.");
+    return;
+  }
+
+  if (!emailjsReady()) {
+    openMailApp();
+    setStatus("Opening your email app…");
+    return;
+  }
+
+  const params = {
+    name: val("name"),
+    phone: val("phone"),
+    email: val("email"),
+    reply_to: val("email"),
+    business: val("business") || "—",
+    city: val("city") || "—",
+    service: f.service.value,
+    message: val("message") || "—",
+  };
+  const buttons = form.querySelectorAll(".form-actions .btn");
+  buttons.forEach((b) => (b.disabled = true));
+  setStatus("Sending your enquiry…");
+  try {
+    await sendEmailJS(EMAILJS.templateId, params);
+    if (params.email && EMAILJS.autoReplyTemplateId) {
+      // The thank-you copy is a bonus: a failure here doesn't affect the enquiry.
+      sendEmailJS(EMAILJS.autoReplyTemplateId, params).catch((err) => console.warn("Auto-reply not sent:", err));
+    }
+    setStatus(params.email
+      ? "Thank you! Your enquiry has been sent, and a copy is on its way to your inbox. We'll reply within one working day."
+      : "Thank you! Your enquiry has been sent. We'll reply within one working day.");
+    form.reset();
+  } catch (err) {
+    console.error("EmailJS error:", err);
+    setStatus("Sorry, we couldn't send that just now. Please use “Send on WhatsApp”, or try again in a moment.", true);
+  } finally {
+    buttons.forEach((b) => (b.disabled = false));
   }
 });

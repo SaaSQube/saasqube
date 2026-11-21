@@ -65,7 +65,21 @@ python3 -m http.server 8080
 
 ## How the contact form works
 
-There's no server. When a visitor submits the form it builds a message from their answers and opens either **WhatsApp** (`wa.me`) or their **email app** (`mailto:`), addressed to you. To collect submissions in an inbox or a database instead, point the form at a service such as Formspree, Netlify Forms or your own backend.
+The form has two buttons:
+
+- **Send on WhatsApp** opens WhatsApp with the visitor's answers, addressed to your number.
+- **Send by email** sends the enquiry straight to your inbox through [EmailJS](https://www.emailjs.com/). If the visitor gives an email address, they also get a thank-you copy.
+
+EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
+
+| Setting | Where to find it in EmailJS |
+|---|---|
+| `serviceId` | Email Services → your service |
+| `templateId` | Email Templates → enquiry template → Settings |
+| `autoReplyTemplateId` | Email Templates → auto-reply template → Settings (optional) |
+| `publicKey` | Account → General → Public Key |
+
+Until `templateId` and `publicKey` are filled in, **Send by email** opens the visitor's email app instead. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
 
 ## Deploy
 
