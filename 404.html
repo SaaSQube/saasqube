@@ -11,16 +11,16 @@
   <!-- Self-contained on purpose: this page is served at any URL depth
        (and under /<repo>/ on GitHub Pages), so relative asset paths can't be relied on. -->
   <style>
-    :root { --brand: #4f46e5; --accent: #f59e0b; --ink: #0f172a; --ink-2: #334155; --bg: #ffffff; }
+    :root { --brand: #1a4ff0; --accent: #9b2cf5; --ink: #0d1029; --ink-2: #334155; --bg: #ffffff; }
     @media (prefers-color-scheme: dark) {
-      :root { --brand: #6366f1; --ink: #eef2ff; --ink-2: #cbd5e1; --bg: #0b0b1a; }
+      :root { --brand: #3b74ff; --accent: #b25cff; --ink: #eef3ff; --ink-2: #cbd5e1; --bg: #070a1c; }
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink-2); background: var(--bg); }
     main { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: 32px 16px; }
     h1 {
       font-size: clamp(4rem, 14vw, 8rem); margin: 0; font-weight: 800; letter-spacing: -.03em;
-      background: linear-gradient(100deg, var(--brand) 10%, #8b5cf6 50%, var(--accent) 95%);
+      background: linear-gradient(100deg, #06c3e6 0%, var(--brand) 48%, var(--accent) 100%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
     a {

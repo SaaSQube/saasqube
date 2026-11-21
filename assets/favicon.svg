@@ -1,6 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#1e1b4b"/>
-  <path d="M32 12 50 22v20L32 52 14 42V22z" fill="#4f46e5"/>
-  <path d="M32 12 50 22 32 32 14 22z" fill="#a5b4fc"/>
-  <path d="M32 32v20l18-10V22z" fill="#f59e0b"/>
+  <defs>
+    <linearGradient id="sq-tl" gradientUnits="userSpaceOnUse" x1="16" y1="18" x2="44" y2="40"><stop offset="0" stop-color="#2bc0ff"/><stop offset="1" stop-color="#0b5cff"/></linearGradient>
+    <linearGradient id="sq-tr" gradientUnits="userSpaceOnUse" x1="56" y1="38" x2="86" y2="20"><stop offset="0" stop-color="#6a2cf6"/><stop offset="1" stop-color="#c73cf6"/></linearGradient>
+    <linearGradient id="sq-l" gradientUnits="userSpaceOnUse" x1="8" y1="80" x2="44" y2="42"><stop offset="0" stop-color="#00f0d0"/><stop offset="1" stop-color="#0aa2f5"/></linearGradient>
+    <linearGradient id="sq-r" gradientUnits="userSpaceOnUse" x1="58" y1="60" x2="92" y2="88"><stop offset="0" stop-color="#0838dc"/><stop offset="1" stop-color="#1f6cff"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0b1033"/>
+  <g transform="translate(9 7.7) scale(.46)" stroke-width="9" stroke-linejoin="round">
+    <polygon points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sq-tl)" stroke="url(#sq-tl)"/>
+    <polygon points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sq-tr)" stroke="url(#sq-tr)"/>
+    <polygon points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sq-l)" stroke="url(#sq-l)"/>
+    <polygon points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sq-r)" stroke="url(#sq-r)"/>
+  </g>
 </svg>

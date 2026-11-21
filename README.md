@@ -9,9 +9,13 @@ It's a static site: plain HTML, CSS and JavaScript with no build step and no dep
 ```
 index.html        Single-page site: hero, services, template slider, why us, process, pricing, about, FAQ, contact
 404.html          Not-found page
-css/style.css     All styles (light + automatic dark mode, responsive down to small phones)
+css/style.css     All styles (light + automatic dark mode, responsive down to small phones).
+                  Brand colours from the logo live in :root: --cyan, --brand (blue), --accent (purple), --grad
 js/main.js        Contact details, mobile menu, scroll effects, template slider, contact form
-assets/favicon.svg
+assets/
+  logo-mark.svg     The cube mark (used in the header, footer and About section)
+  saasqube-logo.jpg Original full logo (cube, wordmark and "Build · Automate · Scale")
+  favicon.svg
 templates/        Industry demo websites to show clients (see below)
 ```
 
