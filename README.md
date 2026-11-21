@@ -42,7 +42,11 @@ Forms in the templates are demo-only: they show a thank-you message and don't se
 
 ## Light / dark theme
 
-The round button in the header switches the site between light and dark. The choice is saved in the visitor's browser and applies to the homepage, the templates gallery and the 404 page. Until someone picks a theme, the site follows their device setting. Dark colours are defined once in `css/style.css` under `:root[data-theme="dark"]` (and repeated for the device-setting case below it). The demo templates keep their own designs.
+The sliding sun / moon switch in the header changes the site between light and dark. The choice is saved in the visitor's browser and applies to the homepage, the templates gallery and the 404 page. Until someone picks a theme, the site follows their device setting. Dark colours are defined once in `css/style.css` under `:root[data-theme="dark"]` (and repeated for the device-setting case below it). The demo templates keep their own designs.
+
+## Updating CSS or JS
+
+Pages load `css/style.css`, `js/*.js` and the templates' `shared.css` / `shared.js` with a `?v=` version tag so visitors' browsers don't keep an old copy. After changing one of those files, bump the date in the tag (search for `?v=`).
 
 ## Run locally
 

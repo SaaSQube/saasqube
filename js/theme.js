@@ -20,9 +20,8 @@
   function syncButtons() {
     var dark = current() === "dark";
     document.querySelectorAll(".theme-toggle").forEach(function (btn) {
-      btn.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
-      btn.setAttribute("title", dark ? "Light theme" : "Dark theme");
-      btn.setAttribute("aria-pressed", String(dark));
+      btn.setAttribute("aria-checked", String(dark));
+      btn.setAttribute("title", dark ? "Switch to light theme" : "Switch to dark theme");
     });
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", dark ? "#070a1c" : "#ffffff");
