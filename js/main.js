@@ -18,7 +18,7 @@ const CONTACT = {
 const EMAILJS = {
   serviceId: "service_olwui3b",
   templateId: "template_d7paoko",   // enquiry email to you
-  autoReplyTemplateId: "",   // thank-you email to the visitor (optional)
+  autoReplyTemplateId: "template_f86nvya",  // thank-you email to the visitor
   publicKey: "hciiQLOWsSsZyLHNN",  // Account → General → Public Key (safe to publish)
 };
 
