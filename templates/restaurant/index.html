@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saffron Leaf — Restaurant Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo restaurant website template by SaaSQube Solutions: menu with prices, chef's specials, gallery and table reservations.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    :root {
+      --font: "Jost", system-ui, sans-serif; --font-head: "Cormorant Garamond", Georgia, serif;
+      --primary: #d4a24c; --primary-dark: #b8862f; --on-primary: #17120e; --accent: #d4a24c;
+      --bg: #17120e; --alt: #1f1914; --surface: #241d17;
+      --text: #e6dccd; --heading: #fbf3e4; --muted: #a8998a; --line: #3a3026;
+      --header-bg: rgba(23, 18, 14, .92); --radius: 6px; --btn-radius: 4px;
+      --field-bg: #17120e; --field-line: #4a3e31;
+      --footer-bg: #0f0b08; --footer-text: #a8998a;
+    }
+    h1, h2 { font-weight: 600; letter-spacing: -.01em; }
+    h3 { font-family: var(--font-head); font-size: 1.45rem; font-weight: 600; }
+    .t-logo { font-weight: 700; font-size: 1.6rem; }
+    .t-logo .mark { background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 50%; }
+    .hero {
+      min-height: 86vh; display: grid; align-items: center; text-align: center; position: relative; overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 120%, rgba(212, 162, 76, .35), transparent 55%),
+        radial-gradient(circle at 15% 20%, rgba(160, 60, 30, .3), transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(90, 120, 40, .22), transparent 40%),
+        var(--bg);
+    }
+    .hero::before, .hero::after {
+      content: "🌿"; position: absolute; font-size: 9rem; opacity: .12; transform: rotate(-30deg);
+    }
+    .hero::before { left: 4%; top: 12%; }
+    .hero::after { right: 4%; bottom: 10%; transform: rotate(150deg); }
+    .hero .kicker { letter-spacing: .4em; }
+    .hero h1 { font-size: clamp(2.8rem, 8vw, 6rem); margin-bottom: .25em; }
+    .hero h1 em { color: var(--primary); font-style: italic; }
+    .hero p.lead { max-width: 38em; margin: 0 auto 32px; font-size: 1.12rem; color: var(--muted); }
+    .hero .ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero .btn-outline { color: var(--heading); }
+    .divider { color: var(--primary); letter-spacing: .6em; margin: 18px 0; }
+    .info-strip { border-block: 1px solid var(--line); background: var(--alt); }
+    .info-strip .container { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+    .info-strip div { padding: 22px 12px; }
+    .info-strip div + div { border-left: 1px solid var(--line); }
+    .info-strip strong { display: block; color: var(--primary); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: .78rem; margin-bottom: 4px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .plate {
+      aspect-ratio: 1; border-radius: 50%; display: grid; place-items: center; font-size: clamp(6rem, 14vw, 10rem);
+      background: radial-gradient(circle, #3b2d20 0 52%, #2a2018 53% 62%, #3a2e22 63% 64%, transparent 65%);
+      box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8); max-width: 440px; margin-inline: auto;
+    }
+    .sig { font-family: var(--font-head); font-style: italic; font-size: 1.6rem; color: var(--primary); }
+    .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; max-width: 980px; margin: 0 auto; }
+    .dish { padding: 16px 0; border-bottom: 1px dashed var(--line); }
+    .dish-top { display: flex; align-items: baseline; gap: 12px; }
+    .dish-top h3 { margin: 0; font-size: 1.35rem; }
+    .dish-top .dots { flex: 1; border-bottom: 1px dotted var(--muted); opacity: .5; transform: translateY(-4px); }
+    .dish-top .price { color: var(--primary); font-weight: 600; }
+    .dish p { margin: 4px 0 0; color: var(--muted); font-size: .93rem; }
+    .veg, .nonveg { display: inline-block; width: 12px; height: 12px; border: 1.5px solid #3fa34d; position: relative; margin-right: 6px; vertical-align: middle; }
+    .veg::after, .nonveg::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; background: #3fa34d; }
+    .nonveg { border-color: #b33a2b; } .nonveg::after { background: #b33a2b; }
+    .special { text-align: center; padding: 0; overflow: hidden; }
+    .special .art { aspect-ratio: 4/3; display: grid; place-items: center; font-size: 5rem; }
+    .special .body { padding: 22px 22px 26px; }
+    .special .price { color: var(--primary); font-weight: 600; letter-spacing: .08em; }
+    .a1 { background: radial-gradient(circle, #7a3b16, #2b1a10); }
+    .a2 { background: radial-gradient(circle, #6e5a1a, #2a2010); }
+    .a3 { background: radial-gradient(circle, #6b2238, #26121a); }
+    .gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 12px; }
+    .gallery div { border-radius: var(--radius); display: grid; place-items: center; font-size: 3.4rem; }
+    .gallery .tall { grid-row: span 2; font-size: 5rem; }
+    .gallery .wide { grid-column: span 2; }
+    .quote { text-align: center; }
+    .quote p { font-family: var(--font-head); font-style: italic; font-size: 1.3rem; color: var(--heading); }
+    .quote span { color: var(--primary); font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; }
+    .reserve-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+    .hours { list-style: none; padding: 0; margin: 20px 0 0; }
+    .hours li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .hours b { color: var(--heading); font-weight: 500; }
+    .reserve-box { background: var(--surface); border: 1px solid var(--line); padding: 32px; border-radius: var(--radius); }
+    .form label { color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+    .form input[type="date"], .form input[type="time"] { color-scheme: dark; }
+    @media (max-width: 860px) {
+      .about-grid, .reserve-grid, .menu-list { grid-template-columns: 1fr; gap: 36px; }
+      .menu-list { gap: 0; }
+      .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+    }
+    @media (max-width: 560px) {
+      .info-strip .container { grid-template-columns: 1fr; }
+      .info-strip div + div { border-left: 0; border-top: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Restaurant#contact">Get this website</a>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark">❦</span>Saffron Leaf</a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#about">Our story</a>
+        <a href="#menu">Menu</a>
+        <a href="#specials">Specials</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reserve" class="btn btn-primary btn-sm">Reserve a table</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">Fine South Indian dining</p>
+        <h1>Flavours of the <em>South</em>,<br>served with love.</h1>
+        <p class="divider">✦ ✦ ✦</p>
+        <p class="lead">Slow-cooked Chettinad curries, fragrant dum biryani and crisp ghee roast dosas, made from family recipes and the freshest local produce.</p>
+        <div class="ctas">
+          <a href="#reserve" class="btn btn-primary">Book a table</a>
+          <a href="#menu" class="btn btn-outline">View menu</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="info-strip"><div class="container">
+      <div><strong>Open daily</strong>7:00 AM – 11:00 PM</div>
+      <div><strong>Find us</strong>RS Puram, Coimbatore</div>
+      <div><strong>Reservations</strong>+91 90000 00000</div>
+    </div></div>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="plate" aria-hidden="true">🍛</div>
+        <div>
+          <p class="kicker">Our story</p>
+          <h2>Three generations of home-style cooking</h2>
+          <p class="muted">What began as a small family mess is now a warm, welcoming restaurant. We still grind our own masalas every morning, cook on slow flames, and serve every meal the way our grandmother taught us — generously.</p>
+          <p class="muted">From a quick breakfast to a celebration dinner for 40, we'd love to cook for you.</p>
+          <p class="sig">— The Saffron Leaf family</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Our menu</p>
+          <h2>Something for every appetite</h2>
+        </div>
+        <div class="tabs" data-tabs role="tablist">
+          <button class="tab active" data-tab="m-breakfast" role="tab" aria-selected="true">Breakfast</button>
+          <button class="tab" data-tab="m-meals" role="tab" aria-selected="false">Meals</button>
+          <button class="tab" data-tab="m-biryani" role="tab" aria-selected="false">Biryani</button>
+          <button class="tab" data-tab="m-desserts" role="tab" aria-selected="false">Desserts &amp; drinks</button>
+        </div>
+        <div class="tab-panel menu-list" id="m-breakfast">
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Ghee Roast Dosa</h3><span class="dots"></span><span class="price">₹120</span></div><p>Paper-thin and crisp, with three chutneys and sambar</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Idli &amp; Medu Vada</h3><span class="dots"></span><span class="price">₹80</span></div><p>Two soft idlis, one crisp vada, coconut chutney</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Ven Pongal</h3><span class="dots"></span><span class="price">₹90</span></div><p>Rice and moong dal with pepper, cumin and ghee</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Poori Masala</h3><span class="dots"></span><span class="price">₹100</span></div><p>Fluffy pooris with potato masala</p></div>
+        </div>
+        <div class="tab-panel menu-list" id="m-meals" hidden>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>South Indian Thali</h3><span class="dots"></span><span class="price">₹220</span></div><p>Rice, sambar, rasam, two poriyals, kootu, curd &amp; payasam</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="nonveg"></span>Chettinad Chicken</h3><span class="dots"></span><span class="price">₹320</span></div><p>Fiery pepper-and-spice curry, Karaikudi style</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="nonveg"></span>Fish Curry Meals</h3><span class="dots"></span><span class="price">₹280</span></div><p>Tangy tamarind fish curry with rice and sides</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Veg Kurma &amp; Parotta</h3><span class="dots"></span><span class="price">₹180</span></div><p>Two flaky parottas with mixed vegetable kurma</p></div>
+        </div>
+        <div class="tab-panel menu-list" id="m-biryani" hidden>
+          <div class="dish"><div class="dish-top"><h3><span class="nonveg"></span>Chicken Dum Biryani</h3><span class="dots"></span><span class="price">₹260</span></div><p>Seeraga samba rice, slow-cooked on dum</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="nonveg"></span>Mutton Biryani</h3><span class="dots"></span><span class="price">₹340</span></div><p>Tender mutton, rich masala, onion raita</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Vegetable Biryani</h3><span class="dots"></span><span class="price">₹200</span></div><p>Seasonal vegetables, mint and fried onions</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="nonveg"></span>Egg Biryani</h3><span class="dots"></span><span class="price">₹220</span></div><p>Two masala eggs on fragrant biryani rice</p></div>
+        </div>
+        <div class="tab-panel menu-list" id="m-desserts" hidden>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Paal Payasam</h3><span class="dots"></span><span class="price">₹90</span></div><p>Slow-cooked rice and milk pudding with cardamom</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Gulab Jamun</h3><span class="dots"></span><span class="price">₹70</span></div><p>Two warm jamuns in rose syrup</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Elaneer Payasam</h3><span class="dots"></span><span class="price">₹120</span></div><p>Chilled tender-coconut dessert</p></div>
+          <div class="dish"><div class="dish-top"><h3><span class="veg"></span>Filter Coffee</h3><span class="dots"></span><span class="price">₹40</span></div><p>Strong, frothy and served in a davara</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="specials">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Chef's specials</p>
+          <h2>This week's favourites</h2>
+        </div>
+        <div class="grid g3">
+          <article class="card special"><div class="art a1" aria-hidden="true">🍗</div><div class="body"><h3>Pepper Chicken Varuval</h3><p class="muted">Dry-roasted with crushed black pepper and curry leaves.</p><span class="price">₹290</span></div></article>
+          <article class="card special"><div class="art a2" aria-hidden="true">🥘</div><div class="body"><h3>Kothu Parotta</h3><p class="muted">Shredded parotta tossed on the tawa with egg and salna.</p><span class="price">₹180</span></div></article>
+          <article class="card special"><div class="art a3" aria-hidden="true">🦐</div><div class="body"><h3>Prawn Thokku</h3><p class="muted">Coastal-style prawns in a thick onion-tomato masala.</p><span class="price">₹360</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Gallery</p>
+          <h2>A taste of Saffron Leaf</h2>
+        </div>
+        <div class="gallery" aria-hidden="true">
+          <div class="tall a1">🍛</div><div class="a2">🥥</div><div class="a3">🌶️</div><div class="tall a2">🍚</div>
+          <div class="wide a3">🍽️</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Guest words</p><h2>What our guests say</h2></div>
+        <div class="grid g3">
+          <div class="card quote"><p>"The ghee roast is the best I've had outside my grandmother's kitchen."</p><span>Priya · Coimbatore</span></div>
+          <div class="card quote"><p>"Hosted my parents' anniversary here — warm service and wonderful food."</p><span>Arun · Tiruppur</span></div>
+          <div class="card quote"><p>"Authentic Chettinad flavour. The pepper chicken is a must-try."</p><span>Meena · Erode</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="reserve">
+      <div class="container reserve-grid">
+        <div>
+          <p class="kicker">Reservations</p>
+          <h2>Book your table</h2>
+          <p class="muted">For parties of more than 12, or to book our private dining room, please call us.</p>
+          <ul class="hours">
+            <li><span>Breakfast</span><b>7:00 – 11:00 AM</b></li>
+            <li><span>Lunch</span><b>12:00 – 3:30 PM</b></li>
+            <li><span>Dinner</span><b>7:00 – 11:00 PM</b></li>
+            <li><span>Address</span><b>14, DB Road, RS Puram, Coimbatore</b></li>
+          </ul>
+        </div>
+        <div class="reserve-box">
+          <form class="form" data-demo>
+            <div class="row">
+              <label>Name<input type="text" required></label>
+              <label>Phone<input type="tel" required></label>
+            </div>
+            <div class="row">
+              <label>Date<input type="date" required></label>
+              <label>Time<input type="time" required></label>
+            </div>
+            <div class="row">
+              <label>Guests<select><option>2</option><option>3</option><option>4</option><option>5–8</option><option>9–12</option></select></label>
+              <label>Occasion<select><option>Just dinner</option><option>Birthday</option><option>Anniversary</option><option>Business</option></select></label>
+            </div>
+            <button class="btn btn-primary btn-block">Request reservation</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark">❦</span>Saffron Leaf</a><p>Fine South Indian dining in the heart of Coimbatore.</p></div>
+        <div><h4>Explore</h4><ul><li><a href="#menu">Menu</a></li><li><a href="#specials">Specials</a></li><li><a href="#gallery">Gallery</a></li></ul></div>
+        <div><h4>Visit</h4><ul><li>Open daily</li><li>7 AM – 11 PM</li><li><a href="#reserve">Reserve</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📞 +91 90000 00000</li><li>✉️ hello@saffronleaf.example</li><li>📍 RS Puram, Coimbatore</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> Saffron Leaf (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#reserve" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sunrise Hospital — Hospital Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo hospital website template by SaaSQube Solutions: departments, doctor profiles, online appointments, health packages and 24x7 emergency.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    :root {
+      --font: "DM Sans", system-ui, sans-serif;
+      --primary: #0b63ce; --primary-dark: #084a9b; --accent: #e63946;
+      --bg: #ffffff; --alt: #f2f7fd; --surface: #ffffff;
+      --text: #33475e; --heading: #0d2440; --muted: #64788f; --line: #dde7f3;
+      --tint: #e6f0fc; --radius: 16px; --btn-radius: 10px;
+      --topbar-bg: #0d2440;
+      --footer-bg: #0d2440; --footer-text: #aebfd4;
+    }
+    .topbar .emer { color: #ffb4b9; }
+    .hero { background: linear-gradient(120deg, #eaf3ff 0%, #f7fbff 55%, #fff 100%); padding: clamp(44px, 7vw, 84px) 0; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+    .hero h1 span { color: var(--primary); }
+    .hero .lead { font-size: 1.1rem; color: var(--muted); max-width: 34em; }
+    .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin: 26px 0; }
+    .btn-emer { background: var(--accent); color: #fff; }
+    .trust { display: flex; flex-wrap: wrap; gap: 26px; }
+    .trust div strong { display: block; font-size: 1.6rem; color: var(--heading); line-height: 1.1; }
+    .trust div span { font-size: .86rem; color: var(--muted); }
+    .appt { background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 30px 60px -30px rgba(11, 99, 206, .45); border: 1px solid var(--line); }
+    .appt h3 { font-size: 1.3rem; }
+    .dept { display: flex; gap: 14px; align-items: center; padding: 20px; }
+    .dept .emoji-tile { margin: 0; flex: none; width: 50px; height: 50px; font-size: 1.5rem; }
+    .dept h3 { font-size: 1rem; margin: 0; }
+    .dept p { font-size: .84rem; color: var(--muted); margin: 2px 0 0; }
+    .doc { text-align: center; }
+    .avatar {
+      width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 16px; display: grid; place-items: center;
+      font-size: 1.8rem; font-weight: 800; color: #fff; background: linear-gradient(135deg, var(--primary), #4fa3ff);
+      box-shadow: 0 0 0 6px var(--tint);
+    }
+    .doc:nth-child(2) .avatar { background: linear-gradient(135deg, #0f9d8a, #5fd3c2); }
+    .doc:nth-child(3) .avatar { background: linear-gradient(135deg, #7c3aed, #b38bff); }
+    .doc:nth-child(4) .avatar { background: linear-gradient(135deg, #e0791b, #ffb36b); }
+    .doc h3 { margin-bottom: 2px; }
+    .doc .spec { color: var(--primary); font-weight: 600; font-size: .92rem; margin-bottom: 4px; }
+    .doc .exp { color: var(--muted); font-size: .86rem; }
+    .fac-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .fac-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fac-list li { display: flex; gap: 10px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px; font-weight: 600; color: var(--heading); font-size: .95rem; }
+    .emergency-card {
+      background: linear-gradient(140deg, #c1121f, var(--accent)); color: #fff; border-radius: 22px; padding: 34px;
+      box-shadow: 0 30px 50px -28px rgba(230, 57, 70, .8);
+    }
+    .emergency-card h2, .emergency-card h3 { color: #fff; }
+    .emergency-card .num { font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 800; margin: 8px 0 18px; display: block; color: #fff; text-decoration: none; }
+    .emergency-card .btn { background: #fff; color: #c1121f; }
+    .pkg { display: flex; flex-direction: column; }
+    .pkg .price { font-size: 2rem; font-weight: 800; color: var(--heading); margin: 6px 0 14px; }
+    .pkg .price s { font-size: 1rem; color: var(--muted); font-weight: 500; margin-left: 6px; }
+    .pkg ul { padding-left: 1.1em; color: var(--muted); flex: 1; margin: 0 0 20px; }
+    .pkg.best { border: 2px solid var(--primary); }
+    .pkg .tag { align-self: flex-start; background: var(--tint); color: var(--primary); font-size: .76rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 10px; }
+    .ins { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .ins span { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 20px; font-weight: 700; color: var(--heading); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .contact-grid ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 14px; }
+    .contact-grid li { display: flex; gap: 12px; }
+    .contact-grid li b { color: var(--heading); display: block; }
+    @media (max-width: 900px) {
+      .hero-grid, .fac-grid, .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) { .fac-list { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Hospital#contact">Get this website</a>
+  </div></div>
+
+  <div class="topbar"><div class="container">
+    <span class="emer">🚑 24×7 Emergency: <a href="tel:+919000000000">+91 90000 00000</a></span>
+    <span class="hide-sm">Mon–Sat OPD: 8 AM – 8 PM · Sunday: 9 AM – 1 PM</span>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark">☀</span><span>Sunrise<small>Multispeciality Hospital</small></span></a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#departments">Departments</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#packages">Health checks</a>
+        <a href="#contact">Contact</a>
+        <a href="#top" class="btn btn-primary btn-sm">Book appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Caring for Madurai since 2005</p>
+          <h1>Compassionate care, <span>advanced medicine</span>.</h1>
+          <p class="lead">Experienced specialists, modern diagnostics and round-the-clock emergency care — all under one roof, close to your home.</p>
+          <div class="ctas">
+            <a href="#doctors" class="btn btn-primary">Find a doctor</a>
+            <a href="tel:+919000000000" class="btn btn-emer">🚑 Emergency</a>
+          </div>
+          <div class="trust">
+            <div><strong>150+</strong><span>Beds</span></div>
+            <div><strong>40+</strong><span>Specialists</span></div>
+            <div><strong>24×7</strong><span>Emergency &amp; ICU</span></div>
+            <div><strong>Cashless</strong><span>Insurance</span></div>
+          </div>
+        </div>
+        <div class="appt">
+          <h3>Book an appointment</h3>
+          <p class="muted" style="font-size:.92rem">We'll confirm your slot by SMS within 30 minutes.</p>
+          <form class="form" data-demo>
+            <label>Department
+              <select required><option value="">Select department</option><option>Cardiology</option><option>Orthopaedics</option><option>Paediatrics</option><option>Obstetrics &amp; Gynaecology</option><option>Neurology</option><option>General Medicine</option><option>ENT</option><option>Dental</option></select>
+            </label>
+            <div class="row">
+              <label>Preferred date<input type="date" required></label>
+              <label>Time<select><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label>
+            </div>
+            <div class="row">
+              <label>Patient name<input type="text" required></label>
+              <label>Mobile<input type="tel" required></label>
+            </div>
+            <button class="btn btn-primary btn-block">Request appointment</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="departments">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Centres of excellence</p>
+          <h2>Our departments</h2>
+          <p>Specialist care for every stage of life, backed by modern equipment and experienced teams.</p>
+        </div>
+        <div class="grid g4 stack">
+          <div class="card dept"><div class="emoji-tile">❤️</div><div><h3>Cardiology</h3><p>Heart care &amp; cath lab</p></div></div>
+          <div class="card dept"><div class="emoji-tile">🦴</div><div><h3>Orthopaedics</h3><p>Joints, spine &amp; sports</p></div></div>
+          <div class="card dept"><div class="emoji-tile">👶</div><div><h3>Paediatrics</h3><p>Newborn &amp; child care</p></div></div>
+          <div class="card dept"><div class="emoji-tile">🤰</div><div><h3>Obstetrics &amp; Gynaecology</h3><p>Pregnancy &amp; women's health</p></div></div>
+          <div class="card dept"><div class="emoji-tile">🧠</div><div><h3>Neurology</h3><p>Brain &amp; nerve disorders</p></div></div>
+          <div class="card dept"><div class="emoji-tile">🩺</div><div><h3>General Medicine</h3><p>Diabetes, fever, BP</p></div></div>
+          <div class="card dept"><div class="emoji-tile">👂</div><div><h3>ENT</h3><p>Ear, nose &amp; throat</p></div></div>
+          <div class="card dept"><div class="emoji-tile">🦷</div><div><h3>Dental</h3><p>Implants &amp; root canal</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="doctors">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Meet our specialists</p>
+          <h2>Doctors you can trust</h2>
+        </div>
+        <div class="grid g4">
+          <div class="card doc"><div class="avatar">AK</div><h3>Dr. A. Kumar</h3><p class="spec">Cardiologist</p><p class="exp">MD, DM · 18 yrs experience</p><a href="#top" class="btn btn-outline btn-sm" style="color:var(--primary)">Book</a></div>
+          <div class="card doc"><div class="avatar">SR</div><h3>Dr. S. Revathi</h3><p class="spec">Gynaecologist</p><p class="exp">MS, DGO · 15 yrs experience</p><a href="#top" class="btn btn-outline btn-sm" style="color:var(--primary)">Book</a></div>
+          <div class="card doc"><div class="avatar">RM</div><h3>Dr. R. Mohan</h3><p class="spec">Orthopaedic Surgeon</p><p class="exp">MS Ortho · 12 yrs experience</p><a href="#top" class="btn btn-outline btn-sm" style="color:var(--primary)">Book</a></div>
+          <div class="card doc"><div class="avatar">PL</div><h3>Dr. P. Lakshmi</h3><p class="spec">Paediatrician</p><p class="exp">MD Paed · 10 yrs experience</p><a href="#top" class="btn btn-outline btn-sm" style="color:var(--primary)">Book</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="facilities">
+      <div class="container fac-grid">
+        <div>
+          <p class="kicker">Facilities</p>
+          <h2>Everything you need, under one roof</h2>
+          <p class="muted">No running between labs and pharmacies. From diagnosis to recovery, we take care of it all.</p>
+          <ul class="fac-list">
+            <li>🏥 24×7 Emergency</li><li>🛏️ ICU &amp; NICU</li><li>🔬 Lab &amp; diagnostics</li><li>🩻 CT, MRI &amp; X-ray</li>
+            <li>💊 In-house pharmacy</li><li>🚑 Ambulance service</li><li>🍲 Patient canteen</li><li>🅿️ Free parking</li>
+          </ul>
+        </div>
+        <div class="emergency-card">
+          <h3>Medical emergency?</h3>
+          <p>Our emergency team and ambulance are ready 24 hours a day, 365 days a year.</p>
+          <a class="num" href="tel:+919000000000">+91 90000 00000</a>
+          <a href="tel:+919000000000" class="btn">Call ambulance</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Preventive care</p>
+          <h2>Health check-up packages</h2>
+        </div>
+        <div class="grid g3">
+          <div class="card pkg"><span class="tag">Essential</span><h3>Basic Health Check</h3><p class="price">₹1,499 <s>₹2,200</s></p><ul><li>Complete blood count</li><li>Blood sugar &amp; lipid profile</li><li>Kidney &amp; liver function</li><li>Doctor consultation</li></ul><a href="#top" class="btn btn-outline" style="color:var(--primary)">Book now</a></div>
+          <div class="card pkg best"><span class="tag">Most booked</span><h3>Comprehensive</h3><p class="price">₹3,999 <s>₹5,800</s></p><ul><li>Everything in Basic</li><li>Thyroid &amp; vitamin tests</li><li>ECG &amp; chest X-ray</li><li>Ultrasound abdomen</li><li>Diet consultation</li></ul><a href="#top" class="btn btn-primary">Book now</a></div>
+          <div class="card pkg"><span class="tag">Heart</span><h3>Cardiac Check</h3><p class="price">₹5,999 <s>₹8,500</s></p><ul><li>ECG &amp; ECHO</li><li>Treadmill test (TMT)</li><li>Cardiac risk markers</li><li>Cardiologist consultation</li></ul><a href="#top" class="btn btn-outline" style="color:var(--primary)">Book now</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Insurance</p>
+          <h2>Cashless treatment available</h2>
+          <p>We work with leading insurance companies, TPAs and government health schemes.</p>
+        </div>
+        <div class="ins"><span>Health insurers</span><span>TPAs</span><span>Corporate tie-ups</span><span>Government schemes</span></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <p class="kicker">Contact</p>
+          <h2>Visit Sunrise Hospital</h2>
+          <ul>
+            <li>📍<div><b>Address</b>22, Bypass Road, Madurai – 625010</div></li>
+            <li>📞<div><b>Appointments</b>+91 90000 00000</div></li>
+            <li>🚑<div><b>Emergency (24×7)</b>+91 90000 00000</div></li>
+            <li>✉️<div><b>Email</b>care@sunrise.example</div></li>
+          </ul>
+        </div>
+        <div class="map-ph" style="--map-bg:#e9f1fb"><div><span class="pin">📍</span>Google Map goes here</div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark">☀</span><span>Sunrise<small style="color:inherit">Multispeciality Hospital</small></span></a><p>Compassionate care and advanced medicine for every family.</p></div>
+        <div><h4>Patients</h4><ul><li><a href="#top">Book appointment</a></li><li><a href="#doctors">Find a doctor</a></li><li><a href="#packages">Health checks</a></li></ul></div>
+        <div><h4>Hospital</h4><ul><li><a href="#departments">Departments</a></li><li><a href="#facilities">Facilities</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div><h4>Emergency</h4><ul><li>🚑 +91 90000 00000</li><li>Open 24×7</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> Sunrise Multispeciality Hospital (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#top" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js" defer></script>
+</body>
+</html>

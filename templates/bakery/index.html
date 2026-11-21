@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Golden Crust Bakery — Bakery Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo bakery and cake shop website template by SaaSQube Solutions: bestsellers, custom cake orders, eggless options and store hours.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    :root {
+      --font: "Nunito", system-ui, sans-serif; --font-head: "Fraunces", Georgia, serif;
+      --primary: #b5651d; --primary-dark: #8f4c12; --accent: #e88d9b; --on-accent: #fff;
+      --bg: #fff9f1; --alt: #fdeedd; --surface: #ffffff;
+      --text: #5a3b24; --heading: #3d2412; --muted: #8b6a52; --line: #f0dcc6;
+      --tint: #fde6d3; --radius: 24px; --mark-radius: 50%;
+      --footer-bg: #3d2412; --footer-text: #e9cfb7;
+    }
+    h1, h2 { font-weight: 800; letter-spacing: -.02em; }
+    h3 { font-family: var(--font-head); font-weight: 600; }
+    .hero { padding: clamp(44px, 7vw, 90px) 0; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero h1 em { font-style: normal; color: var(--primary); position: relative; white-space: nowrap; }
+    .hero h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: .08em; height: .22em; background: var(--accent); opacity: .45; border-radius: 6px; z-index: -1; }
+    .hero .lead { font-size: 1.12rem; color: var(--muted); max-width: 32em; }
+    .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .hero .btn-outline { color: var(--primary); }
+    .badge-row { display: flex; gap: 18px; margin-top: 28px; flex-wrap: wrap; font-weight: 700; font-size: .92rem; }
+    .badge-row span { display: flex; align-items: center; gap: 6px; }
+    .bake-art { position: relative; aspect-ratio: 1; max-width: 480px; margin-inline: auto; width: 100%; }
+    .bake-art .circle { position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe2bf, #f6c48f 55%, #e9a868); box-shadow: inset 0 -20px 40px rgba(181, 101, 29, .25), 0 40px 70px -30px rgba(143, 76, 18, .5); display: grid; place-items: center; font-size: clamp(7rem, 16vw, 10rem); }
+    .bake-art .bubble { position: absolute; width: 26%; aspect-ratio: 1; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: clamp(2rem, 4vw, 3rem); box-shadow: 0 18px 30px -16px rgba(143, 76, 18, .5); animation: bob 5s ease-in-out infinite; }
+    .bake-art .b1 { top: 0; left: 4%; }
+    .bake-art .b2 { top: 6%; right: 0; animation-delay: -1.5s; }
+    .bake-art .b3 { bottom: 2%; left: 10%; animation-delay: -3s; }
+    .bake-art .b4 { bottom: 6%; right: 6%; animation-delay: -2s; }
+    @keyframes bob { 50% { transform: translateY(-10px) rotate(4deg); } }
+    .product { padding: 0; overflow: hidden; text-align: center; display: flex; flex-direction: column; }
+    .product .art { aspect-ratio: 1.25; display: grid; place-items: center; font-size: 4.4rem; background: var(--tint); }
+    .product:nth-child(3n+2) .art { background: #fde4e8; }
+    .product:nth-child(3n) .art { background: #fff1c9; }
+    .product .body { padding: 18px 18px 22px; flex: 1; display: flex; flex-direction: column; }
+    .product h3 { margin-bottom: 2px; font-size: 1.15rem; }
+    .product p { color: var(--muted); font-size: .9rem; margin-bottom: 12px; }
+    .product .foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .product .eggless { align-self: center; }
+    .product .price { font-weight: 800; font-size: 1.1rem; color: var(--heading); }
+    .product .add { width: 38px; height: 38px; border-radius: 50%; border: 0; background: var(--primary); color: #fff; font-size: 1.3rem; cursor: pointer; }
+    .eggless { display: inline-block; font-size: .72rem; font-weight: 800; color: #2f7a3b; background: #e2f3e4; border-radius: 999px; padding: 2px 8px; margin-bottom: 6px; }
+    .cake-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    .cake-box { background: #fff; border-radius: 28px; padding: 32px; border: 2px dashed var(--line); }
+    .flavours { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .flavours span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .9rem; }
+    .why { text-align: center; }
+    .why .emoji-tile { margin-inline: auto; border-radius: 50%; }
+    .why p { color: var(--muted); font-size: .94rem; }
+    .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .visit .card h3 { margin-bottom: 14px; }
+    .visit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    .visit li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+    @media (max-width: 900px) { .hero-grid, .cake-grid, .visit { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Bakery#contact">Get this website</a>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark">🥐</span><span>Golden Crust<small>Bakery &amp; Cakes</small></span></a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#bestsellers">Bestsellers</a>
+        <a href="#cakes">Custom cakes</a>
+        <a href="#why">Why us</a>
+        <a href="#visit">Visit</a>
+        <a href="#cakes" class="btn btn-primary btn-sm">Order a cake</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Baked fresh every morning</p>
+          <h1>Happiness, <em>freshly baked</em> every day.</h1>
+          <p class="lead">Buttery croissants, soft breads, cookies and celebration cakes, baked in small batches with real butter and no shortcuts.</p>
+          <div class="ctas">
+            <a href="#cakes" class="btn btn-primary">Order a custom cake</a>
+            <a href="#bestsellers" class="btn btn-outline">See bestsellers</a>
+          </div>
+          <div class="badge-row"><span>🥚 Eggless options</span><span>🚚 Same-day delivery</span><span>🌾 No preservatives</span></div>
+        </div>
+        <div class="bake-art" aria-hidden="true">
+          <div class="circle">🎂</div>
+          <div class="bubble b1">🥐</div><div class="bubble b2">🍪</div><div class="bubble b3">🧁</div><div class="bubble b4">🍞</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="bestsellers">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Bestsellers</p>
+          <h2>Our customers' favourites</h2>
+        </div>
+        <div class="grid g3">
+          <article class="card product"><div class="art" aria-hidden="true">🎂</div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Belgian Chocolate Truffle</h3><p>Rich dark chocolate ganache, 500 g</p><div class="foot"><span class="price">₹650</span><button class="add" aria-label="Add Belgian Chocolate Truffle">+</button></div></div></article>
+          <article class="card product"><div class="art" aria-hidden="true">🍰</div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Fresh Fruit Gateau</h3><p>Vanilla sponge, cream &amp; seasonal fruits</p><div class="foot"><span class="price">₹550</span><button class="add" aria-label="Add Fresh Fruit Gateau">+</button></div></div></article>
+          <article class="card product"><div class="art" aria-hidden="true">🥐</div><div class="body"><h3>Butter Croissant</h3><p>Flaky, golden and baked every hour</p><div class="foot"><span class="price">₹70</span><button class="add" aria-label="Add Butter Croissant">+</button></div></div></article>
+          <article class="card product"><div class="art" aria-hidden="true">🍪</div><div class="body"><span class="eggless">EGGLESS</span><h3>Choco Chip Cookies</h3><p>Box of 12, crisp edges, gooey centre</p><div class="foot"><span class="price">₹240</span><button class="add" aria-label="Add Choco Chip Cookies">+</button></div></div></article>
+          <article class="card product"><div class="art" aria-hidden="true">🧁</div><div class="body"><span class="eggless">EGGLESS</span><h3>Red Velvet Cupcakes</h3><p>Box of 6 with cream cheese frosting</p><div class="foot"><span class="price">₹320</span><button class="add" aria-label="Add Red Velvet Cupcakes">+</button></div></div></article>
+          <article class="card product"><div class="art" aria-hidden="true">🍞</div><div class="body"><h3>Whole Wheat Bread</h3><p>Soft, wholesome loaf, 400 g</p><div class="foot"><span class="price">₹60</span><button class="add" aria-label="Add Whole Wheat Bread">+</button></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cakes">
+      <div class="container cake-grid">
+        <div>
+          <p class="kicker">Custom cakes</p>
+          <h2>Your celebration, your cake</h2>
+          <p class="muted">Birthdays, weddings, anniversaries or office parties — tell us what you have in mind and our bakers will make it happen. Order at least 24 hours in advance.</p>
+          <div class="flavours"><span>Chocolate</span><span>Black Forest</span><span>Butterscotch</span><span>Red Velvet</span><span>Pineapple</span><span>Rasmalai</span><span>Mango</span></div>
+          <p class="muted">Photo cakes, theme cakes and tiered wedding cakes available on request.</p>
+        </div>
+        <div class="cake-box">
+          <form class="form" data-demo>
+            <div class="row">
+              <label>Flavour<select required><option value="">Choose…</option><option>Chocolate Truffle</option><option>Black Forest</option><option>Butterscotch</option><option>Red Velvet</option><option>Pineapple</option><option>Rasmalai</option></select></label>
+              <label>Weight<select><option>500 g</option><option>1 kg</option><option>1.5 kg</option><option>2 kg</option><option>3 kg+</option></select></label>
+            </div>
+            <div class="row">
+              <label>Delivery date<input type="date" required></label>
+              <label>Pickup or delivery<select><option>Home delivery</option><option>Store pickup</option></select></label>
+            </div>
+            <label>Message on cake<input type="text" placeholder="Happy Birthday Ananya!"></label>
+            <label class="check"><input type="checkbox"> Make it eggless</label>
+            <div class="row">
+              <label>Your name<input type="text" required></label>
+              <label>Phone<input type="tel" required></label>
+            </div>
+            <button class="btn btn-primary btn-block">Place cake order</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="why">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Why Golden Crust</p><h2>Baked the honest way</h2></div>
+        <div class="grid g4">
+          <div class="card why"><div class="emoji-tile">🧈</div><h3>Real butter</h3><p>No margarine, no shortcuts — only pure butter and quality ingredients.</p></div>
+          <div class="card why"><div class="emoji-tile">🥚</div><h3>Eggless range</h3><p>Most of our cakes and cookies are available eggless.</p></div>
+          <div class="card why"><div class="emoji-tile">⏰</div><h3>Fresh daily</h3><p>Everything is baked the same morning. Nothing sits overnight.</p></div>
+          <div class="card why"><div class="emoji-tile">🚚</div><h3>Same-day delivery</h3><p>Order before 4 PM for delivery across the city today.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Visit us</p><h2>Come say hello</h2></div>
+        <div class="visit">
+          <div class="card">
+            <h3>Opening hours</h3>
+            <ul><li><span>Monday – Friday</span><b>6:00 AM – 10:00 PM</b></li><li><span>Saturday</span><b>6:00 AM – 11:00 PM</b></li><li><span>Sunday</span><b>7:00 AM – 10:00 PM</b></li></ul>
+            <p class="muted" style="margin:16px 0 0">📍 5, Cross Cut Road, Gandhipuram, Coimbatore<br>📞 +91 90000 00000</p>
+          </div>
+          <div class="map-ph" style="--map-bg:#fdf1e3"><div><span class="pin">📍</span>Google Map goes here</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark">🥐</span><span>Golden Crust<small style="color:inherit">Bakery &amp; Cakes</small></span></a><p>Freshly baked happiness, every single day.</p></div>
+        <div><h4>Shop</h4><ul><li><a href="#bestsellers">Cakes</a></li><li><a href="#bestsellers">Breads</a></li><li><a href="#bestsellers">Cookies</a></li></ul></div>
+        <div><h4>Order</h4><ul><li><a href="#cakes">Custom cakes</a></li><li><a href="#visit">Store pickup</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📞 +91 90000 00000</li><li>✉️ hello@goldencrust.example</li><li>📍 Gandhipuram, Coimbatore</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> Golden Crust Bakery (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#cakes" aria-label="Order on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VitalCare Diagnostics — Labs &amp; Scans Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo diagnostic lab and scan centre website template by SaaSQube Solutions: test search, health packages, home sample collection, X-ray, ultrasound, CT and MRI prices, and online reports.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    :root {
+      --font: "Sora", system-ui, sans-serif;
+      --primary: #0e7490; --primary-dark: #0b5c72; --accent: #22d3ee; --on-accent: #062431;
+      --bg: #ffffff; --alt: #f1f8fb; --surface: #ffffff;
+      --text: #334a5a; --heading: #0a1f30; --muted: #63798a; --line: #dbe9f0;
+      --tint: #e0f4f9; --radius: 16px; --btn-radius: 10px;
+      --topbar-bg: #06141f; --topbar-color: #9fdcec;
+      --footer-bg: #06141f; --footer-text: #93aebd;
+      --ok: #15803d; --ok-bg: #dcfce7; --hi: #b45309; --hi-bg: #fef3c7;
+    }
+    h1, h2 { font-weight: 700; letter-spacing: -.03em; }
+    .topbar a { color: #fff; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: radial-gradient(700px 420px at 78% 40%, rgba(34, 211, 238, .18), transparent 70%), linear-gradient(160deg, #0a1f30, #06141f);
+      color: #b8d3df; padding: clamp(48px, 7vw, 92px) 0; overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+    .hero .kicker { color: var(--accent); }
+    .hero h1 { color: #fff; }
+    .hero h1 span { color: var(--accent); }
+    .hero .lead { font-size: 1.06rem; max-width: 33em; }
+    .search {
+      display: flex; gap: 8px; background: #fff; border-radius: 14px; padding: 6px; margin: 24px 0 12px; max-width: 540px;
+      box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .7);
+    }
+    .search input { flex: 1; min-width: 0; border: 0; font: inherit; font-size: .95rem; padding: 10px 14px; color: var(--heading); background: transparent; }
+    .search input:focus { outline: none; }
+    .popular { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: .82rem; }
+    .popular a { color: #d6f4fb; text-decoration: none; border: 1px solid rgba(165, 243, 252, .25); padding: 5px 12px; border-radius: 999px; }
+    .popular a:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-trust { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 28px; font-size: .86rem; margin-top: 30px; }
+    .hero-trust > div { display: flex; gap: 10px; align-items: center; }
+    .hero-trust b { color: #fff; display: block; font-weight: 600; }
+    .hero-trust .ic { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: rgba(34, 211, 238, .12); flex: none; }
+
+    .hero-art { position: relative; min-height: 440px; max-width: 500px; width: 100%; margin-inline: auto; }
+    .film-card {
+      position: absolute; right: 0; top: 0; width: 46%; border-radius: 16px; padding: 9px; transform: rotate(6deg);
+      background: linear-gradient(160deg, #1b3a50, #0d2536);
+      box-shadow: 0 0 0 1px rgba(103, 232, 249, .2), 0 30px 60px -24px rgba(0, 0, 0, .8), 0 0 60px -20px rgba(34, 211, 238, .4);
+    }
+    .film { position: relative; border-radius: 10px; overflow: hidden; }
+    .film svg { width: 100%; height: auto; }
+    .scanline { position: absolute; left: 0; right: 0; height: 30px; top: -30px; background: linear-gradient(180deg, transparent, rgba(34, 211, 238, .35) 85%, #a5f3fc); animation: scan 4s cubic-bezier(.45, 0, .55, 1) infinite; }
+    @keyframes scan { to { top: 100%; } }
+    .report-card {
+      position: absolute; left: 0; bottom: 20px; width: 76%; background: #fff; color: var(--text); border-radius: 18px; padding: 20px;
+      box-shadow: 0 40px 70px -30px rgba(0, 0, 0, .85);
+    }
+    .rc-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px; margin-bottom: 6px; }
+    .rc-head b { display: block; color: var(--heading); font-size: .98rem; }
+    .rc-head span { font-size: .76rem; color: var(--muted); }
+    .rc-head .logo { width: 34px; height: 34px; border-radius: 10px; background: var(--tint); color: var(--primary); display: grid; place-items: center; flex: none; }
+    .rc-row { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: .82rem; }
+    .rc-row:last-of-type { border-bottom: 0; }
+    .rc-row b { color: var(--heading); font-weight: 600; }
+    .rc-row small { display: block; color: var(--muted); font-size: .7rem; }
+    .pill { font-size: .68rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: var(--ok-bg); color: var(--ok); }
+    .pill.hi { background: var(--hi-bg); color: var(--hi); }
+    .rc-foot { margin-top: 10px; font-size: .74rem; color: var(--ok); font-weight: 600; }
+    .float { position: absolute; display: flex; gap: 10px; align-items: center; background: #fff; color: var(--text); border-radius: 14px; padding: 10px 14px; font-size: .8rem; box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .6); animation: bob 5s ease-in-out infinite; }
+    .float b { display: block; color: var(--heading); font-size: .86rem; }
+    .float .dot { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); flex: none; }
+    .float.f1 { left: 4%; top: 6%; }
+    .float.f2 { right: -10px; bottom: 0; animation-delay: -2.5s; }
+    .float.f2 .dot { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+    @keyframes bob { 50% { transform: translateY(-8px); } }
+
+    /* ---------- Tests ---------- */
+    .test { display: flex; flex-direction: column; padding: 22px; }
+    .test .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .test h3 { font-size: 1.02rem; margin: 0 0 4px; }
+    .test .ic { font-size: 1.5rem; }
+    .test p { color: var(--muted); font-size: .84rem; margin: 0 0 12px; }
+    .test .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+    .test .meta span { font-size: .72rem; font-weight: 600; padding: 3px 8px; border-radius: 6px; background: var(--alt); color: var(--text); }
+    .test .foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; }
+    .test .price { font-weight: 700; font-size: 1.15rem; color: var(--heading); }
+    .test .price s { font-size: .8rem; color: var(--muted); font-weight: 500; margin-left: 4px; }
+    .add { border: 1.5px solid var(--primary); color: var(--primary); background: transparent; font: 600 .82rem var(--font); padding: 7px 14px; border-radius: 8px; cursor: pointer; text-decoration: none; }
+    .add:hover { background: var(--primary); color: #fff; }
+
+    /* ---------- Packages ---------- */
+    .pkg { display: flex; flex-direction: column; position: relative; }
+    .pkg .count { font-size: .8rem; font-weight: 700; color: var(--primary); background: var(--tint); align-self: flex-start; padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+    .pkg h3 { margin-bottom: 4px; }
+    .pkg .for { color: var(--muted); font-size: .86rem; margin-bottom: 12px; }
+    .pkg .price { font-size: 1.8rem; font-weight: 700; color: var(--heading); margin-bottom: 12px; }
+    .pkg .price s { font-size: .9rem; color: var(--muted); font-weight: 500; margin-left: 6px; }
+    .pkg .price em { font-style: normal; font-size: .72rem; font-weight: 700; color: var(--ok); background: var(--ok-bg); padding: 3px 8px; border-radius: 999px; margin-left: 6px; vertical-align: middle; }
+    .pkg ul { padding-left: 1.1em; margin: 0 0 20px; color: var(--muted); font-size: .88rem; display: grid; gap: 4px; flex: 1; align-content: start; }
+    .pkg.best { border: 2px solid var(--primary); }
+    .pkg .flag { position: absolute; top: -12px; right: 18px; background: var(--accent); color: var(--on-accent); font-size: .7rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+
+    /* ---------- Scan prices ---------- */
+    .price-table { max-width: 860px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .price-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 22px; border-bottom: 1px solid var(--line); }
+    .price-row:last-child { border-bottom: 0; }
+    .price-row h3 { font-size: 1rem; margin: 0; font-weight: 600; }
+    .price-row p { margin: 2px 0 0; font-size: .86rem; color: var(--muted); }
+    .price-row .amt { font-weight: 700; color: var(--heading); white-space: nowrap; }
+    .price-note { text-align: center; color: var(--muted); font-size: .88rem; margin-top: 18px; }
+
+    /* ---------- Home collection ---------- */
+    .home-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .flow { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 18px; counter-reset: s; }
+    .flow li { display: flex; gap: 16px; counter-increment: s; }
+    .flow li::before { content: counter(s); flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 700; }
+    .flow h3 { font-size: 1rem; margin: 0 0 2px; }
+    .flow p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .home-card { background: linear-gradient(150deg, var(--primary), #0891b2 60%, #22b8d4); color: #e0f7fc; border-radius: 22px; padding: clamp(28px, 4vw, 40px); box-shadow: 0 30px 60px -30px rgba(14, 116, 144, .7); }
+    .home-card h3 { color: #fff; font-size: 1.45rem; }
+    .home-card .big { font-size: 3rem; line-height: 1; margin-bottom: 12px; }
+    .home-card ul { padding-left: 1.1em; margin: 0 0 22px; display: grid; gap: 6px; }
+    .home-card .btn { background: #fff; color: var(--primary-dark); }
+
+    /* ---------- Why ---------- */
+    .why { text-align: center; }
+    .why .emoji-tile { margin-inline: auto; background: var(--tint); }
+    .why p { color: var(--muted); font-size: .9rem; }
+
+    /* ---------- Reports ---------- */
+    .report { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: var(--heading); color: #b8d3df; border-radius: 24px; padding: clamp(28px, 5vw, 52px); }
+    .report h2 { color: #fff; }
+    .report .form { --field-bg: #0f2c40; --field-line: #24465d; --field-text: #fff; --label: #b8d3df; --primary: var(--accent); --form-msg: var(--accent); }
+    .report .btn { background: var(--accent); color: var(--on-accent); }
+
+    /* ---------- Booking ---------- */
+    .book-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+    .hours { list-style: none; padding: 0; margin: 22px 0; display: grid; gap: 10px; }
+    .hours li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+    .hours b { color: var(--heading); text-align: right; }
+    .book-box { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 30px; box-shadow: 0 30px 60px -40px rgba(10, 31, 48, .45); }
+    .legal { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; border-radius: 12px; padding: 14px 18px; font-size: .86rem; font-weight: 600; text-align: center; margin-top: 26px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .home-grid, .report, .book-grid { grid-template-columns: 1fr; }
+      .float.f2 { right: 0; }
+    }
+    @media (max-width: 620px) {
+      .hero-trust { grid-template-columns: 1fr; }
+      .hero-art { min-height: 470px; }
+      .report-card { width: 88%; bottom: 44px; }
+      .float.f1 { top: 0; left: 0; }
+      .film-card { width: 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Labs%20%26%20Scans#contact">Get this website</a>
+  </div></div>
+
+  <div class="topbar"><div class="container">
+    <span>🏠 Free home sample collection from 6 AM</span>
+    <span class="hide-sm">📲 Reports on WhatsApp · Call <a href="tel:+919000000000">+91 90000 00000</a></span>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg>
+      </span><span>VitalCare<small>Labs &amp; Scans</small></span></a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#tests">Lab tests</a>
+        <a href="#packages">Health packages</a>
+        <a href="#scans">Scans</a>
+        <a href="#home">Home collection</a>
+        <a href="#reports">Reports</a>
+        <a href="#book" class="btn btn-primary btn-sm">Book a test</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Pathology lab · X-ray · Ultrasound · CT · MRI</p>
+          <h1>Lab tests &amp; scans you can trust. <span>Reports on your phone.</span></h1>
+          <p class="lead">Blood tests, health check-ups and imaging under one roof, with free home sample collection and doctor-verified reports sent straight to your WhatsApp.</p>
+          <form class="search" role="search" onsubmit="event.preventDefault(); document.getElementById('tests').scrollIntoView()">
+            <input type="search" placeholder="Search tests or scans, e.g. Thyroid, MRI" aria-label="Search tests or scans">
+            <button class="btn btn-primary">Search</button>
+          </form>
+          <div class="popular"><span>Popular:</span><a href="#tests">CBC</a><a href="#tests">Thyroid</a><a href="#tests">HbA1c</a><a href="#tests">Vitamin D</a><a href="#scans">MRI</a></div>
+          <div class="hero-trust">
+            <div><span class="ic">🏠</span><div><b>Home collection</b>Free above ₹500</div></div>
+            <div><span class="ic">⏱️</span><div><b>Same-day reports</b>for most tests</div></div>
+            <div><span class="ic">🩺</span><div><b>Doctor-verified</b>every report</div></div>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="film-card">
+            <div class="film">
+              <svg viewBox="0 0 300 360">
+                <defs>
+                  <radialGradient id="lung" cx="50%" cy="45%" r="60%"><stop offset="0" stop-color="#67e8f9" stop-opacity=".22"/><stop offset="1" stop-color="#67e8f9" stop-opacity="0"/></radialGradient>
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect width="300" height="360" fill="#030c16"/>
+                <ellipse cx="102" cy="200" rx="58" ry="104" fill="url(#lung)"/>
+                <ellipse cx="198" cy="200" rx="58" ry="104" fill="url(#lung)"/>
+                <g filter="url(#glow)" fill="none" stroke="#a5f3fc" stroke-linecap="round">
+                  <path d="M150 52 C 125 46, 92 52, 62 74 C 46 86, 38 110, 36 140" stroke-width="5" opacity=".55"/>
+                  <path d="M150 52 C 175 46, 208 52, 238 74 C 254 86, 262 110, 264 140" stroke-width="5" opacity=".55"/>
+                  <path d="M142 84 C 122 74, 96 74, 70 88" stroke-width="5" opacity=".8"/>
+                  <path d="M158 84 C 178 74, 204 74, 230 88" stroke-width="5" opacity=".8"/>
+                  <g stroke-width="3.4" opacity=".62">
+                    <path d="M142 104 C 112 92, 78 100, 64 132"/><path d="M158 104 C 188 92, 222 100, 236 132"/>
+                    <path d="M142 128 C 110 116, 72 126, 58 162"/><path d="M158 128 C 190 116, 228 126, 242 162"/>
+                    <path d="M142 152 C 108 140, 68 152, 55 190"/><path d="M158 152 C 192 140, 232 152, 245 190"/>
+                    <path d="M142 176 C 108 165, 68 178, 56 216"/><path d="M158 176 C 192 165, 232 178, 244 216"/>
+                    <path d="M142 200 C 110 190, 72 204, 62 240"/><path d="M158 200 C 190 190, 228 204, 238 240"/>
+                    <path d="M142 224 C 114 216, 82 230, 74 262"/><path d="M158 224 C 186 216, 218 230, 226 262"/>
+                    <path d="M142 248 C 120 242, 96 254, 90 280"/><path d="M158 248 C 180 242, 204 254, 210 280"/>
+                  </g>
+                </g>
+                <g fill="#cffafe" opacity=".6">
+                  <rect x="143" y="60" width="14" height="13" rx="3"/><rect x="143" y="78" width="14" height="13" rx="3"/>
+                  <rect x="142" y="96" width="16" height="14" rx="3"/><rect x="142" y="115" width="16" height="14" rx="3"/>
+                  <rect x="142" y="134" width="16" height="15" rx="3"/><rect x="141" y="154" width="18" height="15" rx="3"/>
+                  <rect x="141" y="174" width="18" height="15" rx="3"/><rect x="141" y="194" width="18" height="16" rx="3"/>
+                  <rect x="140" y="215" width="20" height="16" rx="3"/><rect x="140" y="236" width="20" height="17" rx="3"/>
+                  <rect x="139" y="258" width="22" height="17" rx="3"/><rect x="139" y="280" width="22" height="18" rx="3"/>
+                  <rect x="138" y="303" width="24" height="18" rx="3"/>
+                </g>
+                <text x="18" y="30" fill="#67e8f9" font-family="monospace" font-size="13" opacity=".85">CHEST PA</text>
+                <text x="266" y="30" fill="#67e8f9" font-family="monospace" font-size="16" font-weight="700" opacity=".9">R</text>
+              </svg>
+              <div class="scanline"></div>
+            </div>
+          </div>
+
+          <div class="report-card">
+            <div class="rc-head">
+              <div><b>Thyroid Profile</b><span>R. Kumar · 42 Y / M · Sample: home</span></div>
+              <span class="logo"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg></span>
+            </div>
+            <div class="rc-row"><div><b>T3</b><small>0.8 – 2.0 ng/mL</small></div><b>1.2</b><span class="pill">Normal</span></div>
+            <div class="rc-row"><div><b>T4</b><small>5.1 – 14.1 µg/dL</small></div><b>8.4</b><span class="pill">Normal</span></div>
+            <div class="rc-row"><div><b>TSH</b><small>0.27 – 4.2 µIU/mL</small></div><b>6.8</b><span class="pill hi">High</span></div>
+            <p class="rc-foot">✓ Verified by pathologist</p>
+          </div>
+
+          <div class="float f1"><span class="dot">🧪</span><div><b>Sample collected</b>at home, 7:10 AM</div></div>
+          <div class="float f2"><span class="dot">✓</span><div><b>Report ready</b>sent to WhatsApp</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tests">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Popular lab tests</p>
+          <h2>Book the tests your doctor asked for</h2>
+          <p>Accurate results from our automated lab, with clear instructions on fasting and sample type.</p>
+        </div>
+        <div class="grid g4 stack">
+          <div class="card test"><div class="top"><h3>Complete Blood Count (CBC)</h3><span class="ic">🩸</span></div><p>Infection, anaemia and overall health</p><div class="meta"><span>No fasting</span><span>Report: 6 hrs</span></div><div class="foot"><span class="price">₹300</span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Thyroid Profile (T3, T4, TSH)</h3><span class="ic">🦋</span></div><p>Checks thyroid function</p><div class="meta"><span>No fasting</span><span>Report: same day</span></div><div class="foot"><span class="price">₹500 <s>₹750</s></span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>HbA1c</h3><span class="ic">🍬</span></div><p>Average blood sugar over 3 months</p><div class="meta"><span>No fasting</span><span>Report: 6 hrs</span></div><div class="foot"><span class="price">₹450</span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Lipid Profile</h3><span class="ic">❤️</span></div><p>Cholesterol and triglycerides</p><div class="meta"><span>10–12 hrs fasting</span><span>Report: same day</span></div><div class="foot"><span class="price">₹600</span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Liver Function Test</h3><span class="ic">🧫</span></div><p>Liver enzymes, bilirubin and proteins</p><div class="meta"><span>8 hrs fasting</span><span>Report: same day</span></div><div class="foot"><span class="price">₹650</span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Kidney Function Test</h3><span class="ic">💧</span></div><p>Creatinine, urea and electrolytes</p><div class="meta"><span>No fasting</span><span>Report: same day</span></div><div class="foot"><span class="price">₹650</span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Vitamin D (25-OH)</h3><span class="ic">☀️</span></div><p>Bone health and immunity</p><div class="meta"><span>No fasting</span><span>Report: 24 hrs</span></div><div class="foot"><span class="price">₹1,200 <s>₹1,600</s></span><a href="#book" class="add">Book</a></div></div>
+          <div class="card test"><div class="top"><h3>Fever Panel</h3><span class="ic">🌡️</span></div><p>Dengue, malaria, typhoid and CBC</p><div class="meta"><span>No fasting</span><span>Report: 12 hrs</span></div><div class="foot"><span class="price">₹1,100</span><a href="#book" class="add">Book</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="packages">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Health check-up packages</p>
+          <h2>Full-body check-ups at honest prices</h2>
+          <p>Preventive check-ups that catch problems early. Free home sample collection on every package.</p>
+        </div>
+        <div class="grid g4">
+          <div class="card pkg"><span class="count">58 tests</span><h3>Basic Health Check</h3><p class="for">Adults under 35</p><p class="price">₹999 <s>₹1,800</s></p><ul><li>CBC &amp; ESR</li><li>Blood sugar (fasting)</li><li>Lipid profile</li><li>Liver &amp; kidney function</li><li>Urine routine</li></ul><a href="#book" class="btn btn-outline btn-sm" style="color:var(--primary)">Book package</a></div>
+          <div class="card pkg best"><span class="flag">Most booked</span><span class="count">86 tests</span><h3>Full Body Check-up</h3><p class="for">Adults 35+</p><p class="price">₹1,999 <s>₹3,900</s></p><ul><li>Everything in Basic</li><li>Thyroid profile</li><li>HbA1c</li><li>Vitamin D &amp; B12</li><li>Iron studies</li></ul><a href="#book" class="btn btn-primary btn-sm">Book package</a></div>
+          <div class="card pkg"><span class="count">42 tests</span><h3>Diabetes Care</h3><p class="for">Diabetics &amp; pre-diabetics</p><p class="price">₹1,299 <s>₹2,200</s></p><ul><li>Fasting &amp; PP sugar</li><li>HbA1c</li><li>Kidney function</li><li>Urine microalbumin</li><li>Lipid profile</li></ul><a href="#book" class="btn btn-outline btn-sm" style="color:var(--primary)">Book package</a></div>
+          <div class="card pkg"><span class="count">72 tests + scan</span><h3>Senior Citizen</h3><p class="for">Age 60+</p><p class="price">₹2,999 <s>₹5,500</s></p><ul><li>Full Body Check-up</li><li>ECG</li><li>Chest X-ray</li><li>PSA (men) / Pap smear (women)</li><li>Doctor consultation</li></ul><a href="#book" class="btn btn-outline btn-sm" style="color:var(--primary)">Book package</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scans">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Scans &amp; imaging</p>
+          <h2>X-ray, ultrasound, CT &amp; MRI</h2>
+          <p>Modern imaging equipment. Every scan is reported by a qualified radiologist.</p>
+        </div>
+        <div class="tabs" data-tabs role="tablist">
+          <button class="tab active" data-tab="s-xray" role="tab" aria-selected="true">X-ray</button>
+          <button class="tab" data-tab="s-usg" role="tab" aria-selected="false">Ultrasound</button>
+          <button class="tab" data-tab="s-ctmri" role="tab" aria-selected="false">CT &amp; MRI</button>
+          <button class="tab" data-tab="s-cardiac" role="tab" aria-selected="false">Heart tests</button>
+        </div>
+        <div class="tab-panel price-table" id="s-xray">
+          <div class="price-row"><div><h3>Chest X-ray (PA view)</h3><p>Cough, fever, fitness and pre-employment checks</p></div><span class="amt">₹350</span></div>
+          <div class="price-row"><div><h3>Knee X-ray (AP &amp; lateral)</h3><p>Both views, one knee</p></div><span class="amt">₹500</span></div>
+          <div class="price-row"><div><h3>Lumbar spine X-ray</h3><p>For back pain and injuries</p></div><span class="amt">₹600</span></div>
+          <div class="price-row"><div><h3>Dental OPG</h3><p>Full-mouth panoramic view</p></div><span class="amt">₹500</span></div>
+        </div>
+        <div class="tab-panel price-table" id="s-usg" hidden>
+          <div class="price-row"><div><h3>Whole abdomen ultrasound</h3><p>Liver, gallbladder, kidneys, bladder and more</p></div><span class="amt">₹1,200</span></div>
+          <div class="price-row"><div><h3>Pelvis ultrasound</h3><p>Uterus, ovaries and bladder</p></div><span class="amt">₹1,000</span></div>
+          <div class="price-row"><div><h3>Pregnancy scan</h3><p>Dating, growth and anomaly scans</p></div><span class="amt">from ₹1,500</span></div>
+          <div class="price-row"><div><h3>Thyroid / neck ultrasound</h3><p>Thyroid nodules and neck swellings</p></div><span class="amt">₹1,000</span></div>
+        </div>
+        <div class="tab-panel price-table" id="s-ctmri" hidden>
+          <div class="price-row"><div><h3>CT brain (plain)</h3><p>Headache, injury, stroke evaluation</p></div><span class="amt">₹2,500</span></div>
+          <div class="price-row"><div><h3>CT chest (HRCT)</h3><p>Detailed lung imaging</p></div><span class="amt">₹3,500</span></div>
+          <div class="price-row"><div><h3>MRI brain</h3><p>1.5 Tesla, with radiologist report</p></div><span class="amt">₹5,500</span></div>
+          <div class="price-row"><div><h3>MRI knee / spine</h3><p>Ligament, disc and nerve problems</p></div><span class="amt">from ₹6,000</span></div>
+        </div>
+        <div class="tab-panel price-table" id="s-cardiac" hidden>
+          <div class="price-row"><div><h3>ECG (12-lead)</h3><p>With doctor's interpretation</p></div><span class="amt">₹300</span></div>
+          <div class="price-row"><div><h3>ECHO (2D echocardiogram)</h3><p>Heart structure and pumping</p></div><span class="amt">₹1,800</span></div>
+          <div class="price-row"><div><h3>TMT (treadmill test)</h3><p>Heart response to exercise</p></div><span class="amt">₹1,800</span></div>
+        </div>
+        <p class="price-note">Prices are indicative and include the radiologist's report. The final amount is confirmed when you book.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="home">
+      <div class="container home-grid">
+        <div>
+          <p class="kicker">Home sample collection</p>
+          <h2>We come to you, so you don't have to wait</h2>
+          <p class="muted">Book before 9 PM and our trained phlebotomist will collect your sample at home the next morning, from 6 AM.</p>
+          <ol class="flow">
+            <li><div><h3>Book online or on WhatsApp</h3><p>Choose your tests and a convenient time slot.</p></div></li>
+            <li><div><h3>Sample collected at home</h3><p>A trained phlebotomist visits with sealed, single-use kits.</p></div></li>
+            <li><div><h3>Tested in our lab</h3><p>Samples reach our lab in temperature-controlled boxes.</p></div></li>
+            <li><div><h3>Report on your phone</h3><p>Doctor-verified report on WhatsApp and email, often the same day.</p></div></li>
+          </ol>
+        </div>
+        <div class="home-card">
+          <div class="big" aria-hidden="true">🏠</div>
+          <h3>Free home collection</h3>
+          <p>On all orders above ₹500 within city limits.</p>
+          <ul>
+            <li>Slots from 6 AM, all 7 days</li>
+            <li>Trained, courteous phlebotomists</li>
+            <li>Home X-ray &amp; ECG for elderly patients</li>
+          </ul>
+          <a href="#book" class="btn">Book home collection</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Why VitalCare</p><h2>Results you can rely on</h2></div>
+        <div class="grid g4">
+          <div class="card why"><div class="emoji-tile">🔬</div><h3>Automated lab</h3><p>Modern analysers with daily quality checks for accurate results.</p></div>
+          <div class="card why"><div class="emoji-tile">🩺</div><h3>Doctor-verified</h3><p>Every report is checked by a pathologist or radiologist.</p></div>
+          <div class="card why"><div class="emoji-tile">💸</div><h3>Fair pricing</h3><p>Clear prices online. Senior citizens get 10% off.</p></div>
+          <div class="card why"><div class="emoji-tile">📲</div><h3>Digital reports</h3><p>Reports and scan images on WhatsApp, email and online.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reports" style="padding-top:0">
+      <div class="container">
+        <div class="report">
+          <div>
+            <p class="kicker" style="color:var(--accent)">Online reports</p>
+            <h2>Download your report</h2>
+            <p>Enter the patient ID printed on your bill and your registered mobile number to view and download your lab reports and scan images.</p>
+          </div>
+          <form class="form" data-demo data-demo-msg="Demo: on your live website, the patient's lab report PDF and scan images would open here.">
+            <div class="row">
+              <label>Patient ID<input type="text" placeholder="e.g. VC-240518" required></label>
+              <label>Mobile number<input type="tel" required></label>
+            </div>
+            <button class="btn btn-block">Get my report</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="book">
+      <div class="container book-grid">
+        <div>
+          <p class="kicker">Book a test or scan</p>
+          <h2>Book in under a minute</h2>
+          <p class="muted">We'll confirm your booking and share preparation instructions on WhatsApp.</p>
+          <ul class="hours">
+            <li><span>Lab &amp; scans</span><b>Mon – Sat · 6:30 AM – 9:00 PM</b></li>
+            <li><span>Sunday</span><b>6:30 AM – 1:00 PM</b></li>
+            <li><span>Home collection</span><b>From 6 AM, all 7 days</b></li>
+            <li><span>Address</span><b>32, Omalur Main Road, Salem</b></li>
+          </ul>
+          <div class="map-ph" style="--map-bg:#e6f3f8;min-height:200px"><div><span class="pin">📍</span>Google Map goes here</div></div>
+        </div>
+        <div class="book-box">
+          <form class="form" data-demo>
+            <label>Test, package or scan
+              <select required>
+                <option value="">Select…</option>
+                <optgroup label="Lab tests"><option>CBC</option><option>Thyroid profile</option><option>HbA1c</option><option>Lipid profile</option><option>Vitamin D</option><option>Other lab test</option></optgroup>
+                <optgroup label="Health packages"><option>Basic Health Check</option><option>Full Body Check-up</option><option>Diabetes Care</option><option>Senior Citizen</option></optgroup>
+                <optgroup label="Scans"><option>X-ray</option><option>Ultrasound</option><option>CT scan</option><option>MRI</option><option>ECG / ECHO / TMT</option></optgroup>
+              </select>
+            </label>
+            <div class="row">
+              <label>Where<select><option>Home sample collection</option><option>Visit the centre</option></select></label>
+              <label>Date<input type="date" required></label>
+            </div>
+            <div class="row">
+              <label>Patient name<input type="text" required></label>
+              <label>Mobile<input type="tel" required></label>
+            </div>
+            <label>Address (for home collection)<textarea rows="2" placeholder="House no., street, area, pincode"></textarea></label>
+            <label>Doctor's prescription (optional)<input type="file" accept="image/*,.pdf"></label>
+            <button class="btn btn-primary btn-block">Confirm booking</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+      <div class="container">
+        <p class="legal">⚠️ Sex determination of the foetus is not done here. It is a punishable offence under the PC&amp;PNDT Act.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></svg></span><span>VitalCare<small style="color:inherit">Labs &amp; Scans</small></span></a><p>Lab tests, health check-ups and scans in Salem, with free home sample collection.</p></div>
+        <div><h4>Tests</h4><ul><li><a href="#tests">Lab tests</a></li><li><a href="#packages">Health packages</a></li><li><a href="#scans">Scans &amp; imaging</a></li></ul></div>
+        <div><h4>Patients</h4><ul><li><a href="#home">Home collection</a></li><li><a href="#book">Book a test</a></li><li><a href="#reports">Download report</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li>📍 Omalur Main Road, Salem</li><li>📞 +91 90000 00000</li><li>✉️ reports@vitalcare.example</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> VitalCare Labs &amp; Scans (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#book" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js" defer></script>
+</body>
+</html>
