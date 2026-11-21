@@ -79,7 +79,7 @@ EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
 | `autoReplyTemplateId` | Email Templates → auto-reply template → Settings (optional) |
 | `publicKey` | Account → General → Public Key |
 
-Until `templateId` and `publicKey` are filled in, **Send by email** opens the visitor's email app instead. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
+If `templateId` or `publicKey` is ever emptied, **Send by email** falls back to opening the visitor's email app. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
 
 ## Deploy
 

@@ -17,9 +17,9 @@ const CONTACT = {
    visitors who give an email address get a thank-you copy. */
 const EMAILJS = {
   serviceId: "service_olwui3b",
-  templateId: "",            // enquiry email to you, e.g. "template_abc123"
+  templateId: "template_d7paoko",   // enquiry email to you
   autoReplyTemplateId: "",   // thank-you email to the visitor (optional)
-  publicKey: "",             // Account → General → Public Key
+  publicKey: "hciiQLOWsSsZyLHNN",  // Account → General → Public Key (safe to publish)
 };
 
 document.documentElement.classList.add("js");
