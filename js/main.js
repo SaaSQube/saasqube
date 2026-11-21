@@ -84,6 +84,95 @@ if ("IntersectionObserver" in window) {
   reveals.forEach((el) => el.classList.add("in"));
 }
 
+/* ---------- Template slider ---------- */
+const slider = document.querySelector(".tslider");
+if (slider) {
+  const track = slider.querySelector(".ts-track");
+  const slides = [...track.children];
+  const prev = slider.querySelector(".ts-prev");
+  const next = slider.querySelector(".ts-next");
+  const dotsWrap = slider.querySelector(".ts-dots");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Load each live preview only when its slide comes near the visible area.
+  const loadFrame = (slide) => {
+    const f = slide.querySelector("iframe[data-src]");
+    if (!f) return;
+    f.addEventListener("load", () => f.classList.add("loaded"), { once: true });
+    f.src = f.dataset.src;
+    f.removeAttribute("data-src");
+  };
+  if ("IntersectionObserver" in window) {
+    const lazy = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { loadFrame(e.target); lazy.unobserve(e.target); } });
+    }, { root: track, rootMargin: "0px 60% 0px 60%" });
+    const outer = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      slides.forEach((s) => lazy.observe(s));
+      outer.disconnect();
+    }, { rootMargin: "300px 0px" });
+    outer.observe(slider);
+  } else {
+    slides.forEach(loadFrame);
+  }
+
+  const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
+  const perView = () => Math.max(1, Math.round(track.clientWidth / step()));
+  const pageCount = () => Math.max(1, slides.length - perView() + 1);
+  const current = () => Math.round(track.scrollLeft / step());
+  const goTo = (i) => track.scrollTo({ left: Math.max(0, Math.min(i, pageCount() - 1)) * step(), behavior: reduceMotion ? "auto" : "smooth" });
+
+  const buildDots = () => {
+    dotsWrap.innerHTML = "";
+    for (let i = 0; i < pageCount(); i++) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("aria-label", `Go to slide ${i + 1}`);
+      b.addEventListener("click", () => { goTo(i); pause(); });
+      dotsWrap.appendChild(b);
+    }
+    update();
+  };
+  const update = () => {
+    const i = current();
+    prev.disabled = track.scrollLeft <= 2;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+    [...dotsWrap.children].forEach((d, n) => d.setAttribute("aria-current", String(n === i)));
+  };
+
+  prev.addEventListener("click", () => { goTo(current() - 1); pause(); });
+  next.addEventListener("click", () => { goTo(current() + 1); pause(); });
+  track.addEventListener("keydown", (e) => {
+    if (e.target !== track) return;
+    if (e.key === "ArrowRight") { e.preventDefault(); goTo(current() + 1); pause(); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); goTo(current() - 1); pause(); }
+  });
+  let raf;
+  track.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(update); }, { passive: true });
+  let resizeT;
+  window.addEventListener("resize", () => { clearTimeout(resizeT); resizeT = setTimeout(buildDots, 150); });
+
+  // Autoplay: advances every 5s, pauses on hover, focus, touch or when off-screen.
+  let timer = null, hovering = false, focused = false, visible = false, stopped = reduceMotion;
+  const tick = () => goTo(current() + 1 >= pageCount() ? 0 : current() + 1);
+  const sync = () => {
+    clearInterval(timer); timer = null;
+    if (!stopped && !hovering && !focused && visible && !document.hidden) timer = setInterval(tick, 5000);
+  };
+  const pause = () => { stopped = true; sync(); };
+  slider.addEventListener("mouseenter", () => { hovering = true; sync(); });
+  slider.addEventListener("mouseleave", () => { hovering = false; sync(); });
+  slider.addEventListener("focusin", () => { focused = true; sync(); });
+  slider.addEventListener("focusout", () => { focused = false; sync(); });
+  track.addEventListener("touchstart", pause, { passive: true });
+  document.addEventListener("visibilitychange", sync);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }, { threshold: .3 }).observe(slider);
+  }
+
+  buildDots();
+}
+
 /* ---------- Pricing buttons pre-select service ---------- */
 const form = document.getElementById("contact-form");
 const planToService = { Starter: "Business website", Business: "Business website", "E-commerce": "E-commerce store" };

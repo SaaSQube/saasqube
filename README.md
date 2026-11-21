@@ -7,10 +7,10 @@ It's a static site: plain HTML, CSS and JavaScript with no build step and no dep
 ## Structure
 
 ```
-index.html        Single-page site: hero, services, templates, why us, process, pricing, about, FAQ, contact
+index.html        Single-page site: hero, services, template slider, why us, process, pricing, about, FAQ, contact
 404.html          Not-found page
 css/style.css     All styles (light + automatic dark mode, responsive down to small phones)
-js/main.js        Contact details, mobile menu, scroll effects, contact form
+js/main.js        Contact details, mobile menu, scroll effects, template slider, contact form
 assets/favicon.svg
 templates/        Industry demo websites to show clients (see below)
 ```
