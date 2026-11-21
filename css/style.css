@@ -30,8 +30,28 @@
   --header-h: 72px;
 }
 
+:root { color-scheme: light; }
+/* Dark theme: chosen with the header switch, or from the device setting when no choice is saved */
+:root[data-theme="dark"] {
+  --brand: #3b74ff;
+  --brand-dark: #2a5cf0;
+  --brand-soft: #9cc0ff;
+  --accent: #b25cff;
+  --accent-dark: #c58aff;
+  --ink: #eef3ff;
+  --ink-2: #cbd5e1;
+  --muted: #94a3b8;
+  --bg: #070a1c;
+  --bg-alt: #0c1129;
+  --surface: #121834;
+  --line: #232c55;
+  --night: #0a1033;
+  --night-2: #050820;
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --brand: #3b74ff;
     --brand-dark: #2a5cf0;
     --brand-soft: #9cc0ff;
@@ -47,8 +67,10 @@
     --night: #0a1033;
     --night-2: #050820;
     --shadow: 0 10px 30px -12px rgba(0, 0, 0, .6);
+    color-scheme: dark;
   }
 }
+.theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after { transition: background-color .3s, border-color .3s, color .3s !important; }
 
 *,
 *::before,
@@ -127,6 +149,20 @@ p { margin: 0 0 1em; }
 }
 .site-header.scrolled { border-color: var(--line); box-shadow: 0 6px 20px -16px rgba(0, 0, 0, .4); }
 .nav-wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.nav-wrap .brand { margin-right: auto; }
+.nav-wrap .site-nav { order: 1; }
+.nav-wrap .theme-toggle { order: 2; }
+.nav-wrap .nav-toggle { order: 3; }
+.theme-toggle {
+  width: 42px; height: 42px; flex: none; border-radius: 50%; display: grid; place-items: center; cursor: pointer; padding: 0;
+  background: var(--surface); color: var(--ink); border: 1px solid var(--line); transition: border-color .2s, color .2s, transform .2s;
+}
+.theme-toggle:hover { border-color: var(--brand); color: var(--brand); transform: rotate(-12deg); }
+.theme-toggle svg { width: 20px; height: 20px; grid-area: 1 / 1; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: opacity .25s, transform .35s; }
+.theme-toggle .ti-moon { fill: currentColor; stroke: none; }
+.theme-toggle .ti-sun { opacity: 0; transform: rotate(-90deg) scale(.6); }
+.theme-toggle[aria-pressed="true"] .ti-moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+.theme-toggle[aria-pressed="true"] .ti-sun { opacity: 1; transform: none; }
 
 .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none !important; }
 .brand-mark { width: 40px; height: 40px; flex: none; }

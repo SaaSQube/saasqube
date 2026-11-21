@@ -11,6 +11,7 @@ index.html        Single-page site: hero, services, template slider, why us, pro
 404.html          Not-found page
 css/style.css     All styles (light + automatic dark mode, responsive down to small phones).
                   Brand colours from the logo live in :root: --cyan, --brand (blue), --accent (purple), --grad
+js/theme.js       Light / dark theme switch (shared by the homepage and templates gallery)
 js/main.js        Contact details, mobile menu, scroll effects, template slider, contact form
 assets/
   logo-mark.svg     The cube mark (used in the header, footer and About section)
@@ -38,6 +39,10 @@ templates/        Industry demo websites to show clients (see below)
 All templates share `templates/shared.css` and `templates/shared.js` (header, mobile menu, forms, tabs, footer). Each sets its own colours and fonts in a `<style>` block at the top. Every template has a dark bar at the top linking back to the gallery, plus a **Get this website** button. That button opens the main site's contact form with the template already filled in (`index.html?template=Name#contact`). The bar is hidden automatically when a template is shown as a preview in the gallery.
 
 Forms in the templates are demo-only: they show a thank-you message and don't send anything. To turn a template into a client's real site, copy its folder, replace the names, contact details and content, swap the emoji/gradient visuals for real photos, and remove the demo bar.
+
+## Light / dark theme
+
+The round button in the header switches the site between light and dark. The choice is saved in the visitor's browser and applies to the homepage, the templates gallery and the 404 page. Until someone picks a theme, the site follows their device setting. Dark colours are defined once in `css/style.css` under `:root[data-theme="dark"]` (and repeated for the device-setting case below it). The demo templates keep their own designs.
 
 ## Run locally
 

@@ -10,10 +10,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <!-- Self-contained on purpose: this page is served at any URL depth
        (and under /<repo>/ on GitHub Pages), so relative asset paths can't be relied on. -->
+  <script>try{var t=localStorage.getItem("sq-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
   <style>
     :root { --brand: #1a4ff0; --accent: #9b2cf5; --ink: #0d1029; --ink-2: #334155; --bg: #ffffff; }
+    :root[data-theme="dark"] { --brand: #3b74ff; --accent: #b25cff; --ink: #eef3ff; --ink-2: #cbd5e1; --bg: #070a1c; color-scheme: dark; }
     @media (prefers-color-scheme: dark) {
-      :root { --brand: #3b74ff; --accent: #b25cff; --ink: #eef3ff; --ink-2: #cbd5e1; --bg: #070a1c; }
+      :root:not([data-theme="light"]) { --brand: #3b74ff; --accent: #b25cff; --ink: #eef3ff; --ink-2: #cbd5e1; --bg: #070a1c; color-scheme: dark; }
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink-2); background: var(--bg); }
