@@ -18,8 +18,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>try{var t=localStorage.getItem("sq-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <link rel="stylesheet" href="css/style.css?v=20261122a">
-  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="css/style.css?v=20261122d">
+  <link rel="stylesheet" href="css/motion.css?v=20261122d">
+  <!-- "loading" shows the intro loader; the timer is a failsafe so the page can never stay covered. -->
+  <script>document.documentElement.classList.add("js","loading");window.__sqLoaderFailsafe=setTimeout(function(){document.documentElement.classList.remove("loading");var l=document.getElementById("loader");if(l)l.remove()},8000);</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,13 +39,58 @@
   </script>
 </head>
 <body>
+  <!-- Shared logo gradients + symbol (used by the inline logo marks) -->
+  <svg class="sq-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <defs>
+      <linearGradient id="sqg-tl" gradientUnits="userSpaceOnUse" x1="16" y1="18" x2="44" y2="40"><stop offset="0" stop-color="#2bc0ff"/><stop offset="1" stop-color="#0b5cff"/></linearGradient>
+      <linearGradient id="sqg-tr" gradientUnits="userSpaceOnUse" x1="56" y1="38" x2="86" y2="20"><stop offset="0" stop-color="#6a2cf6"/><stop offset="1" stop-color="#c73cf6"/></linearGradient>
+      <linearGradient id="sqg-l" gradientUnits="userSpaceOnUse" x1="8" y1="80" x2="44" y2="42"><stop offset="0" stop-color="#00f0d0"/><stop offset="1" stop-color="#0aa2f5"/></linearGradient>
+      <linearGradient id="sqg-r" gradientUnits="userSpaceOnUse" x1="58" y1="60" x2="92" y2="88"><stop offset="0" stop-color="#0838dc"/><stop offset="1" stop-color="#1f6cff"/></linearGradient>
+      <!-- Loader cube faces (gradients run in each face's own square) -->
+      <linearGradient id="lg-top-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2bc0ff"/><stop offset="1" stop-color="#0b5cff"/></linearGradient>
+      <linearGradient id="lg-top-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a2cf6"/><stop offset="1" stop-color="#c73cf6"/></linearGradient>
+      <linearGradient id="lg-left" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#00f0d0"/><stop offset="1" stop-color="#0aa2f5"/></linearGradient>
+      <linearGradient id="lg-front" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0838dc"/><stop offset="1" stop-color="#1f6cff"/></linearGradient>
+      <linearGradient id="lg-h1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6fb5"/><stop offset="1" stop-color="#9b2cf5"/></linearGradient>
+      <linearGradient id="lg-h2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6a5cff"/><stop offset="1" stop-color="#2a1fb8"/></linearGradient>
+      <linearGradient id="lg-h3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22e3c4"/><stop offset="1" stop-color="#0a8bd8"/></linearGradient>
+      <linearGradient id="sqg-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06c3e6"/><stop offset=".5" stop-color="#1a4ff0"/><stop offset="1" stop-color="#9b2cf5"/></linearGradient>
+      <symbol id="sq-logo" viewBox="0 2 100 100">
+        <g stroke-width="8" stroke-linejoin="round">
+          <polygon points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sqg-tl)" stroke="url(#sqg-tl)"/>
+          <polygon points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sqg-tr)" stroke="url(#sqg-tr)"/>
+          <polygon points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sqg-l)" stroke="url(#sqg-l)"/>
+          <polygon points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sqg-r)" stroke="url(#sqg-r)"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ INTRO LOADER ============ -->
+  <div class="loader" id="loader" role="status" aria-label="Loading SaaSQube Solutions">
+    <div class="loader-bg"></div>
+    <div class="loader-inner" aria-hidden="true">
+      <div class="loader-stage">
+        <span class="lc-ring"></span>
+        <div class="loader-cube"></div>
+        <svg class="loader-mark sq-mark" viewBox="0 2 100 100"><g class="sq-spin" stroke-width="8" stroke-linejoin="round"><polygon class="sq-p sq-tl" points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sqg-tl)" stroke="url(#sqg-tl)"/><polygon class="sq-p sq-tr" points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sqg-tr)" stroke="url(#sqg-tr)"/><polygon class="sq-p sq-l" points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sqg-l)" stroke="url(#sqg-l)"/><polygon class="sq-p sq-r" points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sqg-r)" stroke="url(#sqg-r)"/></g></svg>
+        <span class="loader-glow"></span>
+      </div>
+      <p class="loader-word"><span style="--i:0">S</span><span style="--i:1">a</span><span style="--i:2">a</span><span style="--i:3">S</span><span class="q" style="--i:4;--j:0">Q</span><span class="q" style="--i:5;--j:1">u</span><span class="q" style="--i:6;--j:2">b</span><span class="q" style="--i:7;--j:3">e</span></p>
+      <p class="loader-tag">Build · Automate · Scale</p>
+      <div class="loader-bar"><i></i></div>
+    </div>
+    <p class="loader-hint" aria-hidden="true">Tap anywhere to skip</p>
+  </div>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header" id="top">
     <div class="container nav-wrap">
       <a href="#top" class="brand" aria-label="SaaSQube Solutions home">
-        <img class="brand-mark" src="assets/logo-mark.svg" alt="" width="40" height="40">
+        <svg class="brand-mark sq-mark" viewBox="0 2 100 100" width="40" height="40" aria-hidden="true" focusable="false"><g class="sq-spin" stroke-width="8" stroke-linejoin="round"><polygon class="sq-p sq-tl" points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sqg-tl)" stroke="url(#sqg-tl)"/><polygon class="sq-p sq-tr" points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sqg-tr)" stroke="url(#sqg-tr)"/><polygon class="sq-p sq-l" points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sqg-l)" stroke="url(#sqg-l)"/><polygon class="sq-p sq-r" points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sqg-r)" stroke="url(#sqg-r)"/></g></svg>
         <span class="brand-text">SaaS<strong>Qube</strong><small>Build · Automate · Scale</small></span>
       </a>
 
@@ -73,15 +120,20 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
+        <svg class="fmark m1"><use href="#sq-logo"/></svg>
+        <svg class="fmark m2"><use href="#sq-logo"/></svg>
+        <svg class="fmark m3"><use href="#sq-logo"/></svg>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy reveal">
           <p class="eyebrow"><span class="dot"></span> Based in Tamil Nadu · Serving all of India</p>
           <h1>Websites that bring <span class="grad">real customers</span> to your business.</h1>
           <p class="lead">From Chennai to Chandigarh, Kochi to Kolkata, we design and build fast, mobile-first websites, online stores, web apps and mobile apps — in English, Tamil, Hindi or your customers' own language — so businesses across India can be found, trusted and chosen online.</p>
           <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Start your project</a>
-            <a href="templates/" class="btn btn-ghost">Browse templates →</a>
+            <a href="#contact" class="btn btn-primary" data-magnetic>Start your project</a>
+            <a href="templates/index.html" class="btn btn-ghost" data-magnetic>Browse templates →</a>
           </div>
           <ul class="hero-points">
             <li>Mobile-first design</li>
@@ -131,6 +183,16 @@
       </div>
     </section>
 
+    <!-- ============ AT A GLANCE ============ -->
+    <section class="stats" aria-label="SaaSQube at a glance">
+      <div class="container stats-grid">
+        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="9">9</span><span class="stat-label">Industry templates ready to make yours</span></div>
+        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="38">38</span><span class="stat-label">Tamil Nadu districts we work across</span></div>
+        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num">7–10</span><span class="stat-label">Working days to launch a Starter site</span></div>
+        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="9999" data-prefix="₹">₹9,999</span><span class="stat-label">Starting price, one-time</span></div>
+      </div>
+    </section>
+
     <!-- ============ TEMPLATES ============ -->
     <section class="section" id="templates">
       <div class="container">
@@ -143,115 +205,115 @@
         <div class="tslider reveal" role="region" aria-roledescription="carousel" aria-label="Example website templates">
           <ul class="ts-track" tabindex="0" aria-live="off">
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="1 of 14: Pharmacy" style="--tc:#0f9d76">
-              <a class="ts-thumb" href="templates/pharmacy/" aria-label="Open the Pharmacy demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/pharmacy/" title="Pharmacy template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/pharmacy/index.html" aria-label="Open the Pharmacy demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/pharmacy/index.html" title="Pharmacy template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Pharmacy</h3>
                 <p>Prescription upload, categories, offers and store locator.</p>
-                <div class="ts-actions"><a href="templates/pharmacy/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Pharmacy#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/pharmacy/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Pharmacy#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="2 of 14: Restaurant" style="--tc:#d4a24c">
-              <a class="ts-thumb" href="templates/restaurant/" aria-label="Open the Restaurant demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/restaurant/" title="Restaurant template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/restaurant/index.html" aria-label="Open the Restaurant demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/restaurant/index.html" title="Restaurant template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Restaurant</h3>
                 <p>Tabbed menu with ₹ prices, veg / non-veg marks and reservations.</p>
-                <div class="ts-actions"><a href="templates/restaurant/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Restaurant#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/restaurant/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Restaurant#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="3 of 14: Hospital &amp; Clinic" style="--tc:#0b63ce">
-              <a class="ts-thumb" href="templates/hospital/" aria-label="Open the Hospital &amp; Clinic demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/hospital/" title="Hospital &amp; Clinic template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/hospital/index.html" aria-label="Open the Hospital &amp; Clinic demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/hospital/index.html" title="Hospital &amp; Clinic template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Hospital &amp; Clinic</h3>
                 <p>Appointment booking, departments, doctors and health packages.</p>
-                <div class="ts-actions"><a href="templates/hospital/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Hospital#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/hospital/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Hospital#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="4 of 14: Diagnostic Labs &amp; Scans" style="--tc:#22d3ee">
-              <a class="ts-thumb" href="templates/labs-scans/" aria-label="Open the Diagnostic Labs &amp; Scans demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/labs-scans/" title="Diagnostic Labs &amp; Scans template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/labs-scans/index.html" aria-label="Open the Diagnostic Labs &amp; Scans demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/labs-scans/index.html" title="Diagnostic Labs &amp; Scans template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Diagnostic Labs &amp; Scans</h3>
                 <p>Test search, home sample collection, scan prices and reports.</p>
-                <div class="ts-actions"><a href="templates/labs-scans/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Labs%20%26%20Scans#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/labs-scans/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Labs%20%26%20Scans#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="5 of 14: Bakery &amp; Cake Shop" style="--tc:#b5651d">
-              <a class="ts-thumb" href="templates/bakery/" aria-label="Open the Bakery &amp; Cake Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/bakery/" title="Bakery &amp; Cake Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/bakery/index.html" aria-label="Open the Bakery &amp; Cake Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/bakery/index.html" title="Bakery &amp; Cake Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Bakery &amp; Cake Shop</h3>
                 <p>Bestsellers, custom cake orders and eggless tags.</p>
-                <div class="ts-actions"><a href="templates/bakery/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Bakery#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/bakery/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Bakery#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="6 of 14: Salon &amp; Spa" style="--tc:#e88d9b">
-              <a class="ts-thumb" href="templates/salon/" aria-label="Open the Salon &amp; Spa demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/salon/" title="Salon &amp; Spa template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/salon/index.html" aria-label="Open the Salon &amp; Spa demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/salon/index.html" title="Salon &amp; Spa template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Salon &amp; Spa</h3>
                 <p>Service price list, bridal packages, team and booking.</p>
-                <div class="ts-actions"><a href="templates/salon/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Salon%20%26%20Spa#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/salon/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Salon%20%26%20Spa#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="7 of 14: School" style="--tc:#1d4ed8">
-              <a class="ts-thumb" href="templates/school/" aria-label="Open the School demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/school/" title="School template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/school/index.html" aria-label="Open the School demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/school/index.html" title="School template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>School</h3>
                 <p>Admissions, academics, facilities and a notice board.</p>
-                <div class="ts-actions"><a href="templates/school/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=School#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/school/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=School#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="8 of 14: Gym &amp; Fitness" style="--tc:#f97316">
-              <a class="ts-thumb" href="templates/gym/" aria-label="Open the Gym &amp; Fitness demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/gym/" title="Gym &amp; Fitness template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/gym/index.html" aria-label="Open the Gym &amp; Fitness demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/gym/index.html" title="Gym &amp; Fitness template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Gym &amp; Fitness</h3>
                 <p>Plans, class schedule, BMI calculator and free trials.</p>
-                <div class="ts-actions"><a href="templates/gym/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Gym%20%26%20Fitness#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/gym/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Gym%20%26%20Fitness#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="9 of 14: Real Estate &amp; Builders" style="--tc:#0f766e">
-              <a class="ts-thumb" href="templates/real-estate/" aria-label="Open the Real Estate &amp; Builders demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/real-estate/" title="Real Estate &amp; Builders template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/real-estate/index.html" aria-label="Open the Real Estate &amp; Builders demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/real-estate/index.html" title="Real Estate &amp; Builders template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Real Estate &amp; Builders</h3>
                 <p>Property filters, amenities, EMI calculator and site visits.</p>
-                <div class="ts-actions"><a href="templates/real-estate/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Real%20Estate#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/real-estate/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Real%20Estate#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="10 of 14: Mobile Shop" style="--tc:#2b59ff">
-              <a class="ts-thumb" href="templates/mobile-shop/" aria-label="Open the Mobile Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/mobile-shop/" title="Mobile Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/mobile-shop/index.html" aria-label="Open the Mobile Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/mobile-shop/index.html" title="Mobile Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Mobile Shop</h3>
                 <p>Phones with EMI, accessories, repairs and an exchange estimator.</p>
-                <div class="ts-actions"><a href="templates/mobile-shop/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Mobile%20Shop#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/mobile-shop/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Mobile%20Shop#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="11 of 14: Photography &amp; Films" style="--tc:#c9a46a">
-              <a class="ts-thumb" href="templates/photography/" aria-label="Open the Photography &amp; Films demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/photography/" title="Photography &amp; Films template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/photography/index.html" aria-label="Open the Photography &amp; Films demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/photography/index.html" title="Photography &amp; Films template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Photography &amp; Films</h3>
                 <p>Portfolio gallery, wedding packages and date booking.</p>
-                <div class="ts-actions"><a href="templates/photography/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Photography#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/photography/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Photography#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="12 of 14: Fashion &amp; Clothing" style="--tc:#c2571a">
-              <a class="ts-thumb" href="templates/fashion/" aria-label="Open the Fashion &amp; Clothing demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/fashion/" title="Fashion &amp; Clothing template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/fashion/index.html" aria-label="Open the Fashion &amp; Clothing demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/fashion/index.html" title="Fashion &amp; Clothing template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Fashion &amp; Clothing</h3>
                 <p>Shop by category, new arrivals, offers and tailoring bookings.</p>
-                <div class="ts-actions"><a href="templates/fashion/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Fashion%20%26%20Clothing#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/fashion/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Fashion%20%26%20Clothing#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="13 of 14: Café &amp; Coffee Shop" style="--tc:#3b2a20">
-              <a class="ts-thumb" href="templates/cafe/" aria-label="Open the Café &amp; Coffee Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/cafe/" title="Café &amp; Coffee Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/cafe/index.html" aria-label="Open the Café &amp; Coffee Shop demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/cafe/index.html" title="Café &amp; Coffee Shop template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Café &amp; Coffee Shop</h3>
                 <p>Coffee and food menu, events and table reservations.</p>
-                <div class="ts-actions"><a href="templates/cafe/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Cafe#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/cafe/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Cafe#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="14 of 14: Jewellery Store" style="--tc:#6b1426">
-              <a class="ts-thumb" href="templates/jewellery/" aria-label="Open the Jewellery Store demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/jewellery/" title="Jewellery Store template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
+              <a class="ts-thumb" href="templates/jewellery/index.html" aria-label="Open the Jewellery Store demo"><span class="ts-bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="ts-frame"><iframe data-src="templates/jewellery/index.html" title="Jewellery Store template preview" tabindex="-1" aria-hidden="true"></iframe></span></a>
               <div class="ts-body">
                 <h3>Jewellery Store</h3>
                 <p>Today's gold rate, collections and a savings scheme calculator.</p>
-                <div class="ts-actions"><a href="templates/jewellery/" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Jewellery#contact" class="btn btn-primary btn-sm">Use this design</a></div>
+                <div class="ts-actions"><a href="templates/jewellery/index.html" class="btn btn-ghost btn-sm">Live demo</a><a href="index.html?template=Jewellery#contact" class="btn btn-primary btn-sm">Use this design</a></div>
               </div>
             </li>
           </ul>
@@ -265,7 +327,7 @@
             <h3>See all 14 designs side by side</h3>
             <p>Filter by industry, open any demo and choose the one that fits your business.</p>
           </div>
-          <a href="templates/" class="btn btn-primary">Browse all templates →</a>
+          <a href="templates/index.html" class="btn btn-primary" data-magnetic>Browse all templates →</a>
         </div>
       </div>
     </section>
@@ -280,49 +342,49 @@
         </div>
 
         <div class="cards-grid">
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg>
             </div>
             <h3>Business Websites</h3>
             <p>Professional, mobile-first sites for shops, clinics, schools, builders, restaurants and service businesses.</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg>
             </div>
             <h3>E-commerce Stores</h3>
             <p>Sell online with UPI, cards and COD via Razorpay or PhonePe, inventory, shipping and order tracking.</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
             </div>
             <h3>Web Apps &amp; SaaS</h3>
             <p>Custom web apps, dashboards, booking systems, CRMs and portals built to fit the way your team actually works.</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
             </div>
             <h3>Mobile Apps</h3>
             <p>Android and iPhone apps for bookings, orders, loyalty and delivery, with one codebase for both so you launch faster.</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg>
             </div>
             <h3>SEO &amp; Google Business</h3>
             <p>Rank for "near me" searches, set up Google Business Profile and track what brings in enquiries.</p>
           </article>
-          <article class="card service reveal">
+          <article class="card service spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 3-3 7-7 8"/><path d="m12 21 4.5-10L21 21M13.5 18h6"/></svg>
             </div>
             <h3>Indian Language Sites</h3>
             <p>Reach customers in the language they think in — Tamil, Hindi and other Indian languages, with proper fonts and an easy language switch.</p>
           </article>
-          <article class="card service card-wide reveal">
+          <article class="card service card-wide spot tilt reveal">
             <div class="icon-tile">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
             </div>
@@ -336,49 +398,19 @@
     <!-- ============ WHY US ============ -->
     <section class="section" id="why">
       <div class="container why-grid">
-        <div class="why-copy reveal">
+        <div class="why-copy reveal" data-reveal="left">
           <p class="eyebrow">Why SaaSQube</p>
           <h2>Tamil Nadu roots. All-India reach.</h2>
           <p>We're based in Tamil Nadu and work with businesses all over India — a shop in Madurai, a startup in Bengaluru, a manufacturer in Gujarat or a clinic in Hyderabad. Wherever you are, you get a partner you can call, video-meet and message on WhatsApp — not a ticket number.</p>
-          <a href="#contact" class="btn btn-primary">Talk to us</a>
+          <a href="#contact" class="btn btn-primary" data-magnetic>Talk to us</a>
         </div>
         <ul class="why-list">
-          <li class="reveal"><span class="why-num">01</span><div><h3>Mobile-first, always</h3><p>Most of your visitors are on phones. Every page is designed for small screens first.</p></div></li>
-          <li class="reveal"><span class="why-num">02</span><div><h3>Fast on real networks</h3><p>Lightweight pages and optimised images that load quickly on 4G, not just office Wi-Fi.</p></div></li>
-          <li class="reveal"><span class="why-num">03</span><div><h3>You own everything</h3><p>Domain, code and content are registered in your name. No lock-in, ever.</p></div></li>
-          <li class="reveal"><span class="why-num">04</span><div><h3>Transparent pricing in ₹</h3><p>Clear quotes with GST invoices. No surprise charges after launch.</p></div></li>
-          <li class="reveal"><span class="why-num">05</span><div><h3>Works wherever you are</h3><p>Remote-first process with calls, video meetings and WhatsApp — plus support long after launch.</p></div></li>
+          <li class="spot reveal" data-reveal="right"><span class="why-num">01</span><div><h3>Mobile-first, always</h3><p>Most of your visitors are on phones. Every page is designed for small screens first.</p></div></li>
+          <li class="spot reveal" data-reveal="right"><span class="why-num">02</span><div><h3>Fast on real networks</h3><p>Lightweight pages and optimised images that load quickly on 4G, not just office Wi-Fi.</p></div></li>
+          <li class="spot reveal" data-reveal="right"><span class="why-num">03</span><div><h3>You own everything</h3><p>Domain, code and content are registered in your name. No lock-in, ever.</p></div></li>
+          <li class="spot reveal" data-reveal="right"><span class="why-num">04</span><div><h3>Transparent pricing in ₹</h3><p>Clear quotes with GST invoices. No surprise charges after launch.</p></div></li>
+          <li class="spot reveal" data-reveal="right"><span class="why-num">05</span><div><h3>Works wherever you are</h3><p>Remote-first process with calls, video meetings and WhatsApp — plus support long after launch.</p></div></li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ============ TAMIL NADU CITIES ============ -->
-    <section class="section section-alt" id="tamil-nadu">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Our home state</p>
-          <h2>Top cities we serve in Tamil Nadu</h2>
-          <p>From Chennai's startups to Coimbatore's manufacturers and Tiruppur's exporters, we build websites for businesses in every corner of Tamil Nadu.</p>
-        </div>
-        <ul class="tn-grid">
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Chennai</strong><span>Capital, IT &amp; startups</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Coimbatore</strong><span>Manufacturing &amp; textiles</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Madurai</strong><span>Temple city &amp; trade</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Tiruchirappalli</strong><span>Education &amp; industry</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Salem</strong><span>Steel &amp; trade hub</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Tiruppur</strong><span>Knitwear exports</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Erode</strong><span>Textiles &amp; turmeric</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Tirunelveli</strong><span>Trade &amp; agriculture</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Vellore</strong><span>Healthcare &amp; education</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Thoothukudi</strong><span>Port city</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Thanjavur</strong><span>Heritage &amp; agriculture</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Hosur</strong><span>Auto &amp; electronics</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Kanchipuram</strong><span>Silk &amp; heritage</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Dindigul</strong><span>Locks &amp; leather</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Karur</strong><span>Home textiles</span></div></li>
-          <li class="tn-city reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><div><strong>Nagercoil</strong><span>Southern gateway</span></div></li>
-        </ul>
-        <p class="tn-note reveal">Don't see your town? We work with businesses across all 38 districts of Tamil Nadu. <a href="#contact">Get in touch</a></p>
       </div>
     </section>
 
@@ -390,10 +422,10 @@
           <h2>From first call to launch in four clear steps</h2>
         </div>
         <ol class="steps">
-          <li class="step reveal"><span class="step-n">1</span><h3>Discover</h3><p>A free call to understand your business, customers and goals. You get a fixed quote.</p></li>
-          <li class="step reveal"><span class="step-n">2</span><h3>Design</h3><p>We share a clickable design of your key pages. You review, we refine.</p></li>
-          <li class="step reveal"><span class="step-n">3</span><h3>Build</h3><p>We develop, add your content, connect payments, forms and analytics — and test on real phones.</p></li>
-          <li class="step reveal"><span class="step-n">4</span><h3>Launch &amp; grow</h3><p>Go live on your domain, submit to Google, and keep improving with ongoing support.</p></li>
+          <li class="step spot reveal" data-reveal="flip"><span class="step-n">1</span><h3>Discover</h3><p>A free call to understand your business, customers and goals. You get a fixed quote.</p></li>
+          <li class="step spot reveal" data-reveal="flip"><span class="step-n">2</span><h3>Design</h3><p>We share a clickable design of your key pages. You review, we refine.</p></li>
+          <li class="step spot reveal" data-reveal="flip"><span class="step-n">3</span><h3>Build</h3><p>We develop, add your content, connect payments, forms and analytics — and test on real phones.</p></li>
+          <li class="step spot reveal" data-reveal="flip"><span class="step-n">4</span><h3>Launch &amp; grow</h3><p>Go live on your domain, submit to Google, and keep improving with ongoing support.</p></li>
         </ol>
       </div>
     </section>
@@ -408,7 +440,7 @@
         </div>
 
         <div class="pricing-grid">
-          <article class="price-card reveal">
+          <article class="price-card spot tilt reveal">
             <h3>Starter</h3>
             <p class="price-desc">For small shops &amp; professionals getting online.</p>
             <p class="price"><span>from</span> ₹9,999</p>
@@ -423,7 +455,7 @@
             <a href="#contact" class="btn btn-ghost btn-block" data-plan="Starter">Choose Starter</a>
           </article>
 
-          <article class="price-card featured reveal">
+          <article class="price-card featured spot tilt reveal">
             <span class="badge">Most popular</span>
             <h3>Business</h3>
             <p class="price-desc">For growing businesses that want leads.</p>
@@ -440,7 +472,7 @@
             <a href="#contact" class="btn btn-primary btn-block" data-plan="Business">Choose Business</a>
           </article>
 
-          <article class="price-card reveal">
+          <article class="price-card spot tilt reveal">
             <h3>E-commerce</h3>
             <p class="price-desc">For selling products online across India.</p>
             <p class="price"><span>from</span> ₹44,999</p>
@@ -462,12 +494,14 @@
     <!-- ============ ABOUT ============ -->
     <section class="section section-alt" id="about">
       <div class="container about-grid">
-        <div class="about-visual reveal" aria-hidden="true">
-          <div class="cube-stack">
-            <svg viewBox="0 2 100 100"><g class="cube"><image href="assets/logo-mark.svg" x="0" y="2" width="100" height="100"/></g></svg>
+        <div class="about-visual reveal" data-reveal="zoom">
+          <div class="cube-play" data-cube-play tabindex="0" role="button" aria-label="SaaSQube 3D logo cube. Press to rebuild it.">
+            <span class="cube-glow" aria-hidden="true"></span>
+            <div class="cube-host" aria-hidden="true"></div>
           </div>
+          <button type="button" class="chip" data-cube-replay>↻ Rebuild the cube</button>
         </div>
-        <div class="about-copy reveal">
+        <div class="about-copy reveal" data-reveal="right">
           <p class="eyebrow">About us</p>
           <h2>Proudly from Tamil Nadu. Building for all of India.</h2>
           <p>SaaSQube Solutions is a website design and development company based in Tamil Nadu, working with clients across India. We help small businesses, startups, manufacturers and institutions in every state build a professional presence online — and turn it into a dependable source of customers.</p>
@@ -520,7 +554,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="section section-dark" id="contact">
       <div class="container contact-grid">
-        <div class="contact-copy reveal">
+        <div class="contact-copy reveal" data-reveal="left">
           <p class="eyebrow">Contact</p>
           <h2>Let's build your website.</h2>
           <p>Wherever you are in India, tell us a little about your business and we'll get back within 2–3 working days with ideas and a free quote.</p>
@@ -532,7 +566,7 @@
           </ul>
         </div>
 
-        <form class="contact-form reveal" id="contact-form" novalidate>
+        <form class="contact-form reveal" data-reveal="right" id="contact-form" novalidate>
           <div class="field-row">
             <label>Your name<input type="text" name="name" autocomplete="name" required></label>
             <label>Phone / WhatsApp<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
@@ -567,7 +601,7 @@
     <div class="container footer-grid">
       <div>
         <a href="#top" class="brand light" aria-label="SaaSQube Solutions home">
-          <img class="brand-mark" src="assets/logo-mark.svg" alt="" width="40" height="40">
+          <svg class="brand-mark sq-mark" viewBox="0 2 100 100" width="40" height="40" aria-hidden="true" focusable="false"><g class="sq-spin" stroke-width="8" stroke-linejoin="round"><polygon class="sq-p sq-tl" points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sqg-tl)" stroke="url(#sqg-tl)"/><polygon class="sq-p sq-tr" points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sqg-tr)" stroke="url(#sqg-tr)"/><polygon class="sq-p sq-l" points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sqg-l)" stroke="url(#sqg-l)"/><polygon class="sq-p sq-r" points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sqg-r)" stroke="url(#sqg-r)"/></g></svg>
           <span class="brand-text">SaaS<strong>Qube</strong><small>Build · Automate · Scale</small></span>
         </a>
         <p>Website design &amp; development company based in Tamil Nadu, serving businesses across India.</p>
@@ -578,7 +612,7 @@
       </div>
       <div>
         <h4>Company</h4>
-        <ul><li><a href="#about">About</a></li><li><a href="templates/">Templates</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
+        <ul><li><a href="#about">About</a></li><li><a href="templates/index.html">Templates</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
       </div>
       <div>
         <h4>Tamil Nadu</h4>
@@ -597,7 +631,14 @@
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg>
   </a>
 
-  <script src="js/theme.js?v=20261122a"></script>
-  <script src="js/main.js?v=20261122a" defer></script>
+  <button class="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M18 22.5l6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/theme.js?v=20261122d"></script>
+  <script src="js/cube.js?v=20261122d" defer></script>
+  <script src="js/loader.js?v=20261122d" defer></script>
+  <script src="js/main.js?v=20261122d" defer></script>
+  <script src="js/motion.js?v=20261122d" defer></script>
 </body>
 </html>

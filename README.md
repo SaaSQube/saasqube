@@ -1,26 +1,158 @@
-# SaaSQube Solutions — Website
+# 🚀 SaaSQube Solutions
 
-Marketing website for **SaaSQube Solutions**, a website design & development company based in Tamil Nadu, serving businesses across India.
+### Build. Automate. Scale.
 
-It's a static site: plain HTML, CSS and JavaScript with no build step and no dependencies apart from Google Fonts.
+**We transform business ideas into powerful digital experiences.**
 
-## Structure
+SaaSQube Solutions is a technology-driven website design and development company based in Tamil Nadu, India. We help businesses establish their digital presence through modern websites, custom web applications, e-commerce platforms, ERP solutions and business automation.
+
+<p align="center">
+  <img src="assets/saasqube-logo.jpg" alt="SaaSQube Solutions" width="420"/>
+</p>
+
+<p align="center">
+  <a href="https://saasqube.tech">🌐 Website</a> •
+  <a href="https://saasqube.tech/templates/">🎨 Explore Demos</a> •
+  <a href="https://wa.me/917397063122">💬 Contact Us</a>
+</p>
+
+---
+
+## 💡 What We Do
+
+We build digital solutions that make businesses smarter, faster and more scalable.
+
+| Service | Description |
+|---|---|
+| 🌐 Website Development | Modern, responsive and professional business websites |
+| 💻 Web Applications | Custom web-based applications and dashboards |
+| 📱 Mobile Apps | Android and iPhone apps for bookings, orders and loyalty |
+| 🛒 E-commerce Solutions | Online stores and digital commerce platforms |
+| 🧾 ERP & Billing Software | Business management and billing solutions |
+| 🎨 UI/UX Design | Modern, intuitive and user-friendly experiences |
+| ⚙️ Business Automation | Smart digital workflows and process automation |
+| 🛠️ Custom Software | Tailored technology solutions for businesses |
+
+---
+
+## 🎨 Explore Our Website Templates
+
+Discover our collection of industry-specific website demos, designed to help businesses visualize their digital presence.
+
+| Industry | Live Demo |
+|---|---|
+| 💊 Pharmacy | [Explore Demo](templates/pharmacy/) |
+| 🍽️ Restaurant | [Explore Demo](templates/restaurant/) |
+| 🏥 Hospital | [Explore Demo](templates/hospital/) |
+| 🧪 Labs & Scans | [Explore Demo](templates/labs-scans/) |
+| 🎂 Bakery | [Explore Demo](templates/bakery/) |
+| 💇 Salon & Spa | [Explore Demo](templates/salon/) |
+| 🎓 School & College | [Explore Demo](templates/school/) |
+| 💪 Gym & Fitness | [Explore Demo](templates/gym/) |
+| 🏡 Real Estate | [Explore Demo](templates/real-estate/) |
+| 📱 Mobile Shop | [Explore Demo](templates/mobile-shop/) |
+| 📸 Photography & Films | [Explore Demo](templates/photography/) |
+| 👗 Fashion & Clothing | [Explore Demo](templates/fashion/) |
+| ☕ Café | [Explore Demo](templates/cafe/) |
+| 💍 Jewellery | [Explore Demo](templates/jewellery/) |
+
+**Have a business? Let's build a website for it.**
+
+---
+
+## ✨ Why SaaSQube?
+
+- 🎯 Business-focused digital solutions.
+- 🎨 Modern and creative UI/UX.
+- 📱 Mobile-first responsive development.
+- ⚡ Performance-focused websites.
+- 🔧 Customizable and scalable solutions.
+- 🤝 Dedicated development and support.
+
+---
+
+## 🛠️ Technology Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,ts,angular,vue,react,python,fastapi,nodejs,mongodb,postgres,git,figma&perline=7" alt="Technology stack"/>
+</p>
+
+---
+
+## 🔄 Our Development Process
+
+```mermaid
+flowchart LR
+    A["💡 Discover"] --> B["📋 Plan"]
+    B --> C["🎨 Design"]
+    C --> D["💻 Develop"]
+    D --> E["🚀 Launch"]
+    E --> F["🛠️ Support"]
+
+    style A fill:#087cf5,color:#fff
+    style B fill:#087cf5,color:#fff
+    style C fill:#713bde,color:#fff
+    style D fill:#713bde,color:#fff
+    style E fill:#087cf5,color:#fff
+    style F fill:#087cf5,color:#fff
+```
+
+---
+
+## 🌍 Our Mission
+
+To empower businesses with accessible, innovative and reliable digital solutions that simplify operations, improve customer experiences and accelerate growth.
+
+## 🔮 Our Vision
+
+To become a trusted technology partner for businesses by combining creativity, engineering and innovation.
+
+---
+
+## 📬 Let's Build Something Great Together!
+
+Have an idea, a business or a project in mind?
+
+Let's turn it into a digital experience.
+
+<p align="center">
+  <a href="https://saasqube.tech">🌐 Visit Our Website</a>
+  &nbsp; | &nbsp;
+  <a href="https://wa.me/917397063122">💬 WhatsApp</a>
+  &nbsp; | &nbsp;
+  <a href="mailto:sales@saasqube.tech">✉️ Email Us</a>
+</p>
+
+<p align="center">
+  <b>SaaSQube Solutions</b><br/>
+  Build · Automate · Scale 🚀
+</p>
+
+---
+
+## 🛠️ Developer notes
+
+### Structure
 
 ```
 index.html        Single-page site: hero, services, template slider, why us, process, pricing, about, FAQ, contact
 404.html          Not-found page
-css/style.css     All styles (light + automatic dark mode, responsive down to small phones).
+css/style.css     All styles (light + dark theme, responsive down to small phones).
                   Brand colours from the logo live in :root: --cyan, --brand (blue), --accent (purple), --grad
 js/theme.js       Light / dark theme switch (shared by the homepage and templates gallery)
 js/main.js        Contact details, mobile menu, scroll effects, template slider, contact form
+js/loader.js, js/cube.js, js/motion.js, css/motion.css
+                  Intro loader, 3D cube and scroll / hover motion effects
 assets/
   logo-mark.svg     The cube mark (used in the header, footer and About section)
   saasqube-logo.jpg Original full logo (cube, wordmark and "Build · Automate · Scale")
+  logo-email.png    PNG logo used in the EmailJS emails
   favicon.svg
+emailjs/          HTML for the EmailJS enquiry and auto-reply templates
 templates/        Industry demo websites to show clients (see below)
 ```
 
-## Website templates (client demos)
+### Website templates (client demos)
 
 `templates/index.html` is a gallery page with live previews of fourteen demo websites, each for a fictional business with its own look:
 
@@ -45,15 +177,15 @@ All templates share `templates/shared.css` and `templates/shared.js` (header, mo
 
 Forms in the templates are demo-only: they show a thank-you message and don't send anything. To turn a template into a client's real site, copy its folder, replace the names, contact details and content, swap the drawn / gradient visuals for real photos, and remove the demo bar.
 
-## Light / dark theme
+### Light / dark theme
 
 The sliding sun / moon switch in the header changes the site between light and dark. The choice is saved in the visitor's browser and applies to the homepage, the templates gallery and the 404 page. Light is the default for everyone; dark is used only after a visitor picks it. Dark colours are defined in `css/style.css` under `:root[data-theme="dark"]`. The demo templates keep their own designs.
 
-## Updating CSS or JS
+### Updating CSS or JS
 
 Pages load `css/style.css`, `js/*.js` and the templates' `shared.css` / `shared.js` with a `?v=` version tag so visitors' browsers don't keep an old copy. After changing one of those files, bump the date in the tag (search for `?v=`).
 
-## Run locally
+### Run locally
 
 Open `index.html` in a browser, or serve the folder:
 
@@ -62,13 +194,13 @@ python3 -m http.server 8080
 # then visit http://localhost:8080
 ```
 
-## Before going live: things to update
+### Before going live: things to update
 
 1. **Contact details.** These live in the `CONTACT` object at the top of `js/main.js` (currently +91 7397-063122, WhatsApp 917397063122, sales@saasqube.tech). Every phone, email and WhatsApp link on the page is filled from there; the same values are also written into `index.html` so the links work with JavaScript off, and into `emailjs/auto-reply-template.html`. Change all three places if they ever change.
 2. **Pricing.** The packages in the `#pricing` section are starting points; adjust them to your real rates.
 3. **SEO.** Update the `<title>`, `<meta name="description">` and the JSON-LD block in `index.html` with your exact city/address, and add a `<link rel="canonical">` once you have a domain.
 
-## How the contact form works
+### How the contact form works
 
 The form has two buttons:
 
@@ -86,7 +218,7 @@ EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
 
 If `templateId` or `publicKey` is ever emptied, **Send by email** falls back to opening the visitor's email app. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
 
-## Deploy
+### Deploy
 
 Any static host works: GitHub Pages, Netlify, Vercel, Cloudflare Pages, Render static sites, or ordinary shared hosting (upload the files to `public_html`).
 

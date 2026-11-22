@@ -452,10 +452,6 @@ p { margin: 0 0 1em; }
               var(--surface);
   border: 1px solid var(--line);
 }
-.cube-stack { width: 62%; }
-.cube-stack svg { overflow: visible; filter: drop-shadow(0 30px 40px rgba(26, 79, 240, .3)); }
-.cube { transform-origin: 50px 52px; animation: spinY 9s ease-in-out infinite; }
-@keyframes spinY { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-10px) rotate(-4deg); } }
 .about-copy p { font-size: 1.05rem; }
 .values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
 .values div { padding: 18px; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--line); }
@@ -563,30 +559,4 @@ p { margin: 0 0 1em; }
   .js .reveal { opacity: 1; transform: none; }
 }
 
-/* ---------- Tamil Nadu cities ---------- */
-.tn-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.tn-city {
-  display: flex; align-items: center; gap: 14px; padding: 16px 18px;
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-sm);
-  transition: transform .2s, border-color .2s, box-shadow .2s;
-}
-.tn-city:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--brand) 40%, var(--line)); box-shadow: var(--shadow); }
-.tn-city svg {
-  flex: none; width: 40px; height: 40px; padding: 9px; border-radius: 10px;
-  background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent-dark);
-  fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-.tn-city:nth-child(even) svg { background: color-mix(in srgb, var(--brand) 12%, transparent); color: var(--brand); }
-.tn-city strong { display: block; color: var(--ink); font-size: 1rem; line-height: 1.3; }
-.tn-city span { display: block; color: var(--muted); font-size: .85rem; line-height: 1.4; }
-.tn-note { text-align: center; margin: 36px 0 0; color: var(--muted); }
 .footer-sub { margin-top: 22px; }
-
-@media (max-width: 960px) { .tn-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 720px) { .tn-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) {
-  .tn-grid { gap: 10px; }
-  .tn-city { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px; }
-  .tn-city svg { width: 34px; height: 34px; padding: 7px; }
-  .tn-city strong { font-size: .95rem; overflow-wrap: anywhere; }
-}
