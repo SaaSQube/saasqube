@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /emailjs/
-Disallow: /saasqube-3d-loader-and-motion.patch
 Disallow: /seo-audit/
 
 # AI search and answer engines (these decide whether we can be cited)

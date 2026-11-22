@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared.css?v=20261122e">
+  <link rel="stylesheet" href="../shared.css?v=20261122f">
   <style>
     :root {
       --font: "Inter", system-ui, sans-serif; --font-head: "Space Grotesk", "Inter", sans-serif;
@@ -59,6 +59,8 @@
     .product .art { overflow: hidden; }
     .product .art img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
     .product:hover .art img { transform: scale(1.06); }
+    .product .art:has(.shot) { background: #fff; }
+    .product .art img.shot { object-fit: contain; padding: 14px; }
     .product .tag { z-index: 1; }
     .product .body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
     .product h3 { margin-bottom: 2px; font-size: 1.08rem; }
@@ -196,9 +198,9 @@
           <button data-filter="acc">Accessories</button>
         </div>
         <div class="grid g4">
-          <article class="card product" data-cat="phone"><div class="art"><span class="tag">New</span><img src="img/galaxy-s.jpg" alt="Black Samsung Galaxy smartphone" width="640" height="534" loading="lazy"></div><div class="body"><h3>Galaxy S-series 5G</h3><p class="spec">12 GB · 256 GB · 200 MP camera</p><span class="price">₹74,999<s>₹84,999</s></span><span class="emi">No-cost EMI from ₹6,250/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="phone"><div class="art"><img src="img/oneplus-nord.jpg" alt="OnePlus smartphone held in a hand" width="640" height="534" loading="lazy"></div><div class="body"><h3>Nord CE 5G</h3><p class="spec">8 GB · 128 GB · 100 W charging</p><span class="price">₹24,999<s>₹27,999</s></span><span class="emi">No-cost EMI from ₹2,084/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="phone"><div class="art"><span class="tag">Best value</span><img src="img/galaxy-a.jpg" alt="Two black Samsung Galaxy smartphones" width="640" height="534" loading="lazy"></div><div class="body"><h3>Galaxy A-series 5G</h3><p class="spec">8 GB · 128 GB · 50 MP camera</p><span class="price">₹18,999<s>₹21,999</s></span><span class="emi">No-cost EMI from ₹1,584/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><span class="tag">New</span><img class="shot" src="img/galaxy-s-series-5g.webp" alt="Samsung Galaxy S-series 5G phone in violet with S Pen" width="300" height="300" loading="lazy"></div><div class="body"><h3>Galaxy S-series 5G</h3><p class="spec">12 GB · 256 GB · 200 MP camera</p><span class="price">₹74,999<s>₹84,999</s></span><span class="emi">No-cost EMI from ₹6,250/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><img class="shot" src="img/nord-ce-5g.jpg" alt="OnePlus Nord CE 5G phone in silver, front and back" width="447" height="447" loading="lazy"></div><div class="body"><h3>Nord CE 5G</h3><p class="spec">8 GB · 128 GB · 100 W charging</p><span class="price">₹24,999<s>₹27,999</s></span><span class="emi">No-cost EMI from ₹2,084/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><span class="tag">Best value</span><img class="shot" src="img/galaxy-a-series-5g.jpg" alt="Samsung Galaxy A-series 5G phones in peach, blue, black and mint" width="518" height="320" loading="lazy"></div><div class="body"><h3>Galaxy A-series 5G</h3><p class="spec">8 GB · 128 GB · 50 MP camera</p><span class="price">₹18,999<s>₹21,999</s></span><span class="emi">No-cost EMI from ₹1,584/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
           <article class="card product" data-cat="phone"><div class="art"><img src="img/iphone-15-pro.jpg" alt="Blue iPhone 15 Pro held in a hand" width="640" height="534" loading="lazy"></div><div class="body"><h3>iPhone 15 Pro</h3><p class="spec">128 GB · A17 Pro · Titanium</p><span class="price">₹1,09,900<s>₹1,19,900</s></span><span class="emi">No-cost EMI from ₹9,159/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
           <article class="card product" data-cat="acc"><div class="art"><img src="img/earbuds.jpg" alt="White wireless earbuds with charging case" width="640" height="534" loading="lazy"></div><div class="body"><h3>Wireless earbuds</h3><p class="spec">ANC · 30 hr battery</p><span class="price">₹2,499<s>₹3,999</s></span><span class="emi">1 year warranty</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
           <article class="card product" data-cat="acc"><div class="art"><img src="img/usb-c-cable.jpg" alt="USB-C fast charging cable" width="640" height="534" loading="lazy"></div><div class="body"><h3>Fast charging cable</h3><p class="spec">USB-C · 1 m braided · 65 W</p><span class="price">₹499<s>₹799</s></span><span class="emi">Works with most phones</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
@@ -279,7 +281,7 @@
   </footer>
 
   <a class="t-wa" href="#visit" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
-  <script src="../shared.js?v=20261122e" defer></script>
+  <script src="../shared.js?v=20261122f" defer></script>
   <script>
     // Exchange estimator (demo values)
     (function () {

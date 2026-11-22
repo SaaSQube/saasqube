@@ -5,8 +5,8 @@
 - [x] Add sitemap.xml (home + templates gallery)
 - [x] Shorten title (60 chars) and meta description (147 chars)
 - [x] Show the intro loader once per browser session
-- [ ] **Decide on the intro loader for first visits** (shorten to ~1 s, show only on desktop, or remove). It is the main reason first-visit LCP is ~6.8 s.
-- [ ] **Delete `/saasqube-3d-loader-and-motion.patch`** (public stray file; blocked in robots.txt for now)
+- [x] Intro loader: skipped on phones and tablets, shortened on desktop (about 2.5 s). Phone first-visit LCP 6.8 s → 3.6 s, repeat visits 2.5 s (emulated mid-range phone)
+- [x] Deleted the stray public file `/saasqube-3d-loader-and-motion.patch`
 - [ ] Verify the site in **Google Search Console** and **Bing Webmaster Tools**, submit `https://saasqube.tech/sitemap.xml`
 
 ## Phase 2: High impact (weeks 2–3)

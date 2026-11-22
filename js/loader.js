@@ -5,7 +5,8 @@
    few quick 90° turns (tiles pop out on each one), then it
    settles at the logo's exact angle, flattens into the logo,
    the name types in letter by letter and the logo flies into
-   the header. Click / tap / any key skips it.
+   the header. Click / tap / any key skips it. Desktop only, once per
+   browser session (see the inline script in index.html <head>).
    ========================================================= */
 (function () {
   "use strict";
@@ -25,7 +26,7 @@
   var skipSignal = new Promise(function (r) { skipNow = r; });
 
   /* ---------- The cube (built by js/cube.js) ---------- */
-  var DUR = 2300; // cube choreography length (ms)
+  var DUR = 1200; // cube choreography length (ms), kept short for page speed
   var lc = null;
 
   function animateCube(host) {
@@ -78,7 +79,7 @@
         { transform: "translate(0,0) scale(1) rotate(0deg)" },
         { transform: "translate(" + dx * .35 + "px," + (dy * .2 - 30) + "px) scale(" + (.55 + s * .45) + ") rotate(-90deg)", offset: .45 },
         { transform: "translate(" + dx + "px," + dy + "px) scale(" + s + ") rotate(-360deg)" },
-      ], { duration: 900, easing: "cubic-bezier(.65,0,.25,1)", fill: "forwards" });
+      ], { duration: 600, easing: "cubic-bezier(.65,0,.25,1)", fill: "forwards" });
       await fly.finished.catch(function () {});
     } else {
       await wait(reduce ? 150 : 450);
@@ -90,7 +91,7 @@
 
     if (reduce || !window.SQLogoCube) {
       loader.classList.add("is-solved");
-      await Promise.race([Promise.all([pageReady, wait(700)]), wait(1800)]);
+      await Promise.race([Promise.all([pageReady, wait(300)]), wait(1000)]);
       await exit();
       finish();
       return;
@@ -101,7 +102,7 @@
     await Promise.race([animateCube(host), skipSignal]);
 
     loader.classList.add("is-solved"); // cube → flat logo
-    if (!skipped) await Promise.race([Promise.all([pageReady, wait(650)]), wait(2400), skipSignal]);
+    if (!skipped) await Promise.race([Promise.all([pageReady, wait(200)]), wait(1200), skipSignal]);
     await exit();
     finish();
   }
