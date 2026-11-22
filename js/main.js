@@ -82,8 +82,11 @@ if ("IntersectionObserver" in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("in");
-        io.unobserve(entry.target);
+        const el = entry.target;
+        el.classList.add("in");
+        io.unobserve(el);
+        // Drop the stagger delay once revealed so hover / tilt effects respond instantly.
+        setTimeout(() => { el.style.transitionDelay = ""; }, 1200);
       }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
@@ -176,6 +179,27 @@ if (slider) {
   slider.addEventListener("focusin", () => { focused = true; sync(); });
   slider.addEventListener("focusout", () => { focused = false; sync(); });
   track.addEventListener("touchstart", pause, { passive: true });
+
+  // Mouse: click-and-drag to scroll the slider (touch already swipes natively).
+  let drag = null, dragged = false;
+  track.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag = { x: e.clientX, left: track.scrollLeft };
+    dragged = false;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!dragged && Math.abs(dx) > 6) { dragged = true; track.classList.add("dragging"); pause(); }
+    if (dragged) track.scrollLeft = drag.left - dx;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!drag) return;
+    drag = null;
+    if (dragged) { track.classList.remove("dragging"); goTo(current()); }
+  });
+  track.addEventListener("click", (e) => { if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; } }, true);
+  track.addEventListener("dragstart", (e) => e.preventDefault());
   document.addEventListener("visibilitychange", sync);
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; sync(); }, { threshold: .3 }).observe(slider);
