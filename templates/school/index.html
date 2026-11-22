@@ -71,6 +71,10 @@
       .stats div:nth-child(3) { border-left: 0; }
       .stats div:nth-child(n+3) { border-top: 1px solid var(--line); }
     }
+    .hero-card .hero-photo { width: calc(100% + 56px); max-width: none; height: auto; aspect-ratio: 800 / 420; object-fit: cover; margin: -28px -28px 6px; border-radius: 22px 22px 0 0; display: block; }
+    .fac { flex-direction: column; gap: 0; padding: 0; overflow: hidden; }
+    .fac .fac-photo { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+    .fac > div { padding: 18px 20px 22px; }
   </style>
 </head>
 <body>
@@ -112,7 +116,7 @@
           </div>
         </div>
         <div class="hero-card">
-          <span class="big" aria-hidden="true">🎒</span>
+          <img class="hero-photo" src="img/hero-students.jpg" alt="Smiling school children in uniform" width="800" height="420" fetchpriority="high">
           <h3>Admissions 2027–28</h3>
           <p class="muted" style="margin:0">Limited seats in every grade. Apply early.</p>
           <div class="dates">
@@ -155,12 +159,12 @@
           <h2>Spaces designed for learning</h2>
         </div>
         <div class="grid g3">
-          <div class="card fac"><div class="emoji-tile">🖥️</div><div><h3>Smart classrooms</h3><p>Interactive panels and digital content in every classroom.</p></div></div>
-          <div class="card fac"><div class="emoji-tile">🔬</div><div><h3>Science &amp; computer labs</h3><p>Well-equipped physics, chemistry, biology and computer labs.</p></div></div>
-          <div class="card fac"><div class="emoji-tile">📚</div><div><h3>Library</h3><p>Over 10,000 books, magazines and a quiet reading zone.</p></div></div>
-          <div class="card fac"><div class="emoji-tile">⚽</div><div><h3>Sports</h3><p>Football ground, basketball courts, athletics track and indoor games.</p></div></div>
-          <div class="card fac"><div class="emoji-tile">🚌</div><div><h3>Safe transport</h3><p>GPS-tracked buses covering all major areas of the city.</p></div></div>
-          <div class="card fac"><div class="emoji-tile">🎨</div><div><h3>Arts &amp; music</h3><p>Dance, music, art and theatre to nurture every talent.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-classroom.jpg" alt="Bright classroom with rows of desks" width="600" height="400" loading="lazy"><div><h3>Smart classrooms</h3><p>Interactive panels and digital content in every classroom.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-lab.jpg" alt="Laboratory glassware on a lab bench" width="600" height="400" loading="lazy"><div><h3>Science &amp; computer labs</h3><p>Well-equipped physics, chemistry, biology and computer labs.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-library.jpg" alt="School library with tall bookshelves" width="600" height="400" loading="lazy"><div><h3>Library</h3><p>Over 10,000 books, magazines and a quiet reading zone.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-sports.jpg" alt="Children playing football on a field" width="600" height="400" loading="lazy"><div><h3>Sports</h3><p>Football ground, basketball courts, athletics track and indoor games.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-transport.jpg" alt="School bus on the road" width="600" height="400" loading="lazy"><div><h3>Safe transport</h3><p>GPS-tracked buses covering all major areas of the city.</p></div></div>
+          <div class="card fac"><img class="fac-photo" src="img/fac-arts.jpg" alt="Children painting in an art class" width="600" height="400" loading="lazy"><div><h3>Arts &amp; music</h3><p>Dance, music, art and theatre to nurture every talent.</p></div></div>
         </div>
       </div>
     </section>
@@ -226,7 +230,7 @@
         <div><h4>Parents</h4><ul><li><a href="#admissions">Admissions</a></li><li><a href="#news">Notice board</a></li></ul></div>
         <div><h4>Contact</h4><ul><li>📍 Thillai Nagar, Tiruchirappalli</li><li>📞 +91 90000 00000</li><li>✉️ office@greenfield.example</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Greenfield Public School (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Greenfield Public School (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

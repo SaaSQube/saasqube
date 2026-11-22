@@ -159,6 +159,9 @@
       .float.f1 { top: 0; left: 0; }
       .film-card { width: 50%; }
     }
+    .home-card .home-photo { width: 100%; height: auto; aspect-ratio: 800 / 460; object-fit: cover; border-radius: 14px; margin-bottom: 18px; display: block; }
+    .scans-banner { width: 100%; height: auto; aspect-ratio: 1200 / 460; object-fit: cover; border-radius: 20px; margin: 0 0 28px; display: block; }
+    .lab-photo { width: 100%; max-width: 760px; height: auto; aspect-ratio: 800 / 520; object-fit: cover; border-radius: 20px; margin: 0 auto 32px; display: block; }
   </style>
 </head>
 <body>
@@ -311,6 +314,7 @@
           <h2>X-ray, ultrasound, CT &amp; MRI</h2>
           <p>Modern imaging equipment. Every scan is reported by a qualified radiologist.</p>
         </div>
+        <img class="scans-banner" src="img/scans-machine.jpg" alt="Modern imaging machine with patient table in the scan room" width="1200" height="460" loading="lazy">
         <div class="tabs" data-tabs role="tablist">
           <button class="tab active" data-tab="s-xray" role="tab" aria-selected="true">X-ray</button>
           <button class="tab" data-tab="s-usg" role="tab" aria-selected="false">Ultrasound</button>
@@ -358,7 +362,7 @@
           </ol>
         </div>
         <div class="home-card">
-          <div class="big" aria-hidden="true">🏠</div>
+          <img class="home-photo" src="img/home-sample.jpg" alt="Gloved hand holding a blood sample tube" width="800" height="460" loading="lazy">
           <h3>Free home collection</h3>
           <p>On all orders above ₹500 within city limits.</p>
           <ul>
@@ -374,6 +378,7 @@
     <section class="section">
       <div class="container">
         <div class="section-head"><p class="kicker">Why VitalCare</p><h2>Results you can rely on</h2></div>
+        <img class="lab-photo" src="img/lab-microscope.jpg" alt="Lab technician placing a sample under a microscope" width="800" height="520" loading="lazy">
         <div class="grid g4">
           <div class="card why"><div class="emoji-tile">🔬</div><h3>Automated lab</h3><p>Modern analysers with daily quality checks for accurate results.</p></div>
           <div class="card why"><div class="emoji-tile">🩺</div><h3>Doctor-verified</h3><p>Every report is checked by a pathologist or radiologist.</p></div>
@@ -456,7 +461,7 @@
         <div><h4>Patients</h4><ul><li><a href="#home">Home collection</a></li><li><a href="#book">Book a test</a></li><li><a href="#reports">Download report</a></li></ul></div>
         <div><h4>Contact</h4><ul><li>📍 Omalur Main Road, Salem</li><li>📞 +91 90000 00000</li><li>✉️ reports@vitalcare.example</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> VitalCare Labs &amp; Scans (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> VitalCare Labs &amp; Scans (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

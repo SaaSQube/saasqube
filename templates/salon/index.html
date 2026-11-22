@@ -74,6 +74,10 @@
       .hero, .book-grid { grid-template-columns: 1fr; }
       .hero-art { min-height: 360px; }
     }
+    .hero-art .arch { overflow: hidden; }
+    .hero-art .arch img, .stylist .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .stylist .ph { overflow: hidden; }
+    .pkg .pkg-photo { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: calc(var(--radius, 16px) - 4px); margin-bottom: 16px; display: block; }
   </style>
 </head>
 <body>
@@ -107,9 +111,9 @@
           <a href="#services" class="btn btn-outline">View services</a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true">
+      <div class="hero-art">
         <span class="tagline">Est. 2016<br>Anna Nagar</span>
-        <div class="arch">💆‍♀️</div>
+        <div class="arch"><img src="img/hero-salon.jpg" alt="Salon styling chairs with round mirrors" width="900" height="1100" fetchpriority="high"></div>
       </div>
     </section>
 
@@ -161,9 +165,9 @@
           <h2>Packages for your big day</h2>
         </div>
         <div class="grid g3">
-          <div class="card pkg"><div class="emoji-tile">💄</div><h3>Party Glam</h3><p class="price">₹4,999</p><ul><li>Party makeup</li><li>Hairstyling</li><li>Saree draping</li></ul><a href="#book" class="btn btn-primary">Book</a></div>
-          <div class="card pkg feature"><div class="emoji-tile">👰</div><h3>Bridal Signature</h3><p class="price">₹24,999</p><ul><li>HD bridal makeup</li><li>Hairstyling with accessories</li><li>Pre-bridal facial &amp; spa</li><li>Manicure &amp; pedicure</li><li>Trial session</li></ul><a href="#book" class="btn">Book</a></div>
-          <div class="card pkg"><div class="emoji-tile">🌸</div><h3>Pre-Bridal Glow</h3><p class="price">₹9,999</p><ul><li>3 facial sessions</li><li>Body polishing</li><li>Hair spa</li></ul><a href="#book" class="btn btn-primary">Book</a></div>
+          <div class="card pkg"><img class="pkg-photo" src="img/pkg-party.jpg" alt="Hair being curled for a party look" width="600" height="400" loading="lazy"><h3>Party Glam</h3><p class="price">₹4,999</p><ul><li>Party makeup</li><li>Hairstyling</li><li>Saree draping</li></ul><a href="#book" class="btn btn-primary">Book</a></div>
+          <div class="card pkg feature"><img class="pkg-photo" src="img/pkg-bridal.jpg" alt="Bride in a red lehenga" width="600" height="400" loading="lazy"><h3>Bridal Signature</h3><p class="price">₹24,999</p><ul><li>HD bridal makeup</li><li>Hairstyling with accessories</li><li>Pre-bridal facial &amp; spa</li><li>Manicure &amp; pedicure</li><li>Trial session</li></ul><a href="#book" class="btn">Book</a></div>
+          <div class="card pkg"><img class="pkg-photo" src="img/pkg-prebridal.jpg" alt="Herbs ground for a natural facial pack" width="600" height="400" loading="lazy"><h3>Pre-Bridal Glow</h3><p class="price">₹9,999</p><ul><li>3 facial sessions</li><li>Body polishing</li><li>Hair spa</li></ul><a href="#book" class="btn btn-primary">Book</a></div>
         </div>
       </div>
     </section>
@@ -172,10 +176,10 @@
       <div class="container">
         <div class="section-head"><p class="kicker">Our team</p><h2>Meet the experts</h2></div>
         <div class="grid g4">
-          <div class="stylist"><div class="ph" aria-hidden="true">D</div><h3>Divya</h3><p>Creative director</p></div>
-          <div class="stylist"><div class="ph" aria-hidden="true">K</div><h3>Karthik</h3><p>Senior hair stylist</p></div>
-          <div class="stylist"><div class="ph" aria-hidden="true">N</div><h3>Nisha</h3><p>Bridal makeup artist</p></div>
-          <div class="stylist"><div class="ph" aria-hidden="true">S</div><h3>Sara</h3><p>Spa therapist</p></div>
+          <div class="stylist"><div class="ph"><img src="img/stylist-divya.jpg" alt="Stylist cutting hair with scissors" width="480" height="640" loading="lazy"></div><h3>Divya</h3><p>Creative director</p></div>
+          <div class="stylist"><div class="ph"><img src="img/stylist-karthik.jpg" alt="Hair being blow-dried with a round brush" width="480" height="640" loading="lazy"></div><h3>Karthik</h3><p>Senior hair stylist</p></div>
+          <div class="stylist"><div class="ph"><img src="img/stylist-nisha.jpg" alt="Bride in red with bridal makeup and gold jewellery" width="480" height="640" loading="lazy"></div><h3>Nisha</h3><p>Bridal makeup artist</p></div>
+          <div class="stylist"><div class="ph"><img src="img/stylist-sara.jpg" alt="Spa therapist applying lotion" width="480" height="640" loading="lazy"></div><h3>Sara</h3><p>Spa therapist</p></div>
         </div>
       </div>
     </section>
@@ -221,7 +225,7 @@
         <div><h4>Studio</h4><ul><li><a href="#bridal">Bridal</a></li><li><a href="#team">Team</a></li><li><a href="#book">Book</a></li></ul></div>
         <div><h4>Contact</h4><ul><li>📞 +91 90000 00000</li><li>✉️ hello@glowstudio.example</li><li>🕒 Tue – Sun, 10 AM – 9 PM</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Glow Studio (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Glow Studio (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

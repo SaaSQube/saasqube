@@ -104,6 +104,11 @@
       .offer { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) { .steps-row { grid-template-columns: 1fr; } }
+    .hero-art .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-art .label { z-index: 1; }
+    .cat img, .product .art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .cat:hover img, .product:hover .art img { transform: scale(1.05); }
+    .cat span, .product .sale, .product .wish { z-index: 1; }
   </style>
 </head>
 <body>
@@ -165,18 +170,8 @@
             <a href="#tailoring" class="btn btn-outline">Custom tailoring</a>
           </div>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="fabric"></div>
-          <svg class="rack" viewBox="0 0 320 300">
-            <path d="M18 34h284" stroke="#3a2a20" stroke-width="6" stroke-linecap="round"/>
-            <path d="M30 34v262M290 34v262" stroke="#3a2a20" stroke-width="5" stroke-linecap="round"/>
-            <g fill="none" stroke="#3a2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M85 34v10M65 58l20-12 20 12"/><path d="M160 34v10M140 58l20-12 20 12"/><path d="M235 34v10M215 58l20-12 20 12"/>
-            </g>
-            <use href="#gm-kurta" x="45" y="50" width="80" height="104" style="color:#3f5a45"/>
-            <use href="#gm-dress" x="110" y="50" width="100" height="150" style="color:#f4efe6"/>
-            <use href="#gm-shirt" x="195" y="46" width="80" height="104" style="color:#2c3e5c"/>
-          </svg>
+        <div class="hero-art">
+          <img class="hero-photo" src="img/hero-rack.jpg" alt="Clothes on racks inside the boutique" width="900" height="1000" fetchpriority="high">
           <div class="label">Up to<strong>40% off</strong>this week</div>
         </div>
       </div>
@@ -195,10 +190,10 @@
       <div class="container">
         <div class="section-head"><p class="kicker">Shop by category</p><h2>Something for everyone</h2></div>
         <div class="cats">
-          <a class="cat" href="#arrivals" style="--g:#ead7c3;--c:#7a2f2a"><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-saree"/></svg><span>Sarees</span></a>
-          <a class="cat" href="#arrivals" style="--g:#d9e0d2;--c:#3f5a45"><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kurta"/></svg><span>Kurtas &amp; sets</span></a>
-          <a class="cat" href="#arrivals" style="--g:#dfe3ea;--c:#2c3e5c"><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-shirt"/></svg><span>Men</span></a>
-          <a class="cat" href="#arrivals" style="--g:#f3dccf;--c:#d7745a"><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kids"/></svg><span>Kids</span></a>
+          <a class="cat" href="#arrivals" style="--g:#ead7c3;--c:#7a2f2a"><img src="img/cat-sarees.jpg" alt="Woman in a silk saree" width="480" height="640" loading="lazy"><span>Sarees</span></a>
+          <a class="cat" href="#arrivals" style="--g:#d9e0d2;--c:#3f5a45"><img src="img/cat-kurtas.jpg" alt="Man in a blue kurta set" width="480" height="640" loading="lazy"><span>Kurtas &amp; sets</span></a>
+          <a class="cat" href="#arrivals" style="--g:#dfe3ea;--c:#2c3e5c"><img src="img/cat-men.jpg" alt="Man in a white shirt" width="480" height="640" loading="lazy"><span>Men</span></a>
+          <a class="cat" href="#arrivals" style="--g:#f3dccf;--c:#d7745a"><img src="img/cat-kids.jpg" alt="Colourful kids clothes on display" width="480" height="640" loading="lazy"><span>Kids</span></a>
         </div>
       </div>
     </section>
@@ -213,26 +208,25 @@
         </div>
         <div class="tab-panel" id="t-women">
           <div class="grid g4">
-            <article class="product"><div class="art" style="--g:#ead7c3;--c:#8c2f39"><span class="sale">-30%</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-saree"/></svg></div><h3>Kanchipuram silk saree</h3><span class="price">₹8,390<s>₹11,990</s></span></article>
-            <article class="product"><div class="art" style="--g:#e3e8dc;--c:#4e6b52"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kurta"/></svg></div><h3>Cotton A-line kurta set</h3><span class="price">₹1,490</span><div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
-            <article class="product"><div class="art" style="--g:#f2e1d8;--c:#c2571a"><span class="sale">New</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-dress"/></svg></div><h3>Rust maxi dress</h3><span class="price">₹1,890</span><div class="sizes"><span>S</span><span>M</span><span>L</span></div></article>
-            <article class="product"><div class="art" style="--g:#e6e1ee;--c:#5b4a8a"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-saree"/></svg></div><h3>Chiffon party saree</h3><span class="price">₹2,450<s>₹3,200</s></span></article>
+            <article class="product"><div class="art" style="--g:#ead7c3;--c:#8c2f39"><span class="sale">-30%</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/w-kanchipuram-saree.jpg" alt="Purple and gold Kanchipuram silk saree" width="480" height="640" loading="lazy"></div><h3>Kanchipuram silk saree</h3><span class="price">₹8,390<s>₹11,990</s></span></article>
+            <article class="product"><div class="art" style="--g:#e3e8dc;--c:#4e6b52"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/w-tiered-maxi.jpg" alt="Green tiered cotton maxi dress" width="480" height="640" loading="lazy"></div><h3>Tiered cotton maxi dress</h3><span class="price">₹1,490</span><div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
+            <article class="product"><div class="art" style="--g:#f2e1d8;--c:#c2571a"><span class="sale">New</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/w-wrap-maxi.jpg" alt="Emerald green wrap maxi dress" width="480" height="640" loading="lazy"></div><h3>Emerald wrap maxi dress</h3><span class="price">₹1,890</span><div class="sizes"><span>S</span><span>M</span><span>L</span></div></article>
+            <article class="product"><div class="art" style="--g:#e6e1ee;--c:#5b4a8a"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/w-party-saree.jpg" alt="Pink and orange silk party saree" width="480" height="640" loading="lazy"></div><h3>Silk party saree</h3><span class="price">₹2,450<s>₹3,200</s></span></article>
           </div>
         </div>
         <div class="tab-panel" id="t-men" hidden>
           <div class="grid g4">
-            <article class="product"><div class="art" style="--g:#dfe3ea;--c:#2c3e5c"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-shirt"/></svg></div><h3>Linen casual shirt</h3><span class="price">₹1,290</span><div class="sizes"><span>M</span><span>L</span><span>XL</span></div></article>
-            <article class="product"><div class="art" style="--g:#efe5d3;--c:#a8823f"><span class="sale">-25%</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kurta"/></svg></div><h3>Festive silk kurta</h3><span class="price">₹2,240<s>₹2,990</s></span></article>
-            <article class="product"><div class="art" style="--g:#e2e6e0;--c:#2f2f2f"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-tee"/></svg></div><h3>Organic cotton tee</h3><span class="price">₹599</span><div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
-            <article class="product"><div class="art" style="--g:#dbe5ec;--c:#3d7ea6"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-shirt"/></svg></div><h3>Oxford formal shirt</h3><span class="price">₹1,490</span><div class="sizes"><span>39</span><span>40</span><span>42</span></div></article>
+            <article class="product"><div class="art" style="--g:#dfe3ea;--c:#2c3e5c"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/m-casual-shirt.jpg" alt="Indigo casual shirt on a hanger" width="480" height="640" loading="lazy"></div><h3>Indigo casual shirt</h3><span class="price">₹1,290</span><div class="sizes"><span>M</span><span>L</span><span>XL</span></div></article>
+            <article class="product"><div class="art" style="--g:#efe5d3;--c:#a8823f"><span class="sale">-25%</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/m-cotton-kurta.jpg" alt="Man in a grey cotton kurta" width="480" height="640" loading="lazy"></div><h3>Cotton kurta</h3><span class="price">₹2,240<s>₹2,990</s></span></article>
+            <article class="product"><div class="art" style="--g:#e2e6e0;--c:#2f2f2f"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/m-white-tee.jpg" alt="White cotton t-shirt on a hanger" width="480" height="640" loading="lazy"></div><h3>Organic cotton tee</h3><span class="price">₹599</span><div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div></article>
+            <article class="product"><div class="art" style="--g:#dbe5ec;--c:#3d7ea6"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/m-formal-shirt.jpg" alt="White formal shirt on a hanger" width="480" height="640" loading="lazy"></div><h3>White formal shirt</h3><span class="price">₹1,490</span><div class="sizes"><span>39</span><span>40</span><span>42</span></div></article>
           </div>
         </div>
         <div class="tab-panel" id="t-kids" hidden>
           <div class="grid g4">
-            <article class="product"><div class="art" style="--g:#f3dccf;--c:#d7745a"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kids"/></svg></div><h3>Dungaree set</h3><span class="price">₹890</span><div class="sizes"><span>2Y</span><span>4Y</span><span>6Y</span></div></article>
-            <article class="product"><div class="art" style="--g:#e0ecdf;--c:#5c9a6a"><span class="sale">New</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-tee"/></svg></div><h3>Printed tee pack of 3</h3><span class="price">₹749</span></article>
-            <article class="product"><div class="art" style="--g:#f6e3ea;--c:#c75b84"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-dress"/></svg></div><h3>Pattu pavadai</h3><span class="price">₹1,590</span><div class="sizes"><span>3Y</span><span>5Y</span><span>7Y</span></div></article>
-            <article class="product"><div class="art" style="--g:#efe5d3;--c:#a8823f"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><svg viewBox="0 0 100 130" aria-hidden="true"><use href="#gm-kurta"/></svg></div><h3>Boys kurta pyjama</h3><span class="price">₹990</span></article>
+            <article class="product"><div class="art" style="--g:#f3dccf;--c:#d7745a"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/k-baby-rompers.jpg" alt="Baby rompers hanging on a rack" width="480" height="640" loading="lazy"></div><h3>Baby rompers</h3><span class="price">₹890</span><div class="sizes"><span>2Y</span><span>4Y</span><span>6Y</span></div></article>
+            <article class="product"><div class="art" style="--g:#e0ecdf;--c:#5c9a6a"><span class="sale">New</span><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/k-printed-tees.jpg" alt="Printed kids t-shirts on display" width="480" height="640" loading="lazy"></div><h3>Printed tee pack of 3</h3><span class="price">₹749</span></article>
+            <article class="product"><div class="art" style="--g:#f6e3ea;--c:#c75b84"><button class="wish" aria-label="Save to wishlist" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#ic-heart"/></svg></button><img src="img/k-fleece-jacket.jpg" alt="Kids fleece jackets in a shop window" width="480" height="640" loading="lazy"></div><h3>Fleece jacket</h3><span class="price">₹1,590</span><div class="sizes"><span>3Y</span><span>5Y</span><span>7Y</span></div></article>
           </div>
         </div>
       </div>
@@ -300,7 +294,7 @@
         <div><h4>Help</h4><ul><li><a href="#tailoring">Tailoring</a></li><li><a href="#visit">Returns</a></li></ul></div>
         <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li><li><svg class="ic" aria-hidden="true"><use href="#ic-mail"/></svg> hello@threadandloom.example</li><li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> T. Nagar, Chennai</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Thread &amp; Loom (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Thread &amp; Loom (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

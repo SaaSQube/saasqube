@@ -27,16 +27,13 @@
     .hero {
       min-height: 86vh; display: grid; align-items: center; text-align: center; position: relative; overflow: hidden;
       background:
+        linear-gradient(180deg, rgba(23, 18, 14, .78), rgba(23, 18, 14, .9)),
+        url("img/hero-thali.jpg") center / cover,
         radial-gradient(circle at 50% 120%, rgba(212, 162, 76, .35), transparent 55%),
         radial-gradient(circle at 15% 20%, rgba(160, 60, 30, .3), transparent 40%),
         radial-gradient(circle at 85% 30%, rgba(90, 120, 40, .22), transparent 40%),
         var(--bg);
     }
-    .hero::before, .hero::after {
-      content: "🌿"; position: absolute; font-size: 9rem; opacity: .12; transform: rotate(-30deg);
-    }
-    .hero::before { left: 4%; top: 12%; }
-    .hero::after { right: 4%; bottom: 10%; transform: rotate(150deg); }
     .hero .kicker { letter-spacing: .4em; }
     .hero h1 { font-size: clamp(2.8rem, 8vw, 6rem); margin-bottom: .25em; }
     .hero h1 em { color: var(--primary); font-style: italic; }
@@ -96,6 +93,12 @@
       .info-strip .container { grid-template-columns: 1fr; }
       .info-strip div + div { border-left: 0; border-top: 1px solid var(--line); }
     }
+    .special .art { overflow: hidden; }
+    .special .art img, .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+    .special:hover .art img, .gallery div:hover img { transform: scale(1.05); }
+    .gallery div { overflow: hidden; }
+    .plate { overflow: hidden; padding: 0; }
+    .plate img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
   </style>
 </head>
 <body>
@@ -141,7 +144,7 @@
 
     <section class="section" id="about">
       <div class="container about-grid">
-        <div class="plate" aria-hidden="true">🍛</div>
+        <div class="plate"><img src="img/about-plate.jpg" alt="Idli with sambar, chutney and filter coffee" width="700" height="700" loading="lazy"></div>
         <div>
           <p class="kicker">Our story</p>
           <h2>Three generations of home-style cooking</h2>
@@ -198,9 +201,9 @@
           <h2>This week's favourites</h2>
         </div>
         <div class="grid g3">
-          <article class="card special"><div class="art a1" aria-hidden="true">🍗</div><div class="body"><h3>Pepper Chicken Varuval</h3><p class="muted">Dry-roasted with crushed black pepper and curry leaves.</p><span class="price">₹290</span></div></article>
-          <article class="card special"><div class="art a2" aria-hidden="true">🥘</div><div class="body"><h3>Kothu Parotta</h3><p class="muted">Shredded parotta tossed on the tawa with egg and salna.</p><span class="price">₹180</span></div></article>
-          <article class="card special"><div class="art a3" aria-hidden="true">🦐</div><div class="body"><h3>Prawn Thokku</h3><p class="muted">Coastal-style prawns in a thick onion-tomato masala.</p><span class="price">₹360</span></div></article>
+          <article class="card special"><div class="art"><img src="img/special-biryani.jpg" alt="Chicken dum biryani served on a plate" width="640" height="480" loading="lazy"></div><div class="body"><h3>Chicken Dum Biryani</h3><p class="muted">Seeraga samba rice slow-cooked with tender chicken and spices.</p><span class="price">₹320</span></div></article>
+          <article class="card special"><div class="art"><img src="img/special-dosa.jpg" alt="Ghee roast dosa with sambar and chutneys" width="640" height="480" loading="lazy"></div><div class="body"><h3>Ghee Roast Dosa</h3><p class="muted">Paper-thin dosa roasted in pure ghee, with sambar and three chutneys.</p><span class="price">₹160</span></div></article>
+          <article class="card special"><div class="art"><img src="img/special-prawn.jpg" alt="Prawn thokku in a copper bowl" width="640" height="480" loading="lazy"></div><div class="body"><h3>Prawn Thokku</h3><p class="muted">Coastal-style prawns in a thick onion-tomato masala.</p><span class="price">₹360</span></div></article>
         </div>
       </div>
     </section>
@@ -211,9 +214,9 @@
           <p class="kicker">Gallery</p>
           <h2>A taste of Saffron Leaf</h2>
         </div>
-        <div class="gallery" aria-hidden="true">
-          <div class="tall a1">🍛</div><div class="a2">🥥</div><div class="a3">🌶️</div><div class="tall a2">🍚</div>
-          <div class="wide a3">🍽️</div>
+        <div class="gallery">
+          <div class="tall"><img src="img/gallery-dosa.jpg" alt="Crispy dosa on a banana leaf with chutneys" width="500" height="760" loading="lazy"></div><div><img src="img/gallery-idli.jpg" alt="Idli with sambar, chutneys and filter coffee" width="500" height="380" loading="lazy"></div><div><img src="img/gallery-dosa-leaf.jpg" alt="Dosa with coconut chutney and sambar" width="500" height="380" loading="lazy"></div><div class="tall"><img src="img/gallery-interior.jpg" alt="Dining room with set tables" width="500" height="760" loading="lazy"></div>
+          <div class="wide"><img src="img/gallery-idli-spread.jpg" alt="Idlis with chutneys and sambar on a banana leaf" width="1000" height="380" loading="lazy"></div>
         </div>
       </div>
     </section>
@@ -272,7 +275,7 @@
         <div><h4>Visit</h4><ul><li>Open daily</li><li>7 AM – 11 PM</li><li><a href="#reserve">Reserve</a></li></ul></div>
         <div><h4>Contact</h4><ul><li>📞 +91 90000 00000</li><li>✉️ hello@saffronleaf.example</li><li>📍 RS Puram, Coimbatore</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Saffron Leaf (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Saffron Leaf (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

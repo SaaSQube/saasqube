@@ -99,6 +99,11 @@
       .rate-card > div:nth-child(2) { border-left: 0; }
       .rate-card > div:nth-child(4) { border-left: 0; border-top: 1px solid var(--line); grid-column: 1 / -1; }
     }
+    .hero-photo { margin: 0 auto; width: 100%; max-width: 420px; aspect-ratio: 8 / 9; border-radius: 210px 210px 24px 24px; overflow: hidden; border: 3px solid rgba(230, 197, 90, .65); box-shadow: 0 40px 70px -30px rgba(0, 0, 0, .6); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .coll .art { width: 132px; height: 132px; overflow: hidden; border: 3px solid #f0dca0; }
+    .coll .art img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s; }
+    .coll:hover .art img { transform: scale(1.08); }
   </style>
 </head>
 <body>
@@ -164,20 +169,7 @@
             <span><svg class="ic" aria-hidden="true"><use href="#ic-diamond"/></svg> IGI certified diamonds</span>
           </div>
         </div>
-        <svg class="necklace" viewBox="0 0 400 360" aria-hidden="true">
-          <path d="M60 20c10 150 70 230 140 230S330 170 340 20" fill="none" stroke="url(#gold)" stroke-width="7"/>
-          <path d="M84 30c10 120 60 190 116 190s106-70 116-190" fill="none" stroke="url(#gold)" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
-          <g fill="url(#gold)">
-            <circle cx="78" cy="120" r="9"/><circle cx="100" cy="170" r="10"/><circle cx="130" cy="210" r="11"/><circle cx="165" cy="236" r="11"/>
-            <circle cx="322" cy="120" r="9"/><circle cx="300" cy="170" r="10"/><circle cx="270" cy="210" r="11"/><circle cx="235" cy="236" r="11"/>
-          </g>
-          <g fill="#c22a46"><circle cx="100" cy="170" r="4"/><circle cx="165" cy="236" r="4.5"/><circle cx="300" cy="170" r="4"/><circle cx="235" cy="236" r="4.5"/></g>
-          <g fill="#2e8b57"><circle cx="130" cy="210" r="4.5"/><circle cx="270" cy="210" r="4.5"/></g>
-          <path d="M200 248l34 26-34 54-34-54z" fill="url(#gold)"/>
-          <path d="M200 262l20 14-20 32-20-32z" fill="#c22a46"/>
-          <g fill="#fff7e0" stroke="url(#gold)" stroke-width="3"><circle cx="176" cy="318" r="7"/><circle cx="200" cy="342" r="8"/><circle cx="224" cy="318" r="7"/></g>
-          <g fill="#fff"><path class="shine" d="M150 140l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/><path class="shine" d="M262 112l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z"/><path class="shine" d="M214 286l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></g>
-        </svg>
+        <figure class="hero-photo"><img src="img/hero-jhumka.jpg" alt="Woman wearing ornate gold jhumkas with a silk saree" width="800" height="900" fetchpriority="high"></figure>
       </div>
     </section>
 
@@ -194,12 +186,12 @@
       <div class="container">
         <div class="section-head"><p class="kicker">Collections</p><h2>Crafted for every moment</h2></div>
         <div class="grid g3">
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-necklace"/></svg></div><h3>Bridal sets</h3><p>Complete wedding sets, from haram to vanki</p><a href="#visit">View designs →</a></div>
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-temple"/></svg></div><h3>Temple jewellery</h3><p>Traditional Lakshmi and Nagas motifs</p><a href="#visit">View designs →</a></div>
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-ring"/></svg></div><h3>Diamonds</h3><p>Solitaires and engagement rings, IGI certified</p><a href="#visit">View designs →</a></div>
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-earring"/></svg></div><h3>Jhumkas &amp; earrings</h3><p>Light daily wear to grand festive pieces</p><a href="#visit">View designs →</a></div>
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-bangle"/></svg></div><h3>Bangles &amp; kadas</h3><p>Plain, antique and stone-studded</p><a href="#visit">View designs →</a></div>
-          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-chain"/></svg></div><h3>Chains &amp; men's</h3><p>Chains, bracelets and rings for men</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-bridal.jpg" alt="Bride wearing gold bangles and statement earrings" width="320" height="320" loading="lazy"></div><h3>Bridal sets</h3><p>Complete wedding sets, from haram to vanki</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-temple.jpg" alt="Traditional jewellery and bangles on display" width="320" height="320" loading="lazy"></div><h3>Temple jewellery</h3><p>Traditional Lakshmi and Nagas motifs</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-diamonds.jpg" alt="Solitaire diamond ring" width="320" height="320" loading="lazy"></div><h3>Diamonds</h3><p>Solitaires and engagement rings, IGI certified</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-jhumkas.jpg" alt="Rows of ornate jhumka earrings" width="320" height="320" loading="lazy"></div><h3>Jhumkas &amp; earrings</h3><p>Light daily wear to grand festive pieces</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-bangles.jpg" alt="Pair of gold kadas on velvet" width="320" height="320" loading="lazy"></div><h3>Bangles &amp; kadas</h3><p>Plain, antique and stone-studded</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><img src="img/coll-chains.jpg" alt="Gold chain on a black background" width="320" height="320" loading="lazy"></div><h3>Chains &amp; men's</h3><p>Chains, bracelets and rings for men</p><a href="#visit">View designs →</a></div>
         </div>
       </div>
     </section>
@@ -276,7 +268,7 @@
         <div><h4>Services</h4><ul><li><a href="#scheme">Savings scheme</a></li><li><a href="#promise">Exchange</a></li><li><a href="#visit">Video call</a></li></ul></div>
         <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li><li><svg class="ic" aria-hidden="true"><use href="#ic-mail"/></svg> hello@swarnamahal.example</li><li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> South Masi Street, Madurai</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Swarna Mahal Jewellers (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Swarna Mahal Jewellers (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

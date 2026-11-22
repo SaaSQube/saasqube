@@ -74,6 +74,8 @@
       .hero-grid, .fac-grid, .contact-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 520px) { .fac-list { grid-template-columns: 1fr; } }
+    .fac-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+    .fac-photos img { width: 100%; height: auto; aspect-ratio: 900 / 560; object-fit: cover; border-radius: 14px; display: block; }
   </style>
 </head>
 <body>
@@ -188,6 +190,7 @@
             <li>🏥 24×7 Emergency</li><li>🛏️ ICU &amp; NICU</li><li>🔬 Lab &amp; diagnostics</li><li>🩻 CT, MRI &amp; X-ray</li>
             <li>💊 In-house pharmacy</li><li>🚑 Ambulance service</li><li>🍲 Patient canteen</li><li>🅿️ Free parking</li>
           </ul>
+          <div class="fac-photos"><img src="img/fac-corridor.jpg" alt="Clean, bright hospital corridor" width="900" height="560" loading="lazy"><img src="img/fac-lab.jpg" alt="In-house laboratory with microscopes and analysers" width="900" height="560" loading="lazy"></div>
         </div>
         <div class="emergency-card">
           <h3>Medical emergency?</h3>
@@ -248,7 +251,7 @@
         <div><h4>Hospital</h4><ul><li><a href="#departments">Departments</a></li><li><a href="#facilities">Facilities</a></li><li><a href="#contact">Contact</a></li></ul></div>
         <div><h4>Emergency</h4><ul><li>🚑 +91 90000 00000</li><li>Open 24×7</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Sunrise Multispeciality Hospital (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Sunrise Multispeciality Hospital (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 

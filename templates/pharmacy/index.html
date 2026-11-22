@@ -73,6 +73,14 @@
       .hero-grid, .upload-grid { grid-template-columns: 1fr; }
       .hero-art { min-height: 320px; }
     }
+    .hero-art .hero-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 26px; box-shadow: 0 30px 60px -30px rgba(11, 122, 92, .55); }
+    .hero-art .rx-card { inset: auto auto 24px -18px; width: min(70%, 330px); padding: 22px; gap: 12px; }
+    .hero-art .rx-card .big { font-size: 2.2rem; }
+    .cat { padding: 0 0 18px; overflow: hidden; }
+    .cat .cat-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; margin-bottom: 14px; transition: transform .45s; }
+    .cat:hover .cat-photo { transform: scale(1.05); }
+    .cat h3, .cat p { padding-inline: 12px; }
+    @media (max-width: 520px) { .hero-art .rx-card { left: 10px; width: 78%; } }
   </style>
 </head>
 <body>
@@ -114,7 +122,8 @@
           </form>
           <div class="chips"><span>✔ 100% genuine</span><span>✔ Licensed pharmacists</span><span>✔ Up to 20% off</span></div>
         </div>
-        <div class="hero-art" aria-hidden="true">
+        <div class="hero-art">
+          <img class="hero-photo" src="img/hero-pharmacist.jpg" alt="Pharmacist taking medicine from the pharmacy shelves" width="900" height="760" fetchpriority="high">
           <div class="rx-card">
             <span class="big">℞</span>
             <div>
@@ -136,12 +145,12 @@
           <h2>Everything for your family's health</h2>
         </div>
         <div class="grid g3">
-          <a href="#upload" class="card cat"><div class="emoji-tile">💊</div><h3>Medicines</h3><p>Prescription &amp; OTC</p></a>
-          <a href="#upload" class="card cat"><div class="emoji-tile">🩸</div><h3>Diabetes care</h3><p>Glucometers, strips &amp; more</p></a>
-          <a href="#upload" class="card cat"><div class="emoji-tile">🩺</div><h3>Health devices</h3><p>BP monitors, nebulisers</p></a>
-          <a href="#upload" class="card cat"><div class="emoji-tile">🍼</div><h3>Mother &amp; baby</h3><p>Diapers, nutrition, care</p></a>
-          <a href="#upload" class="card cat"><div class="emoji-tile">🌿</div><h3>Ayurveda &amp; herbal</h3><p>Natural wellness</p></a>
-          <a href="#upload" class="card cat"><div class="emoji-tile">🧴</div><h3>Personal care</h3><p>Skin, hair &amp; hygiene</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-medicines.jpg" alt="Strips of tablets and capsules" width="480" height="360" loading="lazy"><h3>Medicines</h3><p>Prescription &amp; OTC</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-diabetes.jpg" alt="Glucometer with test strips" width="480" height="360" loading="lazy"><h3>Diabetes care</h3><p>Glucometers, strips &amp; more</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-devices.jpg" alt="Digital blood pressure monitor" width="480" height="360" loading="lazy"><h3>Health devices</h3><p>BP monitors, nebulisers</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-baby.jpg" alt="Baby care products and toys" width="480" height="360" loading="lazy"><h3>Mother &amp; baby</h3><p>Diapers, nutrition, care</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-ayurveda.jpg" alt="Herbs being ground in a mortar and pestle" width="480" height="360" loading="lazy"><h3>Ayurveda &amp; herbal</h3><p>Natural wellness</p></a>
+          <a href="#upload" class="card cat"><img class="cat-photo" src="img/cat-personal-care.jpg" alt="Hands applying lotion" width="480" height="360" loading="lazy"><h3>Personal care</h3><p>Skin, hair &amp; hygiene</p></a>
         </div>
       </div>
     </section>
@@ -237,7 +246,7 @@
         <div><h4>Help</h4><ul><li><a href="#how">How to order</a></li><li><a href="#upload">Upload prescription</a></li><li><a href="#stores">Store locator</a></li></ul></div>
         <div><h4>Contact</h4><ul><li>📞 +91 90000 00000</li><li>✉️ care@carewell.example</li><li>🕒 Open 24×7</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> CareWell Pharmacy (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> CareWell Pharmacy (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 
