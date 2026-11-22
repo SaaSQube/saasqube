@@ -5,16 +5,16 @@
    email and WhatsApp link on the page is filled from here.
    ========================================================= */
 const CONTACT = {
-  phone: "+91 00000 00000",          // shown on the page and used for tel: links
-  whatsapp: "910000000000",          // country code + number, digits only
-  email: "hello@saasqube.example",
+  phone: "+91 7397-063122",          // shown on the page and used for tel: links
+  whatsapp: "917397063122",          // country code + number, digits only
+  email: "sales@saasqube.tech",
   address: "Tamil Nadu, India",
 };
 
 /* EmailJS: sends the contact form straight to your inbox (emailjs.com).
    Until templateId and publicKey are filled in, "Send by email" opens the
    visitor's email app instead. autoReplyTemplateId is optional: when set,
-   visitors who give an email address get a thank-you copy. */
+   every visitor gets a thank-you copy at the email they entered. */
 const EMAILJS = {
   serviceId: "service_olwui3b",
   templateId: "template_d7paoko",   // enquiry email to you
@@ -229,16 +229,18 @@ form.addEventListener("submit", async (e) => {
     f[n].classList.toggle("invalid", !valid);
     if (!valid) ok = false;
   });
-  const emailOk = !val("email") || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email"));
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"));
   f.email.classList.toggle("invalid", !emailOk);
   if (!ok || !emailOk) {
-    setStatus(!ok ? "Please add your name and phone number so we can reach you." : "That email address doesn't look right. Please check it, or leave it empty.", true);
+    setStatus(!ok
+      ? "Please add your name, phone number and email so we can reach you."
+      : val("email") ? "That email address doesn't look right. Please check it." : "Please add your email address so we can send you a copy.", true);
     form.querySelector(".invalid").focus();
     return;
   }
 
   // Bots fill the hidden field: pretend it worked and send nothing.
-  if (val("company_site")) { setStatus("Thank you! We'll reply within one working day."); form.reset(); return; }
+  if (val("company_site")) { setStatus("Thank you! We'll reply within 2–3 working days."); form.reset(); return; }
 
   const lines = [
     "Hello SaaSQube Solutions!",
@@ -258,7 +260,7 @@ form.addEventListener("submit", async (e) => {
 
   if (via === "whatsapp") {
     window.open(`https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-    setStatus("Opening WhatsApp… Thank you! We'll reply within one working day.");
+    setStatus("Opening WhatsApp… Thank you! We'll reply within 2–3 working days.");
     return;
   }
 
@@ -283,13 +285,11 @@ form.addEventListener("submit", async (e) => {
   setStatus("Sending your enquiry…");
   try {
     await sendEmailJS(EMAILJS.templateId, params);
-    if (params.email && EMAILJS.autoReplyTemplateId) {
+    if (EMAILJS.autoReplyTemplateId) {
       // The thank-you copy is a bonus: a failure here doesn't affect the enquiry.
       sendEmailJS(EMAILJS.autoReplyTemplateId, params).catch((err) => console.warn("Auto-reply not sent:", err));
     }
-    setStatus(params.email
-      ? "Thank you! Your enquiry has been sent, and a copy is on its way to your inbox. We'll reply within one working day."
-      : "Thank you! Your enquiry has been sent. We'll reply within one working day.");
+    setStatus("Thank you! Your enquiry has been sent, and a copy is on its way to your inbox (check Spam or Promotions if you don't see it). We'll reply within 2–3 working days.");
     form.reset();
   } catch (err) {
     console.error("EmailJS error:", err);

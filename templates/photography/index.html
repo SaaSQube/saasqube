@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Frame &amp; Fable Studio — Photography Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo photography and videography studio website template by SaaSQube Solutions: portfolio gallery, wedding films, packages and date booking.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css?v=20261122a">
+  <style>
+    :root {
+      --font: "Manrope", system-ui, sans-serif; --font-head: "Cormorant Garamond", Georgia, serif;
+      --primary: #c9a46a; --primary-dark: #b08c52; --on-primary: #141210; --accent: #c9a46a;
+      --bg: #0f0e0d; --alt: #171513; --surface: #1c1a17; --header-bg: rgba(15, 14, 13, .92);
+      --text: #cfc8bc; --heading: #f4efe6; --muted: #948b7d; --line: #2e2a25;
+      --radius: 6px; --btn-radius: 2px; --mark-radius: 50%; --kicker: #c9a46a;
+      --footer-bg: #0a0908; --footer-text: #948b7d;
+      --field-bg: #171513; --field-text: #f4efe6; --label: #cfc8bc;
+    }
+    h1, h2, h3 { font-weight: 500; letter-spacing: -.01em; }
+    h1 { font-size: clamp(2.6rem, 6.5vw, 5rem); line-height: 1.02; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    .ic { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .t-logo { font-weight: 600; font-size: 1.5rem; letter-spacing: .01em; }
+    .t-logo .mark { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+    .t-logo .mark .ic { width: 20px; height: 20px; }
+    .btn-outline { color: var(--heading); border-color: rgba(244, 239, 230, .35); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .card { --shadow: 0 20px 40px -20px rgba(0, 0, 0, .8); }
+
+    /* "Photos": layered gradients so the demo needs no image files */
+    .ph { position: relative; overflow: hidden; background: var(--g); border-radius: var(--radius); }
+    .ph::before { content: ""; position: absolute; inset: 0; background: radial-gradient(120% 80% at 50% 120%, rgba(0, 0, 0, .55), transparent 60%); }
+    .ph::after { content: ""; position: absolute; inset: 0; opacity: .18; background-image: radial-gradient(rgba(255, 255, 255, .5) 1px, transparent 1px); background-size: 3px 3px; mix-blend-mode: overlay; }
+    .g-wed1 { --g: radial-gradient(circle at 22% 22%, rgba(255, 214, 160, .55), transparent 12%), radial-gradient(circle at 78% 18%, rgba(255, 190, 130, .45), transparent 10%), radial-gradient(circle at 60% 30%, rgba(255, 236, 200, .35), transparent 8%), linear-gradient(165deg, #9a6448, #4a2b22 55%, #1c1311); }
+    .g-wed2 { --g: radial-gradient(ellipse at 50% 30%, #ffe6c4, transparent 45%), linear-gradient(180deg, #b0623a, #5a2a22 60%, #251210); }
+    .g-port { --g: radial-gradient(circle at 75% 25%, rgba(150, 190, 230, .35), transparent 30%), linear-gradient(160deg, #46596c, #1c232c 70%); }
+    .g-baby { --g: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, .6), transparent 30%), linear-gradient(160deg, #f3ddcf, #c09a8a 75%); }
+    .g-event { --g: radial-gradient(circle at 18% 22%, rgba(255, 207, 112, .7), transparent 7%), radial-gradient(circle at 72% 18%, rgba(255, 138, 92, .65), transparent 7%), radial-gradient(circle at 46% 12%, rgba(255, 241, 184, .6), transparent 5%), radial-gradient(circle at 88% 40%, rgba(160, 120, 255, .5), transparent 9%), linear-gradient(170deg, #432a5c, #160f22 70%); }
+    .g-prod { --g: radial-gradient(ellipse at 50% 30%, rgba(255, 255, 255, .55), transparent 45%), linear-gradient(180deg, #e2d5c3 0 70%, #b9a68e 70%); }
+    .g-land { --g: linear-gradient(180deg, #f2b57a 0%, #c46a4a 35%, #3d3a5c 36%, #262541 60%, #14131f); }
+    .g-pre { --g: radial-gradient(circle at 70% 38%, rgba(255, 226, 170, .9), transparent 10%), linear-gradient(180deg, #f0c286, #b46a45 52%, #2d3b2f 53%, #18211a); }
+
+    /* Hero */
+    .hero { padding: clamp(40px, 6vw, 80px) 0 clamp(56px, 7vw, 96px); }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .hero h1 em { font-style: italic; color: var(--primary); }
+    .hero .lead { font-size: 1.08rem; color: var(--muted); max-width: 30em; }
+    .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .stats { display: flex; gap: 36px; margin-top: 36px; flex-wrap: wrap; }
+    .stats strong { display: block; font: 500 2.2rem/1 var(--font-head); color: var(--heading); }
+    .stats span { font-size: .82rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; aspect-ratio: 1 / 1.05; }
+    .collage .ph:first-child { grid-row: span 2; }
+    .play { position: absolute; z-index: 2; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .7); display: grid; place-items: center; color: #fff; background: rgba(0, 0, 0, .25); backdrop-filter: blur(4px); }
+    .play svg { width: 22px; height: 22px; fill: currentColor; margin-left: 4px; }
+    .ph .sil { position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; width: 100%; height: 78%; color: rgba(12, 9, 7, .72); }
+    .ph.light .sil { color: rgba(80, 52, 40, .55); }
+    .caption { position: absolute; z-index: 2; left: 14px; bottom: 12px; color: #fff; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+
+    /* Services */
+    .service { text-align: left; }
+    .service .ic { width: 30px; height: 30px; color: var(--primary); margin-bottom: 16px; }
+    .service h3 { font-size: 1.45rem; margin-bottom: 6px; }
+    .service p { color: var(--muted); font-size: .94rem; }
+
+    /* Portfolio */
+    .filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 22px; margin-bottom: 30px; }
+    .filters button { font: 600 .82rem var(--font); letter-spacing: .14em; text-transform: uppercase; padding: 8px 2px; cursor: pointer; border: 0; border-bottom: 1px solid transparent; background: none; color: var(--muted); }
+    .filters button.active, .filters button:hover { color: var(--heading); border-color: var(--primary); }
+    .gallery { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 12px; grid-auto-flow: dense; }
+    .gallery .ph { transition: transform .35s; }
+    .gallery .ph:hover { transform: scale(1.015); }
+    .gallery .ph[hidden] { display: none; }
+    .gallery .tall { grid-row: span 2; }
+    .gallery .wide { grid-column: span 2; }
+
+    /* Packages */
+    .pkg { display: flex; flex-direction: column; }
+    .pkg h3 { font-size: 1.6rem; margin-bottom: 4px; }
+    .pkg .price { font: 500 2.4rem/1 var(--font-head); color: var(--heading); margin: 10px 0 18px; }
+    .pkg .price small { font: 500 .85rem var(--font); color: var(--muted); }
+    .pkg ul { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 10px; flex: 1; font-size: .94rem; }
+    .pkg li { display: flex; gap: 10px; }
+    .pkg li .ic { color: var(--primary); margin-top: 3px; }
+    .pkg.featured { border-color: var(--primary); position: relative; }
+    .pkg.featured::before { content: "Most booked"; position: absolute; top: -12px; left: 26px; background: var(--primary); color: var(--on-primary); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; }
+
+    .quote { font: italic 500 clamp(1.4rem, 2.6vw, 2rem)/1.35 var(--font-head); color: var(--heading); max-width: 30em; margin: 0 auto 14px; text-align: center; }
+    .quote-by { text-align: center; color: var(--muted); font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    .book-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    .book-grid .card { padding: 30px; }
+    .contact-lines { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+    .contact-lines li, .foot-contact li { display: flex; align-items: center; gap: 10px; }
+    .contact-lines .ic { color: var(--primary); }
+
+    @media (max-width: 900px) {
+      .hero-grid, .book-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+    }
+    @media (max-width: 520px) {
+      .gallery { grid-auto-rows: 140px; gap: 8px; }
+      .gallery .wide { grid-column: span 2; }
+      .stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ic-aperture" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.3 3.3 9.5 11.6M20.6 9.5h-9.6M18.6 18.1l-4.8-8.3M9.7 20.7l4.8-8.3M3.4 14.5h9.6M5.4 5.9l4.8 8.3"/></symbol>
+      <symbol id="ic-rings" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M10.5 4.5 12 3l1.5 1.5L12 6z"/></symbol>
+      <symbol id="ic-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+      <symbol id="ic-baby" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7M10.5 8h.01M13.5 8h.01"/></symbol>
+      <symbol id="ic-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12h18"/></symbol>
+      <symbol id="ic-box" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol>
+      <symbol id="ic-drone" viewBox="0 0 24 24"><rect x="9" y="10" width="6" height="4" rx="1"/><path d="M9 11 5 8M15 11l4-3M9 13l-4 3M15 13l4 3"/><path d="M2 7h6M16 7h6M2 17h6M16 17h6"/></symbol>
+      <symbol id="ic-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+      <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="ic-call" viewBox="0 0 24 24"><path d="M5 3.5h3.5l2 5-2.4 1.6a11.5 11.5 0 0 0 5.8 5.8l1.6-2.4 5 2v3.5a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></symbol>
+      <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></symbol>
+      <symbol id="ic-insta" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></symbol>
+      <!-- Photo silhouettes (anchored to the bottom of each tile) -->
+      <symbol id="sil-couple" viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet"><circle cx="86" cy="58" r="13"/><path d="M64 160c0-48 8-80 22-84 14 4 22 36 24 84z"/><circle cx="116" cy="64" r="12"/><path d="M104 74c-6 4-8 10-8 16 0 8 4 12 8 14-6 18-12 38-14 56h58c-2-26-10-56-22-72-6-8-14-14-22-14z"/><path d="M104 100c4 2 8 2 12-2" fill="none"/></symbol>
+      <symbol id="sil-portrait" viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet"><circle cx="100" cy="62" r="30"/><path d="M38 160c4-40 30-62 62-62s58 22 62 62z"/></symbol>
+      <symbol id="sil-crowd" viewBox="0 0 400 120" preserveAspectRatio="xMidYMax slice"><circle cx="20" cy="80" r="11"/><path d="M-1 120c2-18 11-24 21 -24s19 6 21 24z"/><circle cx="62" cy="74" r="13"/><path d="M38 120c2-18 11-28 24 -28s22 10 24 28z"/><circle cx="104" cy="80" r="11"/><path d="M83 120c2-18 11-24 21 -24s19 6 21 24z"/><circle cx="146" cy="74" r="13"/><path d="M122 120c2-18 11-28 24 -28s22 10 24 28z"/><circle cx="188" cy="80" r="11"/><path d="M167 120c2-18 11-24 21 -24s19 6 21 24z"/><circle cx="230" cy="74" r="13"/><path d="M206 120c2-18 11-28 24 -28s22 10 24 28z"/><circle cx="272" cy="80" r="11"/><path d="M251 120c2-18 11-24 21 -24s19 6 21 24z"/><circle cx="314" cy="74" r="13"/><path d="M290 120c2-18 11-28 24 -28s22 10 24 28z"/><circle cx="356" cy="80" r="11"/><path d="M335 120c2-18 11-24 21 -24s19 6 21 24z"/><circle cx="392" cy="74" r="13"/><path d="M368 120c2-18 11-28 24 -28s22 10 24 28z"/><path d="M76 80 88 46M300 78l-12-34M200 82l6-30" stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none"/></symbol>
+      <symbol id="sil-product" viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet"><rect x="62" y="56" width="34" height="88" rx="8"/><rect x="70" y="40" width="18" height="18" rx="3"/><rect x="108" y="96" width="44" height="48" rx="10"/><rect x="104" y="86" width="52" height="14" rx="5"/><ellipse cx="100" cy="146" rx="70" ry="6" opacity=".5"/></symbol>
+      <symbol id="sil-hills" viewBox="0 0 200 160" preserveAspectRatio="none"><path d="M0 160V110l30-22 26 16 34-34 30 28 22-16 30 24 28-20v74z"/></symbol>
+      <symbol id="sil-baby" viewBox="0 0 200 160" preserveAspectRatio="xMidYMax meet"><path d="M30 160c10-30 40-46 80-46s66 16 70 46z" opacity=".55"/><circle cx="86" cy="104" r="20"/><path d="M100 110c18-6 40-4 56 8 8 6 8 14 0 18-22 8-46 6-62-6z"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Photography#contact">Get this website</a>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#ic-aperture"/></svg></span><span>Frame &amp; Fable<small>Photography · Films</small></span></a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#packages">Packages</a>
+        <a href="#book" class="btn btn-primary btn-sm">Check your date</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker">Wedding · Portrait · Films</p>
+          <h1>Stories you'll want to <em>relive</em> forever.</h1>
+          <p class="lead">Candid wedding photography and cinematic films from Coimbatore, for couples and families across South India. Natural light, real moments, zero awkward poses.</p>
+          <div class="ctas">
+            <a href="#book" class="btn btn-primary">Check your date</a>
+            <a href="#portfolio" class="btn btn-outline">View portfolio</a>
+          </div>
+          <div class="stats">
+            <div><strong>450+</strong><span>Weddings</span></div>
+            <div><strong>12</strong><span>Years</span></div>
+            <div><strong>4.9★</strong><span>Google rating</span></div>
+          </div>
+        </div>
+        <div class="collage" aria-hidden="true">
+          <div class="ph g-wed1"><svg class="sil" aria-hidden="true"><use href="#sil-couple"/></svg><span class="caption">Anu &amp; Karthik · Ooty</span></div>
+          <div class="ph g-land"><svg class="sil" aria-hidden="true"><use href="#sil-hills"/></svg><span class="play"><svg viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></svg></span></div>
+          <div class="ph g-port"><svg class="sil" aria-hidden="true"><use href="#sil-portrait"/></svg></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-head"><p class="kicker">What we shoot</p><h2>Every occasion, beautifully told</h2></div>
+        <div class="grid g3">
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-rings"/></svg><h3>Weddings</h3><p>Candid and traditional coverage of every ritual, from nalangu to reception.</p></div>
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-film"/></svg><h3>Cinematic films</h3><p>Teasers, highlight films and full-length edits with licensed music.</p></div>
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-aperture"/></svg><h3>Pre-wedding shoots</h3><p>Destination and local outdoor shoots with styling help.</p></div>
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-baby"/></svg><h3>Baby &amp; maternity</h3><p>Gentle, safe newborn sessions and maternity portraits at home or studio.</p></div>
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-briefcase"/></svg><h3>Corporate &amp; events</h3><p>Conferences, launches, headshots and same-day social media edits.</p></div>
+          <div class="card service"><svg class="ic" aria-hidden="true"><use href="#ic-box"/></svg><h3>Product shoots</h3><p>Clean e-commerce and lifestyle photos for Amazon, Flipkart and Instagram.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Portfolio</p><h2>Recent work</h2></div>
+        <div class="filters" data-filter-group="#portfolio .gallery .ph">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="wedding">Weddings</button>
+          <button data-filter="portrait">Portraits</button>
+          <button data-filter="event">Events</button>
+          <button data-filter="product">Products</button>
+        </div>
+        <div class="gallery">
+          <div class="ph g-wed2 tall" data-cat="wedding"><svg class="sil" aria-hidden="true"><use href="#sil-couple"/></svg><span class="caption">Temple wedding · Madurai</span></div>
+          <div class="ph g-pre" data-cat="wedding"><svg class="sil" aria-hidden="true"><use href="#sil-couple"/></svg><span class="caption">Pre-wedding · Kodaikanal</span></div>
+          <div class="ph g-baby light" data-cat="portrait"><svg class="sil" aria-hidden="true"><use href="#sil-baby"/></svg><span class="caption">Newborn · Studio</span></div>
+          <div class="ph g-event wide" data-cat="event"><svg class="sil" aria-hidden="true"><use href="#sil-crowd"/></svg><span class="caption">Product launch · Bengaluru</span></div>
+          <div class="ph g-port" data-cat="portrait"><svg class="sil" aria-hidden="true"><use href="#sil-portrait"/></svg><span class="caption">Headshots · Coimbatore</span></div>
+          <div class="ph g-prod light" data-cat="product"><svg class="sil" aria-hidden="true"><use href="#sil-product"/></svg><span class="caption">Skincare range</span></div>
+          <div class="ph g-wed1 wide" data-cat="wedding"><svg class="sil" aria-hidden="true"><use href="#sil-couple"/></svg><span class="caption">Reception · Chennai</span></div>
+          <div class="ph g-land" data-cat="event"><svg class="sil" aria-hidden="true"><use href="#sil-hills"/></svg><span class="caption">Drone · Beach sangeet</span></div>
+          <div class="ph g-port" data-cat="portrait"><svg class="sil" aria-hidden="true"><use href="#sil-portrait"/></svg><span class="caption">Graduation portraits</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="packages">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Packages</p><h2>Wedding collections</h2><p>Every package includes an online gallery and full-resolution downloads. Travel within Tamil Nadu is included.</p></div>
+        <div class="grid g3">
+          <div class="card pkg"><h3>Silver</h3><p class="muted">For intimate weddings</p><div class="price">₹65,000 <small>/ event</small></div><ul><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>1 candid photographer</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>400+ edited photos</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>3-minute highlight film</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Online gallery</li></ul><a href="#book" class="btn btn-outline btn-block">Enquire</a></div>
+          <div class="card pkg featured"><h3>Gold</h3><p class="muted">Our most loved coverage</p><div class="price">₹1,25,000 <small>/ 2 events</small></div><ul><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>2 photographers + 1 filmmaker</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>800+ edited photos</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Teaser + 8-minute film</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>30-page premium album</li></ul><a href="#book" class="btn btn-primary btn-block">Enquire</a></div>
+          <div class="card pkg"><h3>Platinum</h3><p class="muted">The complete story</p><div class="price">₹2,10,000 <small>/ 3 events</small></div><ul><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Full team with drone</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Pre-wedding shoot included</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>Full-length documentary film</li><li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg>2 albums + same-day edit</li></ul><a href="#book" class="btn btn-outline btn-block">Enquire</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="quote">"They were invisible all day, yet caught every glance and tear. Watching our film still gives us goosebumps."</p>
+        <p class="quote-by">Divya &amp; Arjun · Married in Thanjavur</p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="book">
+      <div class="container book-grid">
+        <div>
+          <p class="kicker">Book a shoot</p>
+          <h2>Tell us about your day</h2>
+          <p class="muted">Popular wedding dates get booked 6–8 months ahead. Share your date and we'll confirm availability with a custom quote within a day.</p>
+          <ul class="contact-lines">
+            <li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> Studio: RS Puram, Coimbatore</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li>
+            <li><svg class="ic" aria-hidden="true"><use href="#ic-insta"/></svg> @frameandfable.studio</li>
+          </ul>
+        </div>
+        <div class="card">
+          <form class="form" data-demo data-demo-msg="Thank you! This is a demo. On your live website, this goes straight to your WhatsApp or email.">
+            <div class="row">
+              <label>Your name<input type="text" required></label>
+              <label>Phone<input type="tel" required></label>
+            </div>
+            <div class="row">
+              <label>Shoot type<select required><option value="">Choose…</option><option>Wedding</option><option>Pre-wedding</option><option>Baby / maternity</option><option>Corporate / event</option><option>Product</option></select></label>
+              <label>Event date<input type="date" required></label>
+            </div>
+            <label>Venue / city<input type="text" placeholder="e.g. Codissia Hall, Coimbatore"></label>
+            <label>Anything else?<textarea placeholder="Number of events, guest count, style you love…"></textarea></label>
+            <button class="btn btn-primary btn-block">Check availability</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#ic-aperture"/></svg></span><span>Frame &amp; Fable<small style="color:inherit">Photography · Films</small></span></a><p>Honest, timeless photographs and films.</p></div>
+        <div><h4>Services</h4><ul><li><a href="#services">Weddings</a></li><li><a href="#services">Films</a></li><li><a href="#services">Portraits</a></li></ul></div>
+        <div><h4>Studio</h4><ul><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li></ul></div>
+        <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li><li><svg class="ic" aria-hidden="true"><use href="#ic-mail"/></svg> hello@frameandfable.example</li><li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> RS Puram, Coimbatore</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> Frame &amp; Fable Studio (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#book" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js?v=20261122a" defer></script>
+</body>
+</html>

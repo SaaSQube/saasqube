@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swarna Mahal Jewellers — Jewellery Website Template | SaaSQube Solutions</title>
+  <meta name="description" content="Demo jewellery store website template by SaaSQube Solutions: today's gold rate, bridal and temple collections, gold savings scheme and appointment booking.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Lato:wght@400;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css?v=20261122a">
+  <style>
+    :root {
+      --font: "Lato", system-ui, sans-serif; --font-head: "Marcellus", Georgia, serif;
+      --primary: #6b1426; --primary-dark: #4f0e1c; --accent: #c9a227; --on-accent: #3a0a14;
+      --bg: #fffaf0; --alt: #f8eedb; --surface: #ffffff;
+      --text: #5a4a3e; --heading: #3a0a14; --muted: #8a7766; --line: #ecdcbf;
+      --radius: 14px; --mark-radius: 50%; --kicker: #a8831a;
+      --topbar-bg: #3a0a14; --topbar-color: #f3dfa6; --footer-bg: #2a0710; --footer-text: #d9c5a5;
+    }
+    h1, h2, h3 { font-weight: 400; }
+    .ic { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    .t-logo { font-weight: 400; }
+    .t-logo .mark { background: linear-gradient(140deg, #e6c55a, #b8901c); color: var(--heading); }
+    .t-logo .mark .ic { width: 22px; height: 22px; }
+    .gold-text { background: linear-gradient(100deg, #b8901c, #e6c55a 50%, #a8831a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Hero */
+    .hero { background: radial-gradient(700px 480px at 80% 40%, #8a1c33, transparent 70%), linear-gradient(140deg, #4f0e1c, #2a0710); color: #e9d7bd; padding: clamp(44px, 7vw, 96px) 0; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .hero h1 { color: #fff7e6; font-size: clamp(2.5rem, 5.5vw, 4.2rem); line-height: 1.08; }
+    .hero .lead { font-size: 1.08rem; color: #d9c3a3; max-width: 31em; }
+    .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+    .hero .btn-outline { color: #f3dfa6; }
+    .trust { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 28px; font-size: .9rem; color: #f3dfa6; }
+    .trust span { display: inline-flex; align-items: center; gap: 8px; }
+    .necklace { width: 100%; max-width: 480px; margin-inline: auto; display: block; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, .45)); }
+    .necklace .shine { animation: shine 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+    .necklace .shine:nth-of-type(2) { animation-delay: -1s; }
+    .necklace .shine:nth-of-type(3) { animation-delay: -2s; }
+    @keyframes shine { 0%, 100% { opacity: .2; transform: scale(.6); } 50% { opacity: 1; transform: scale(1); } }
+
+    /* Gold rate */
+    .rates { margin-top: -38px; position: relative; z-index: 2; }
+    .rate-card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 24px 40px -26px rgba(58, 10, 20, .4); display: grid; grid-template-columns: 1.1fr repeat(3, 1fr); }
+    .rate-card > div { padding: 20px 24px; border-left: 1px solid var(--line); }
+    .rate-card > div:first-child { border-left: 0; }
+    .rate-card h3 { font-size: 1.2rem; margin-bottom: 2px; }
+    .rate-card small { color: var(--muted); font-size: .8rem; }
+    .rate-card .k { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .rate-card .v { font: 400 1.6rem var(--font-head); color: var(--heading); }
+    .rate-card .v small { font-family: var(--font); }
+
+    /* Collections */
+    .coll { text-align: center; padding: 26px 18px; }
+    .coll .art { width: 96px; height: 96px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #fff7e0, #f6e6bd); }
+    .coll .art svg { width: 62%; }
+    .coll h3 { font-size: 1.25rem; margin-bottom: 4px; }
+    .coll p { font-size: .9rem; color: var(--muted); margin: 0; }
+    .coll a { display: inline-block; margin-top: 10px; font-weight: 700; font-size: .86rem; color: var(--primary); text-decoration: none; }
+
+    /* Scheme */
+    .scheme { background: linear-gradient(140deg, #fff3d6, #f5e1ae); border-radius: 24px; padding: clamp(28px, 5vw, 52px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; border: 1px solid #ecd59a; }
+    .scheme .form { background: #fffaf0; border-radius: 18px; padding: 24px; border: 1px solid #ecd59a; }
+    .scheme input[type=range] { padding: 0; accent-color: var(--primary); border: 0; }
+    .scheme .amt { font: 400 1.8rem var(--font-head); color: var(--heading); }
+    .scheme .result { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; text-align: center; }
+    .scheme .result div { background: #fff; border-radius: 12px; padding: 12px 6px; border: 1px solid var(--line); }
+    .scheme .result b { display: block; font: 400 1.2rem var(--font-head); color: var(--heading); }
+    .scheme .result span { font-size: .76rem; color: var(--muted); }
+    .scheme .result .bonus b { color: #2e7d32; }
+
+    .promise { display: flex; gap: 16px; align-items: flex-start; }
+    .promise .icon-tile { flex: none; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: #f6e6bd; color: var(--primary); }
+    .promise .icon-tile .ic { width: 26px; height: 26px; }
+    .promise h3 { font-size: 1.15rem; margin-bottom: 4px; }
+    .promise p { margin: 0; color: var(--muted); font-size: .92rem; }
+
+    .appt-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
+    .appt-grid .card { padding: 30px; }
+    .hours { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
+    .hours li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
+    .contact-lines { display: grid; gap: 6px; margin-top: 18px; color: var(--muted); }
+    .contact-lines span, .foot-contact li { display: flex; align-items: center; gap: 8px; }
+
+    .scheme > *, .hero-grid > *, .appt-grid > * { min-width: 0; }
+    @media (max-width: 480px) {
+      .scheme { padding: 22px 16px; }
+      .scheme .form { padding: 18px 14px; }
+      .scheme .result { gap: 6px; }
+      .scheme .result b { font-size: 1rem; }
+      .scheme .result span { font-size: .7rem; }
+    }
+    @media (max-width: 900px) {
+      .hero-grid, .scheme, .appt-grid { grid-template-columns: 1fr; }
+      .rate-card { grid-template-columns: 1fr 1fr; }
+      .rate-card > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--line); }
+      .rate-card > div:nth-child(2) { border-left: 0; }
+      .rate-card > div:nth-child(4) { border-left: 0; border-top: 1px solid var(--line); grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7e08a"/><stop offset=".5" stop-color="#d4a72c"/><stop offset="1" stop-color="#a8831a"/></linearGradient>
+      <symbol id="ic-diamond" viewBox="0 0 24 24"><path d="M6 3.5h12l3.5 5L12 21 2.5 8.5zM2.5 8.5h19M9 3.5 7.5 8.5 12 21l4.5-12.5L15 3.5"/></symbol>
+      <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="ic-swap" viewBox="0 0 24 24"><path d="M4 8h14l-3.5-3.5M20 16H6l3.5 3.5"/></symbol>
+      <symbol id="ic-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+      <symbol id="ic-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></symbol>
+      <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="ic-call" viewBox="0 0 24 24"><path d="M5 3.5h3.5l2 5-2.4 1.6a11.5 11.5 0 0 0 5.8 5.8l1.6-2.4 5 2v3.5a2 2 0 0 1-2 2A17 17 0 0 1 3 5.5a2 2 0 0 1 2-2z"/></symbol>
+      <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></symbol>
+      <!-- Jewellery drawings -->
+      <symbol id="jw-ring" viewBox="0 0 100 100"><circle cx="50" cy="62" r="26" fill="none" stroke="url(#gold)" stroke-width="8"/><path d="M38 34h24l6 8-18 14-18-14z" fill="#e8f4ff" stroke="#9cc3e6" stroke-width="2"/><path d="M38 34l12 22 12-22M32 42h36" stroke="#9cc3e6" stroke-width="1.5" fill="none"/></symbol>
+      <symbol id="jw-necklace" viewBox="0 0 100 100"><path d="M14 14c4 40 18 58 36 58s32-18 36-58" fill="none" stroke="url(#gold)" stroke-width="5"/><g fill="url(#gold)"><circle cx="22" cy="44" r="4"/><circle cx="32" cy="58" r="4.5"/><circle cx="68" cy="58" r="4.5"/><circle cx="78" cy="44" r="4"/></g><path d="M50 72l10 8-10 14-10-14z" fill="#b3263f" stroke="url(#gold)" stroke-width="3"/></symbol>
+      <symbol id="jw-earring" viewBox="0 0 100 100"><path d="M50 6v12" stroke="url(#gold)" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="26" r="9" fill="url(#gold)"/><path d="M24 50a26 26 0 0 0 52 0z" fill="url(#gold)"/><path d="M30 50h40" stroke="#a8831a" stroke-width="2"/><g fill="#b3263f"><circle cx="36" cy="60" r="3"/><circle cx="50" cy="66" r="3.5"/><circle cx="64" cy="60" r="3"/></g><g fill="#fff7e0" stroke="url(#gold)" stroke-width="1.5"><circle cx="30" cy="84" r="4"/><circle cx="50" cy="90" r="4"/><circle cx="70" cy="84" r="4"/></g></symbol>
+      <symbol id="jw-bangle" viewBox="0 0 100 100"><ellipse cx="50" cy="56" rx="38" ry="30" fill="none" stroke="url(#gold)" stroke-width="10"/><ellipse cx="50" cy="44" rx="38" ry="30" fill="none" stroke="url(#gold)" stroke-width="10" opacity=".85"/><g fill="#b3263f"><circle cx="20" cy="40" r="3"/><circle cx="50" cy="15" r="3"/><circle cx="80" cy="40" r="3"/></g></symbol>
+      <symbol id="jw-temple" viewBox="0 0 100 100"><path d="M50 10 64 30H36z" fill="url(#gold)"/><rect x="34" y="30" width="32" height="8" fill="url(#gold)"/><path d="M30 38h40l-6 40H36z" fill="url(#gold)"/><circle cx="50" cy="56" r="8" fill="#b3263f" stroke="#a8831a" stroke-width="2"/><g fill="#fff7e0" stroke="url(#gold)" stroke-width="1.5"><circle cx="38" cy="86" r="4"/><circle cx="50" cy="90" r="4"/><circle cx="62" cy="86" r="4"/></g></symbol>
+      <symbol id="jw-chain" viewBox="0 0 100 100"><path d="M18 20c2 34 14 52 32 52s30-18 32-52" fill="none" stroke="url(#gold)" stroke-width="4" stroke-dasharray="5 3"/><circle cx="50" cy="78" r="9" fill="none" stroke="url(#gold)" stroke-width="4"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="demo-bar"><div class="container">
+    <a href="../">← All templates</a>
+    <span class="db-text">Demo website template by <strong>SaaSQube Solutions</strong></span>
+    <a class="db-cta" href="../../index.html?template=Jewellery#contact">Get this website</a>
+  </div></div>
+
+  <div class="topbar"><div class="container">
+    <span>BIS hallmarked gold with HUID · Lifetime exchange</span>
+    <span class="hide-sm">Open 10 AM – 9 PM · <a href="#visit">South Masi Street, Madurai</a></span>
+  </div></div>
+
+  <header class="t-header">
+    <div class="container t-nav-wrap">
+      <a href="#top" class="t-logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#ic-diamond"/></svg></span><span>Swarna Mahal<small>Jewellers · Since 1968</small></span></a>
+      <button class="t-toggle" aria-expanded="false" aria-controls="t-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="t-nav" id="t-nav">
+        <a href="#collections">Collections</a>
+        <a href="#scheme">Savings scheme</a>
+        <a href="#promise">Our promise</a>
+        <a href="#visit">Visit</a>
+        <a href="#visit" class="btn btn-primary btn-sm">Book an appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="kicker" style="--kicker:#e6c55a">Bridal collection 2026</p>
+          <h1>Heirlooms crafted for your <span class="gold-text">forever</span>.</h1>
+          <p class="lead">Temple jewellery, bridal sets and certified diamonds, handcrafted by our karigars in Madurai for three generations. Every piece is BIS hallmarked.</p>
+          <div class="ctas">
+            <a href="#collections" class="btn btn-accent">Explore collections</a>
+            <a href="#visit" class="btn btn-outline">Book a video call</a>
+          </div>
+          <div class="trust">
+            <span><svg class="ic" aria-hidden="true"><use href="#ic-shield"/></svg> BIS hallmark + HUID</span>
+            <span><svg class="ic" aria-hidden="true"><use href="#ic-diamond"/></svg> IGI certified diamonds</span>
+          </div>
+        </div>
+        <svg class="necklace" viewBox="0 0 400 360" aria-hidden="true">
+          <path d="M60 20c10 150 70 230 140 230S330 170 340 20" fill="none" stroke="url(#gold)" stroke-width="7"/>
+          <path d="M84 30c10 120 60 190 116 190s106-70 116-190" fill="none" stroke="url(#gold)" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+          <g fill="url(#gold)">
+            <circle cx="78" cy="120" r="9"/><circle cx="100" cy="170" r="10"/><circle cx="130" cy="210" r="11"/><circle cx="165" cy="236" r="11"/>
+            <circle cx="322" cy="120" r="9"/><circle cx="300" cy="170" r="10"/><circle cx="270" cy="210" r="11"/><circle cx="235" cy="236" r="11"/>
+          </g>
+          <g fill="#c22a46"><circle cx="100" cy="170" r="4"/><circle cx="165" cy="236" r="4.5"/><circle cx="300" cy="170" r="4"/><circle cx="235" cy="236" r="4.5"/></g>
+          <g fill="#2e8b57"><circle cx="130" cy="210" r="4.5"/><circle cx="270" cy="210" r="4.5"/></g>
+          <path d="M200 248l34 26-34 54-34-54z" fill="url(#gold)"/>
+          <path d="M200 262l20 14-20 32-20-32z" fill="#c22a46"/>
+          <g fill="#fff7e0" stroke="url(#gold)" stroke-width="3"><circle cx="176" cy="318" r="7"/><circle cx="200" cy="342" r="8"/><circle cx="224" cy="318" r="7"/></g>
+          <g fill="#fff"><path class="shine" d="M150 140l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/><path class="shine" d="M262 112l2.5 7 7 2.5-7 2.5-2.5 7-2.5-7-7-2.5 7-2.5z"/><path class="shine" d="M214 286l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></g>
+        </svg>
+      </div>
+    </section>
+
+    <div class="container rates" aria-label="Today's rates">
+      <div class="rate-card">
+        <div><h3>Today's rate</h3><small>Per gram · updated 10:30 AM · demo values</small></div>
+        <div><span class="k">Gold 22K</span><div class="v">₹7,215 <small>/g</small></div></div>
+        <div><span class="k">Gold 24K</span><div class="v">₹7,870 <small>/g</small></div></div>
+        <div><span class="k">Silver</span><div class="v">₹96 <small>/g</small></div></div>
+      </div>
+    </div>
+
+    <section class="section" id="collections">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Collections</p><h2>Crafted for every moment</h2></div>
+        <div class="grid g3">
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-necklace"/></svg></div><h3>Bridal sets</h3><p>Complete wedding sets, from haram to vanki</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-temple"/></svg></div><h3>Temple jewellery</h3><p>Traditional Lakshmi and Nagas motifs</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-ring"/></svg></div><h3>Diamonds</h3><p>Solitaires and engagement rings, IGI certified</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-earring"/></svg></div><h3>Jhumkas &amp; earrings</h3><p>Light daily wear to grand festive pieces</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-bangle"/></svg></div><h3>Bangles &amp; kadas</h3><p>Plain, antique and stone-studded</p><a href="#visit">View designs →</a></div>
+          <div class="card coll"><div class="art"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#jw-chain"/></svg></div><h3>Chains &amp; men's</h3><p>Chains, bracelets and rings for men</p><a href="#visit">View designs →</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="scheme">
+      <div class="container">
+        <div class="scheme">
+          <div>
+            <p class="kicker">Swarna savings scheme</p>
+            <h2>Save monthly, buy gold your way</h2>
+            <p class="muted">Pay a fixed amount for 11 months. We add the 12th instalment as a bonus, and you can buy any jewellery with zero wastage charges on making.</p>
+          </div>
+          <form class="form" onsubmit="return false">
+            <label>Monthly amount <span class="amt" id="amt-out">₹5,000</span><input type="range" id="amt" min="1000" max="50000" step="500" value="5000"></label>
+            <div class="result" role="status" aria-live="polite">
+              <div><b id="r-paid">₹55,000</b><span>You pay (11 months)</span></div>
+              <div class="bonus"><b id="r-bonus">₹5,000</b><span>Our bonus</span></div>
+              <div><b id="r-total">₹60,000</b><span>To spend on gold</span></div>
+            </div>
+            <a href="#visit" class="btn btn-primary btn-block">Join the scheme</a>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="promise">
+      <div class="container">
+        <div class="section-head"><p class="kicker">Our promise</p><h2>Gold you can trust, for life</h2></div>
+        <div class="grid g4">
+          <div class="promise"><div class="icon-tile"><svg class="ic" aria-hidden="true"><use href="#ic-shield"/></svg></div><div><h3>Hallmarked</h3><p>Every piece carries BIS hallmark with HUID.</p></div></div>
+          <div class="promise"><div class="icon-tile"><svg class="ic" aria-hidden="true"><use href="#ic-scale"/></svg></div><div><h3>Transparent bills</h3><p>Weight, purity, wastage and making shown separately.</p></div></div>
+          <div class="promise"><div class="icon-tile"><svg class="ic" aria-hidden="true"><use href="#ic-swap"/></svg></div><div><h3>Lifetime exchange</h3><p>Exchange at today's rate, any time.</p></div></div>
+          <div class="promise"><div class="icon-tile"><svg class="ic" aria-hidden="true"><use href="#ic-video"/></svg></div><div><h3>Video shopping</h3><p>See designs live on WhatsApp video from home.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="visit">
+      <div class="container appt-grid">
+        <div>
+          <p class="kicker">Visit or video call</p>
+          <h2>Book a private appointment</h2>
+          <p class="muted">Take your time with our bridal consultants in a private lounge, or browse designs live over a video call with family who live far away.</p>
+          <ul class="hours"><li><span>Monday – Saturday</span><b>10:00 AM – 9:00 PM</b></li><li><span>Sunday</span><b>10:30 AM – 8:30 PM</b></li></ul>
+          <p class="contact-lines"><span><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> 54, South Masi Street, Madurai</span><span><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</span></p>
+        </div>
+        <div class="card">
+          <form class="form" data-demo data-demo-msg="Appointment requested! This is a demo. On your live website, you'd get this on WhatsApp or email.">
+            <div class="row">
+              <label>Your name<input type="text" required></label>
+              <label>Phone<input type="tel" required></label>
+            </div>
+            <div class="row">
+              <label>Looking for<select required><option value="">Choose…</option><option>Bridal set</option><option>Temple jewellery</option><option>Diamonds</option><option>Daily wear</option><option>Savings scheme</option></select></label>
+              <label>Appointment<select><option>Store visit</option><option>Video call</option></select></label>
+            </div>
+            <div class="row">
+              <label>Preferred date<input type="date" required></label>
+              <label>Budget<select><option>Under ₹1 lakh</option><option>₹1–3 lakh</option><option>₹3–10 lakh</option><option>Above ₹10 lakh</option></select></label>
+            </div>
+            <button class="btn btn-primary btn-block">Request appointment</button>
+            <p class="form-msg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="t-footer">
+    <div class="container">
+      <div class="cols">
+        <div><a href="#top" class="t-logo"><span class="mark"><svg class="ic" aria-hidden="true"><use href="#ic-diamond"/></svg></span><span>Swarna Mahal<small style="color:inherit">Jewellers · Since 1968</small></span></a><p>Three generations of trust in gold.</p></div>
+        <div><h4>Collections</h4><ul><li><a href="#collections">Bridal</a></li><li><a href="#collections">Temple</a></li><li><a href="#collections">Diamonds</a></li></ul></div>
+        <div><h4>Services</h4><ul><li><a href="#scheme">Savings scheme</a></li><li><a href="#promise">Exchange</a></li><li><a href="#visit">Video call</a></li></ul></div>
+        <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li><li><svg class="ic" aria-hidden="true"><use href="#ic-mail"/></svg> hello@swarnamahal.example</li><li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> South Masi Street, Madurai</li></ul></div>
+      </div>
+      <div class="bottom"><p>© <span data-year>2026</span> Swarna Mahal Jewellers (demo)</p><p>Website by SaaSQube Solutions</p></div>
+    </div>
+  </footer>
+
+  <a class="t-wa" href="#visit" aria-label="Chat on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5l-.1-.1z"/></svg></a>
+  <script src="../shared.js?v=20261122a" defer></script>
+  <script>
+    // Savings scheme calculator (11 instalments + 1 bonus instalment)
+    (function () {
+      var r = document.getElementById("amt"), inr = function (n) { return "₹" + n.toLocaleString("en-IN"); };
+      function upd() {
+        var m = +r.value;
+        document.getElementById("amt-out").textContent = inr(m);
+        document.getElementById("r-paid").textContent = inr(m * 11);
+        document.getElementById("r-bonus").textContent = inr(m);
+        document.getElementById("r-total").textContent = inr(m * 12);
+      }
+      r.addEventListener("input", upd); upd();
+    })();
+  </script>
+</body>
+</html>

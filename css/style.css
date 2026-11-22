@@ -310,6 +310,11 @@ p { margin: 0 0 1em; }
 .icon-tile svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .service:nth-child(even) .icon-tile { background: color-mix(in srgb, var(--accent) 13%, transparent); color: var(--accent-dark); }
 
+.card-wide { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; column-gap: 20px; align-items: center; }
+.card-wide .icon-tile { grid-row: span 2; margin: 0; }
+.card-wide h3, .card-wide p { margin-block: 0; }
+.card-wide h3 { align-self: end; margin-bottom: 4px; }
+.card-wide p { align-self: start; }
 @media (max-width: 960px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px) { .cards-grid { grid-template-columns: 1fr; } }
 

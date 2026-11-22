@@ -22,7 +22,7 @@ templates/        Industry demo websites to show clients (see below)
 
 ## Website templates (client demos)
 
-`templates/index.html` is a gallery page with live previews of nine demo websites, each for a fictional business with its own look:
+`templates/index.html` is a gallery page with live previews of fourteen demo websites, each for a fictional business with its own look:
 
 | Folder | Industry | Highlights |
 |---|---|---|
@@ -35,10 +35,15 @@ templates/        Industry demo websites to show clients (see below)
 | `school/` | School / college | Admissions, academics, facilities, notice board |
 | `gym/` | Gym & fitness | Plans, class schedule, BMI calculator, free trial |
 | `real-estate/` | Builders & realty | Property filters, amenities, EMI calculator, site visits |
+| `mobile-shop/` | Mobile phone shop | Phones with EMI, accessories, repair prices, exchange value estimator |
+| `photography/` | Photography & videography | Portfolio gallery with filters, wedding packages, date booking |
+| `fashion/` | Fashion & clothing boutique | Shop by category, new arrivals (women / men / kids), offers, tailoring |
+| `cafe/` | Café & coffee shop | Tabbed menu with ₹ prices and veg marks, work-friendly perks, events, table booking |
+| `jewellery/` | Jewellery store | Today's gold rate, collections, savings scheme calculator, appointments |
 
 All templates share `templates/shared.css` and `templates/shared.js` (header, mobile menu, forms, tabs, footer). Each sets its own colours and fonts in a `<style>` block at the top. Every template has a dark bar at the top linking back to the gallery, plus a **Get this website** button. That button opens the main site's contact form with the template already filled in (`index.html?template=Name#contact`). The bar is hidden automatically when a template is shown as a preview in the gallery.
 
-Forms in the templates are demo-only: they show a thank-you message and don't send anything. To turn a template into a client's real site, copy its folder, replace the names, contact details and content, swap the emoji/gradient visuals for real photos, and remove the demo bar.
+Forms in the templates are demo-only: they show a thank-you message and don't send anything. To turn a template into a client's real site, copy its folder, replace the names, contact details and content, swap the drawn / gradient visuals for real photos, and remove the demo bar.
 
 ## Light / dark theme
 
@@ -59,7 +64,7 @@ python3 -m http.server 8080
 
 ## Before going live: things to update
 
-1. **Contact details.** Edit the `CONTACT` object at the top of `js/main.js` (phone, WhatsApp number, email, address). Every phone, email and WhatsApp link on the page is filled from there. Also replace the placeholder values in `index.html` (search for `0000000000` and `saasqube.example`) so the links work even with JavaScript off.
+1. **Contact details.** These live in the `CONTACT` object at the top of `js/main.js` (currently +91 7397-063122, WhatsApp 917397063122, sales@saasqube.tech). Every phone, email and WhatsApp link on the page is filled from there; the same values are also written into `index.html` so the links work with JavaScript off, and into `emailjs/auto-reply-template.html`. Change all three places if they ever change.
 2. **Pricing.** The packages in the `#pricing` section are starting points; adjust them to your real rates.
 3. **SEO.** Update the `<title>`, `<meta name="description">` and the JSON-LD block in `index.html` with your exact city/address, and add a `<link rel="canonical">` once you have a domain.
 
@@ -68,7 +73,7 @@ python3 -m http.server 8080
 The form has two buttons:
 
 - **Send on WhatsApp** opens WhatsApp with the visitor's answers, addressed to your number.
-- **Send by email** sends the enquiry straight to your inbox through [EmailJS](https://www.emailjs.com/). If the visitor gives an email address, they also get a thank-you copy.
+- **Send by email** sends the enquiry straight to your inbox through [EmailJS](https://www.emailjs.com/). Email is required, and every visitor gets a thank-you copy at that address.
 
 EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
 
