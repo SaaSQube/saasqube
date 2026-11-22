@@ -173,6 +173,8 @@ templates/        Industry demo websites to show clients (see below)
 | `cafe/` | Café & coffee shop | Tabbed menu with ₹ prices and veg marks, work-friendly perks, events, table booking |
 | `jewellery/` | Jewellery store | Today's gold rate, collections, savings scheme calculator, appointments |
 
+The **mobile shop** template uses real photos in `templates/mobile-shop/img/`, downloaded from [Unsplash](https://unsplash.com/license) (free for commercial use, no attribution required; credited in the template footer anyway): store display by Jason Leung, Samsung Galaxy by Christian Wiediger and charlesdeluvio, OnePlus by Denny Ryanto, iPhone 15 Pro by Thai Nguyen, earbuds by atelierbyvineeth, USB-C cable by Marcus Urbenz, smartwatch by Artur Łuczka, phone cases by Behar Zenuni and phone repair by PR MEDIA. The other templates use drawn (SVG/CSS) artwork, so they need no image files.
+
 All templates share `templates/shared.css` and `templates/shared.js` (header, mobile menu, forms, tabs, footer). Each sets its own colours and fonts in a `<style>` block at the top. Every template has a dark bar at the top linking back to the gallery, plus a **Get this website** button. That button opens the main site's contact form with the template already filled in (`index.html?template=Name#contact`). The bar is hidden automatically when a template is shown as a preview in the gallery.
 
 Forms in the templates are demo-only: they show a thank-you message and don't send anything. To turn a template into a client's real site, copy its folder, replace the names, contact details and content, swap the drawn / gradient visuals for real photos, and remove the demo bar.

@@ -34,22 +34,13 @@
     .chips span { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 600; font-size: .88rem; color: var(--heading); }
     .chips .ic { color: var(--primary); }
 
-    /* CSS phone mock-ups */
-    .phones { position: relative; height: 440px; max-width: 460px; margin-inline: auto; width: 100%; }
-    .phone { position: absolute; width: 190px; aspect-ratio: 9 / 19; border-radius: 34px; background: #11141c; padding: 9px; box-shadow: 0 40px 60px -30px rgba(12, 18, 38, .6), inset 0 0 0 2px #2a2f3d; }
-    .phone .screen { position: relative; width: 100%; height: 100%; border-radius: 26px; overflow: hidden; }
-    .phone .screen::before { content: ""; position: absolute; top: 10px; left: 50%; width: 30%; height: 16px; transform: translateX(-50%); border-radius: 999px; background: #11141c; z-index: 2; }
-    .phone .screen::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(255, 255, 255, .25), transparent 40%); }
-    .phone.p1 { left: 8%; top: 30px; transform: rotate(-8deg); }
-    .phone.p1 .screen { background: radial-gradient(circle at 30% 30%, #7aa2ff, #2b59ff 45%, #12236b); }
-    .phone.p2 { right: 6%; top: 0; transform: rotate(6deg); z-index: 1; }
-    .phone.p2 .screen { background: radial-gradient(circle at 70% 25%, #ffc29e, #ff6b2c 45%, #7a1f4a); }
-    .phone .clock { position: absolute; left: 0; right: 0; top: 22%; text-align: center; color: #fff; font: 600 2.4rem/1 var(--font-head); z-index: 1; }
-    .phone .clock small { display: block; font: 500 .7rem var(--font); opacity: .85; margin-top: 6px; }
+    /* Hero photo */
+    .hero-photo { position: relative; margin: 0 auto; max-width: 470px; width: 100%; }
+    .hero-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 28px; box-shadow: 0 40px 60px -30px rgba(12, 18, 38, .55); }
     .price-tag { position: absolute; z-index: 3; background: #fff; border-radius: 14px; padding: 10px 14px; box-shadow: 0 18px 34px -16px rgba(12, 18, 38, .35); font-size: .82rem; color: var(--muted); }
     .price-tag strong { display: block; color: var(--heading); font: 700 1.1rem var(--font-head); }
-    .price-tag.t1 { left: 0; bottom: 30px; }
-    .price-tag.t2 { right: 0; bottom: 90px; }
+    .price-tag.t1 { left: -18px; bottom: 36px; }
+    .price-tag.t2 { right: -18px; top: 36px; }
     .price-tag .ok { color: #16a34a; font-weight: 700; }
 
     /* Brands */
@@ -65,9 +56,10 @@
     .product[hidden] { display: none; }
     .product .art { aspect-ratio: 1.2; display: grid; place-items: center; background: var(--tint); position: relative; }
     .product .tag { position: absolute; top: 12px; left: 12px; background: var(--accent); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
-    .mini-phone { width: 32%; aspect-ratio: 9 / 19; border-radius: 16px; background: #11141c; padding: 4px; box-shadow: 0 18px 24px -14px rgba(12, 18, 38, .6); }
-    .mini-phone i { display: block; width: 100%; height: 100%; border-radius: 12px; background: var(--g); }
-    .acc { width: 44%; height: auto; color: var(--heading); }
+    .product .art { overflow: hidden; }
+    .product .art img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+    .product:hover .art img { transform: scale(1.06); }
+    .product .tag { z-index: 1; }
     .product .body { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
     .product h3 { margin-bottom: 2px; font-size: 1.08rem; }
     .product .spec { color: var(--muted); font-size: .86rem; margin-bottom: 10px; }
@@ -89,6 +81,7 @@
     .ticks { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 10px; }
     .ticks li { display: flex; gap: 10px; align-items: flex-start; }
     .ticks .ic { color: #16a34a; margin-top: 3px; }
+    .repair-photo { width: 100%; height: auto; aspect-ratio: 900 / 640; object-fit: cover; border-radius: 18px; margin-top: 26px; box-shadow: 0 24px 40px -26px rgba(12, 18, 38, .5); }
 
     /* Exchange estimator */
     .exchange { background: linear-gradient(140deg, #0c1226, #1b2a6b); color: #c8d1ee; border-radius: 28px; padding: clamp(28px, 5vw, 52px); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
@@ -108,12 +101,10 @@
 
     @media (max-width: 900px) {
       .hero-grid, .repair-grid, .exchange, .visit { grid-template-columns: 1fr; }
-      .phones { height: 400px; }
     }
     @media (max-width: 480px) {
-      .phone { width: 150px; border-radius: 28px; }
-      .phone .screen { border-radius: 21px; }
-      .phones { height: 340px; }
+      .price-tag.t1 { left: 10px; bottom: 14px; }
+      .price-tag.t2 { right: 10px; top: 14px; }
       .repair-list { grid-template-columns: 1fr; }
     }
   </style>
@@ -134,10 +125,6 @@
       <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
       <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></symbol>
       <symbol id="ic-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
-      <!-- Accessory drawings -->
-      <symbol id="ac-buds" viewBox="0 0 100 100"><rect x="18" y="38" width="64" height="44" rx="20" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M18 56h64" stroke="currentColor" stroke-width="2"/><circle cx="50" cy="66" r="2.5" fill="#16a34a"/><path d="M36 38v-8a6 6 0 0 1 12 0v8M52 38v-8a6 6 0 0 1 12 0v8" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
-      <symbol id="ac-charger" viewBox="0 0 100 100"><rect x="26" y="30" width="48" height="44" rx="10" fill="#fff" stroke="currentColor" stroke-width="3"/><path d="M40 30V16M60 30V16" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M52 42l-8 11h10l-8 11" fill="none" stroke="#2b59ff" stroke-width="3" stroke-linejoin="round"/><path d="M50 74v8c0 6 6 8 12 8h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
-      <symbol id="ac-watch" viewBox="0 0 100 100"><path d="M38 22l3-12h18l3 12M38 78l3 12h18l3-12" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><rect x="28" y="22" width="44" height="56" rx="14" fill="#11141c"/><rect x="33" y="27" width="34" height="46" rx="10" fill="#2b59ff"/><path d="M50 38v12l7 5" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M72 42h4v10h-4" fill="currentColor"/></symbol>
     </defs>
   </svg>
 
@@ -183,12 +170,12 @@
             <span><svg class="ic" aria-hidden="true"><use href="#ic-truck"/></svg> Free home delivery</span>
           </div>
         </div>
-        <div class="phones" aria-hidden="true">
-          <div class="phone p1"><div class="screen"><div class="clock">10:09<small>Monday, 14 July</small></div></div></div>
-          <div class="phone p2"><div class="screen"><div class="clock">9:41<small>Exchange &amp; save</small></div></div></div>
-          <div class="price-tag t1">Starting at<strong>₹9,999</strong></div>
-          <div class="price-tag t2"><span class="ok">EMI ready</span><strong>₹1,999/mo</strong></div>
-        </div>
+        <figure class="hero-photo">
+          <img src="img/hero-store.jpg" alt="Latest smartphones on display stands in the store" width="1000" height="1000" fetchpriority="high">
+          <div class="price-tag t1" aria-hidden="true">Starting at<strong>₹9,999</strong></div>
+          <div class="price-tag t2" aria-hidden="true"><span class="ok">EMI ready</span><strong>₹1,999/mo</strong></div>
+        </figure>
+</div>
       </div>
     </section>
 
@@ -209,14 +196,14 @@
           <button data-filter="acc">Accessories</button>
         </div>
         <div class="grid g4">
-          <article class="card product" data-cat="phone"><div class="art"><span class="tag">New</span><div class="mini-phone" style="--g:radial-gradient(circle at 30% 30%,#9db8ff,#2b59ff 50%,#12236b)"><i></i></div></div><div class="body"><h3>Galaxy S-series 5G</h3><p class="spec">12 GB · 256 GB · 200 MP camera</p><span class="price">₹74,999<s>₹84,999</s></span><span class="emi">No-cost EMI from ₹6,250/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="phone"><div class="art"><div class="mini-phone" style="--g:radial-gradient(circle at 70% 25%,#ffd0b5,#ff6b2c 50%,#7a1f4a)"><i></i></div></div><div class="body"><h3>Nord CE 5G</h3><p class="spec">8 GB · 128 GB · 100 W charging</p><span class="price">₹24,999<s>₹27,999</s></span><span class="emi">No-cost EMI from ₹2,084/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="phone"><div class="art"><span class="tag">Best value</span><div class="mini-phone" style="--g:linear-gradient(160deg,#a7f3d0,#10b981 55%,#065f46)"><i></i></div></div><div class="body"><h3>Redmi Note 5G</h3><p class="spec">6 GB · 128 GB · 5,000 mAh</p><span class="price">₹14,999<s>₹16,999</s></span><span class="emi">No-cost EMI from ₹1,250/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="phone"><div class="art"><div class="mini-phone" style="--g:linear-gradient(160deg,#e9d5ff,#8b5cf6 55%,#3b0764)"><i></i></div></div><div class="body"><h3>iPhone 15</h3><p class="spec">128 GB · A16 Bionic · USB-C</p><span class="price">₹61,900<s>₹69,900</s></span><span class="emi">No-cost EMI from ₹5,159/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="acc"><div class="art"><svg class="acc" viewBox="0 0 100 100" aria-hidden="true"><use href="#ac-buds"/></svg></div><div class="body"><h3>Wireless earbuds</h3><p class="spec">ANC · 30 hr battery</p><span class="price">₹2,499<s>₹3,999</s></span><span class="emi">1 year warranty</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="acc"><div class="art"><svg class="acc" viewBox="0 0 100 100" aria-hidden="true"><use href="#ac-charger"/></svg></div><div class="body"><h3>65 W fast charger</h3><p class="spec">USB-C · with 1 m cable</p><span class="price">₹1,299<s>₹1,799</s></span><span class="emi">Works with most phones</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="acc"><div class="art"><svg class="acc" viewBox="0 0 100 100" aria-hidden="true"><use href="#ac-watch"/></svg></div><div class="body"><h3>Smart watch</h3><p class="spec">AMOLED · calling · SpO2</p><span class="price">₹3,499<s>₹4,999</s></span><span class="emi">1 year warranty</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
-          <article class="card product" data-cat="acc"><div class="art"><div class="mini-phone" style="--g:repeating-linear-gradient(45deg,#c7d2fe 0 6px,#e0e7ff 6px 12px)"><i></i></div></div><div class="body"><h3>Cases &amp; screen guards</h3><p class="spec">For 500+ models, fitted free</p><span class="price">From ₹199</span><span class="emi">Fitted while you wait</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Ask for your model</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><span class="tag">New</span><img src="img/galaxy-s.jpg" alt="Black Samsung Galaxy smartphone" width="640" height="534" loading="lazy"></div><div class="body"><h3>Galaxy S-series 5G</h3><p class="spec">12 GB · 256 GB · 200 MP camera</p><span class="price">₹74,999<s>₹84,999</s></span><span class="emi">No-cost EMI from ₹6,250/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><img src="img/oneplus-nord.jpg" alt="OnePlus smartphone held in a hand" width="640" height="534" loading="lazy"></div><div class="body"><h3>Nord CE 5G</h3><p class="spec">8 GB · 128 GB · 100 W charging</p><span class="price">₹24,999<s>₹27,999</s></span><span class="emi">No-cost EMI from ₹2,084/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><span class="tag">Best value</span><img src="img/galaxy-a.jpg" alt="Two black Samsung Galaxy smartphones" width="640" height="534" loading="lazy"></div><div class="body"><h3>Galaxy A-series 5G</h3><p class="spec">8 GB · 128 GB · 50 MP camera</p><span class="price">₹18,999<s>₹21,999</s></span><span class="emi">No-cost EMI from ₹1,584/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="phone"><div class="art"><img src="img/iphone-15-pro.jpg" alt="Blue iPhone 15 Pro held in a hand" width="640" height="534" loading="lazy"></div><div class="body"><h3>iPhone 15 Pro</h3><p class="spec">128 GB · A17 Pro · Titanium</p><span class="price">₹1,09,900<s>₹1,19,900</s></span><span class="emi">No-cost EMI from ₹9,159/mo</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="acc"><div class="art"><img src="img/earbuds.jpg" alt="White wireless earbuds with charging case" width="640" height="534" loading="lazy"></div><div class="body"><h3>Wireless earbuds</h3><p class="spec">ANC · 30 hr battery</p><span class="price">₹2,499<s>₹3,999</s></span><span class="emi">1 year warranty</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="acc"><div class="art"><img src="img/usb-c-cable.jpg" alt="USB-C fast charging cable" width="640" height="534" loading="lazy"></div><div class="body"><h3>Fast charging cable</h3><p class="spec">USB-C · 1 m braided · 65 W</p><span class="price">₹499<s>₹799</s></span><span class="emi">Works with most phones</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="acc"><div class="art"><img src="img/smartwatch.jpg" alt="Black smartwatch on a wrist" width="640" height="534" loading="lazy"></div><div class="body"><h3>Smart watch</h3><p class="spec">AMOLED · calling · heart rate</p><span class="price">₹3,499<s>₹4,999</s></span><span class="emi">1 year warranty</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Reserve in store</a></div></article>
+          <article class="card product" data-cat="acc"><div class="art"><img src="img/phone-cases.jpg" alt="Phone cases in four colours" width="640" height="534" loading="lazy"></div><div class="body"><h3>Cases &amp; screen guards</h3><p class="spec">For 500+ models, fitted free</p><span class="price">From ₹199</span><span class="emi">Fitted while you wait</span><a href="#visit" class="btn btn-primary btn-sm btn-block">Ask for your model</a></div></article>
         </div>
       </div>
     </section>
@@ -232,6 +219,7 @@
             <li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg> 90-day warranty on parts and labour</li>
             <li><svg class="ic" aria-hidden="true"><use href="#ic-check"/></svg> Your data stays on your phone</li>
           </ul>
+          <img class="repair-photo" src="img/repair.jpg" alt="Technician repairing a smartphone at a repair bench" width="900" height="640" loading="lazy">
         </div>
         <div class="repair-list">
           <div class="card"><div class="icon-tile"><svg class="ic" aria-hidden="true"><use href="#ic-screen"/></svg></div><h3>Screen replacement</h3><p>Cracked glass or dead display</p><span class="from">From ₹1,499</span></div>
@@ -286,7 +274,7 @@
         <div><h4>Services</h4><ul><li><a href="#repairs">Repairs</a></li><li><a href="#shop">EMI options</a></li></ul></div>
         <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" aria-hidden="true"><use href="#ic-call"/></svg> +91 90000 00000</li><li><svg class="ic" aria-hidden="true"><use href="#ic-mail"/></svg> hello@phonehub.example</li><li><svg class="ic" aria-hidden="true"><use href="#ic-pin"/></svg> T. Nagar, Chennai</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> PhoneHub Mobiles (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> PhoneHub Mobiles (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 
