@@ -30,22 +30,20 @@
     .hero .btn-outline { color: var(--primary); }
     .badge-row { display: flex; gap: 18px; margin-top: 28px; flex-wrap: wrap; font-weight: 700; font-size: .92rem; }
     .badge-row span { display: flex; align-items: center; gap: 6px; }
-    .bake-art { position: relative; aspect-ratio: 1; max-width: 480px; margin-inline: auto; width: 100%; }
-    .bake-art .circle { position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffe2bf, #f6c48f 55%, #e9a868); box-shadow: inset 0 -20px 40px rgba(181, 101, 29, .25), 0 40px 70px -30px rgba(143, 76, 18, .5); display: grid; place-items: center; }
-    .bake-art .circle .il { width: 62%; height: auto; filter: drop-shadow(0 14px 18px rgba(122, 67, 33, .35)); }
-    .bake-art .bubble { position: absolute; width: 26%; aspect-ratio: 1; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 18px 30px -16px rgba(143, 76, 18, .5); animation: bob 5s ease-in-out infinite; }
-    .bake-art .bubble .il { width: 70%; height: auto; }
-    .bake-art .b1 { top: 0; left: 4%; }
-    .bake-art .b2 { top: 6%; right: 0; animation-delay: -1.5s; }
-    .bake-art .b3 { bottom: 2%; left: 10%; animation-delay: -3s; }
-    .bake-art .b4 { bottom: 6%; right: 6%; animation-delay: -2s; }
+    .bake-art { position: relative; max-width: 420px; margin-inline: auto; width: 100%; aspect-ratio: 4 / 5; }
+    .bake-art .main { width: 100%; height: 100%; object-fit: cover; border-radius: 210px 210px 28px 28px; box-shadow: 0 40px 70px -30px rgba(143, 76, 18, .55); }
+    .bake-art .bubble { position: absolute; width: 27%; aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 5px solid #fff; box-shadow: 0 18px 30px -14px rgba(143, 76, 18, .55); animation: bob 5s ease-in-out infinite; }
+    .bake-art .bubble img { width: 100%; height: 100%; object-fit: cover; }
+    .bake-art .b1 { top: 12%; left: -9%; }
+    .bake-art .b2 { top: 34%; right: -10%; animation-delay: -1.5s; }
+    .bake-art .b3 { bottom: 16%; left: -11%; animation-delay: -3s; }
+    .bake-art .b4 { bottom: -5%; right: 12%; animation-delay: -2s; }
+    @media (max-width: 520px) { .bake-art { max-width: 300px; } .bake-art .b1, .bake-art .b3 { left: -6%; } .bake-art .b2 { right: -6%; } }
     @keyframes bob { 50% { transform: translateY(-10px) rotate(4deg); } }
     .product { padding: 0; overflow: hidden; text-align: center; display: flex; flex-direction: column; }
-    .product .art { aspect-ratio: 1.25; display: grid; place-items: center; background: var(--tint); }
-    .product .art .il { width: 48%; height: auto; transition: transform .35s; filter: drop-shadow(0 10px 12px rgba(122, 67, 33, .22)); }
-    .product:hover .art .il { transform: scale(1.08) rotate(-3deg); }
-    .product:nth-child(3n+2) .art { background: #fde4e8; }
-    .product:nth-child(3n) .art { background: #fff1c9; }
+    .product .art { aspect-ratio: 1.25; overflow: hidden; background: var(--tint); }
+    .product .art img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+    .product:hover .art img { transform: scale(1.06); }
     .product .body { padding: 18px 18px 22px; flex: 1; display: flex; flex-direction: column; }
     .product h3 { margin-bottom: 2px; font-size: 1.15rem; }
     .product p { color: var(--muted); font-size: .9rem; margin-bottom: 12px; }
@@ -57,6 +55,7 @@
     .cake-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
     .cake-box { background: #fff; border-radius: 28px; padding: 32px; border: 2px dashed var(--line); }
     .flavours { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+    .cake-photo { width: 100%; height: auto; aspect-ratio: 900 / 640; object-fit: cover; border-radius: 24px; margin-top: 8px; box-shadow: 0 24px 40px -26px rgba(143, 76, 18, .5); }
     .flavours span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: .9rem; }
     .why { text-align: center; }
     .ic { width: 1.15em; height: 1.15em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -68,11 +67,12 @@
     .contact-lines { display: grid; gap: 6px; }
     .contact-lines span, .foot-contact li { display: flex; align-items: center; gap: 8px; }
     .contact-lines .ic { color: var(--primary); }
-    .pin-ic { display: block; color: var(--primary); margin-bottom: 6px; }
-    .pin-ic .ic { width: 40px; height: 40px; margin-inline: auto; fill: #fff; filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .2)); }
     .why p { color: var(--muted); font-size: .94rem; }
     .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .visit .card h3 { margin-bottom: 14px; }
+    .store-photo { position: relative; margin: 0; min-height: 260px; border-radius: var(--radius); overflow: hidden; }
+    .store-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .store-photo .btn { position: absolute; left: 18px; bottom: 18px; }
     .visit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
     .visit li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 8px; }
     @media (max-width: 900px) { .hero-grid, .cake-grid, .visit { grid-template-columns: 1fr; } }
@@ -81,64 +81,6 @@
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <defs>
-      <!-- Illustrations (flat) -->
-      <symbol id="il-cake" viewBox="0 0 120 120">
-        <ellipse cx="60" cy="102" rx="48" ry="8" fill="#ead3bb"/>
-        <rect x="20" y="64" width="80" height="36" rx="7" fill="#7a4321"/>
-        <rect x="20" y="78" width="80" height="6" fill="#f3cf9f"/>
-        <rect x="20" y="64" width="80" height="8" rx="4" fill="#fbe8d0"/>
-        <rect x="27" y="68" width="6" height="12" rx="3" fill="#fbe8d0"/><rect x="45" y="68" width="6" height="8" rx="3" fill="#fbe8d0"/><rect x="63" y="68" width="6" height="14" rx="3" fill="#fbe8d0"/><rect x="83" y="68" width="6" height="9" rx="3" fill="#fbe8d0"/>
-        <rect x="32" y="38" width="56" height="28" rx="7" fill="#8f4c12"/>
-        <rect x="32" y="38" width="56" height="8" rx="4" fill="#fde7ef"/>
-        <rect x="38" y="42" width="6" height="11" rx="3" fill="#fde7ef"/><rect x="52" y="42" width="6" height="7" rx="3" fill="#fde7ef"/><rect x="66" y="42" width="6" height="12" rx="3" fill="#fde7ef"/><rect x="78" y="42" width="5" height="8" rx="2.5" fill="#fde7ef"/>
-        <circle cx="45" cy="35" r="5" fill="#d94b5f"/><circle cx="75" cy="35" r="5" fill="#d94b5f"/>
-        <rect x="57.5" y="14" width="5" height="22" rx="2" fill="#e88d9b"/><path d="M57.5 19h5M57.5 25h5M57.5 31h5" stroke="#fff" stroke-width="1.6"/>
-        <path d="M60 3c3 4 4.5 6.5 4.5 8.5a4.5 4.5 0 0 1-9 0C55.5 9.5 57 7 60 3z" fill="#f5b301"/>
-      </symbol>
-      <symbol id="il-slice" viewBox="0 0 120 120">
-        <ellipse cx="60" cy="102" rx="46" ry="8" fill="#ead3bb"/>
-        <path d="M22 58 60 40l38 18z" fill="#fff7ec"/>
-        <rect x="22" y="58" width="76" height="40" rx="4" fill="#f3c77a"/>
-        <rect x="22" y="70" width="76" height="6" fill="#fff7ec"/><rect x="22" y="86" width="76" height="5" fill="#fff7ec"/>
-        <circle cx="34" cy="73" r="2.5" fill="#d94b5f"/><circle cx="58" cy="73" r="2.5" fill="#f5a524"/><circle cx="82" cy="73" r="2.5" fill="#d94b5f"/>
-        <path d="M52 44c0-6 4-10 8-10s8 4 8 10c0 5-4 9-8 11-4-2-8-6-8-11z" fill="#d94b5f"/>
-        <path d="M54 34c2-3 4-4 6-3 2-1 4 0 6 3-2 1-4 1-6 0-2 1-4 1-6 0z" fill="#3f8f4a"/>
-        <circle cx="57" cy="42" r=".9" fill="#ffd9de"/><circle cx="63" cy="45" r=".9" fill="#ffd9de"/><circle cx="59" cy="49" r=".9" fill="#ffd9de"/>
-        <ellipse cx="82" cy="52" rx="9" ry="4" fill="#7cb342"/><ellipse cx="82" cy="52" rx="5" ry="2" fill="#c5e1a5"/>
-      </symbol>
-      <symbol id="il-croissant" viewBox="0 0 120 120">
-        <ellipse cx="60" cy="96" rx="44" ry="7" fill="#ead3bb"/>
-        <g stroke="#b06a1b" stroke-width="2.5">
-          <ellipse cx="22" cy="78" rx="8" ry="12" transform="rotate(-55 22 78)" fill="#e6a243"/>
-          <ellipse cx="98" cy="78" rx="8" ry="12" transform="rotate(55 98 78)" fill="#e6a243"/>
-          <ellipse cx="37" cy="66" rx="13" ry="19" transform="rotate(-35 37 66)" fill="#df9534"/>
-          <ellipse cx="83" cy="66" rx="13" ry="19" transform="rotate(35 83 66)" fill="#df9534"/>
-          <ellipse cx="60" cy="60" rx="17" ry="25" fill="#d98a2b"/>
-        </g>
-        <path d="M52 46c4-3 12-3 16 0" stroke="#f6cf8d" stroke-width="3" stroke-linecap="round" fill="none"/>
-      </symbol>
-      <symbol id="il-cookie" viewBox="0 0 120 120">
-        <circle cx="60" cy="60" r="38" fill="#d9a35f" stroke="#b9803f" stroke-width="4"/>
-        <circle cx="48" cy="44" r="5" fill="#5a3420"/><circle cx="72" cy="40" r="4" fill="#5a3420"/><circle cx="80" cy="62" r="5.5" fill="#5a3420"/>
-        <circle cx="42" cy="68" r="4.5" fill="#5a3420"/><circle cx="62" cy="76" r="5" fill="#5a3420"/><circle cx="60" cy="56" r="3.5" fill="#5a3420"/><circle cx="34" cy="52" r="2.5" fill="#5a3420"/>
-        <path d="M40 34c6-5 14-7 22-6" stroke="#ecc58c" stroke-width="3" stroke-linecap="round" fill="none"/>
-      </symbol>
-      <symbol id="il-cupcake" viewBox="0 0 120 120">
-        <path d="M32 64h56l-8 40H40z" fill="#e88d9b"/>
-        <path d="M44 64l2 40M56 64v40M64 64v40M76 64l-2 40" stroke="#d16f80" stroke-width="3"/>
-        <ellipse cx="60" cy="62" rx="32" ry="10" fill="#fff1f3"/>
-        <ellipse cx="60" cy="52" rx="26" ry="10" fill="#ffe3e8"/>
-        <ellipse cx="60" cy="42" rx="18" ry="9" fill="#fff1f3"/>
-        <path d="M60 22c6 4 9 9 6 14H54c-3-5 0-10 6-14z" fill="#ffe3e8"/>
-        <circle cx="60" cy="22" r="6" fill="#d94b5f"/><path d="M60 16c1-4 4-6 7-7" stroke="#3f8f4a" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <rect x="42" y="48" width="6" height="2.4" rx="1.2" fill="#f5a524" transform="rotate(-25 45 49)"/><rect x="70" y="44" width="6" height="2.4" rx="1.2" fill="#4fb3d9" transform="rotate(30 73 45)"/><rect x="56" y="56" width="6" height="2.4" rx="1.2" fill="#8bc34a" transform="rotate(10 59 57)"/>
-      </symbol>
-      <symbol id="il-bread" viewBox="0 0 120 120">
-        <ellipse cx="60" cy="96" rx="46" ry="7" fill="#ead3bb"/>
-        <path d="M16 82c0-24 18-38 44-38s44 14 44 38c0 6-4 10-10 10H26c-6 0-10-4-10-10z" fill="#c97b32"/>
-        <path d="M24 70c4-12 16-20 36-20" stroke="#e0a05a" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <path d="M40 58l9 14M56 54l9 15M72 56l9 14" stroke="#f3cf96" stroke-width="4.5" stroke-linecap="round"/>
-      </symbol>
       <!-- Line icons -->
       <symbol id="ic-eggless" viewBox="0 0 24 24"><path d="M12 3c-3.4 0-6 5.4-6 9.8a6 6 0 0 0 12 0C18 8.4 15.4 3 12 3z"/><path d="M4 4l16 16"/></symbol>
       <symbol id="ic-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8"/><circle cx="6" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
@@ -184,10 +126,13 @@
           </div>
           <div class="badge-row"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-eggless"/></svg> Eggless options</span><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-truck"/></svg> Same-day delivery</span><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-wheat"/></svg> No preservatives</span></div>
         </div>
-        <div class="bake-art" aria-hidden="true">
-          <div class="circle"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cake"/></svg></div>
-          <div class="bubble b1"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-croissant"/></svg></div><div class="bubble b2"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cookie"/></svg></div><div class="bubble b3"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cupcake"/></svg></div><div class="bubble b4"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-bread"/></svg></div>
-        </div>
+        <div class="bake-art">
+          <img class="main" src="img/hero-display.jpg" alt="Fresh pastries and cakes on the bakery counter" width="800" height="1000" fetchpriority="high">
+          <span class="bubble b1" aria-hidden="true"><img src="img/bubble-croissant.jpg" alt="" width="240" height="240"></span>
+          <span class="bubble b2" aria-hidden="true"><img src="img/bubble-cookie.jpg" alt="" width="240" height="240"></span>
+          <span class="bubble b3" aria-hidden="true"><img src="img/bubble-cupcake.jpg" alt="" width="240" height="240"></span>
+          <span class="bubble b4" aria-hidden="true"><img src="img/bubble-bread.jpg" alt="" width="240" height="240"></span>
+</div>
       </div>
     </section>
 
@@ -198,12 +143,12 @@
           <h2>Our customers' favourites</h2>
         </div>
         <div class="grid g3">
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cake"/></svg></div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Belgian Chocolate Truffle</h3><p>Rich dark chocolate ganache, 500 g</p><div class="foot"><span class="price">₹650</span><button class="add" aria-label="Add Belgian Chocolate Truffle">+</button></div></div></article>
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-slice"/></svg></div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Fresh Fruit Gateau</h3><p>Vanilla sponge, cream &amp; seasonal fruits</p><div class="foot"><span class="price">₹550</span><button class="add" aria-label="Add Fresh Fruit Gateau">+</button></div></div></article>
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-croissant"/></svg></div><div class="body"><h3>Butter Croissant</h3><p>Flaky, golden and baked every hour</p><div class="foot"><span class="price">₹70</span><button class="add" aria-label="Add Butter Croissant">+</button></div></div></article>
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cookie"/></svg></div><div class="body"><span class="eggless">EGGLESS</span><h3>Choco Chip Cookies</h3><p>Box of 12, crisp edges, gooey centre</p><div class="foot"><span class="price">₹240</span><button class="add" aria-label="Add Choco Chip Cookies">+</button></div></div></article>
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-cupcake"/></svg></div><div class="body"><span class="eggless">EGGLESS</span><h3>Red Velvet Cupcakes</h3><p>Box of 6 with cream cheese frosting</p><div class="foot"><span class="price">₹320</span><button class="add" aria-label="Add Red Velvet Cupcakes">+</button></div></div></article>
-          <article class="card product"><div class="art" aria-hidden="true"><svg class="il" viewBox="0 0 120 120" aria-hidden="true"><use href="#il-bread"/></svg></div><div class="body"><h3>Whole Wheat Bread</h3><p>Soft, wholesome loaf, 400 g</p><div class="foot"><span class="price">₹60</span><button class="add" aria-label="Add Whole Wheat Bread">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/chocolate-truffle.jpg" alt="Chocolate truffle cake with piped chocolate swirls" width="640" height="512" loading="lazy"></div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Belgian Chocolate Truffle</h3><p>Rich dark chocolate ganache, 500 g</p><div class="foot"><span class="price">₹650</span><button class="add" aria-label="Add Belgian Chocolate Truffle">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/fruit-gateau.jpg" alt="Slice of strawberry cream gateau" width="640" height="512" loading="lazy"></div><div class="body"><span class="eggless">EGGLESS AVAILABLE</span><h3>Fresh Fruit Gateau</h3><p>Vanilla sponge, cream &amp; seasonal fruits</p><div class="foot"><span class="price">₹550</span><button class="add" aria-label="Add Fresh Fruit Gateau">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/croissant.jpg" alt="Butter croissant on a plate" width="640" height="512" loading="lazy"></div><div class="body"><h3>Butter Croissant</h3><p>Flaky, golden and baked every hour</p><div class="foot"><span class="price">₹70</span><button class="add" aria-label="Add Butter Croissant">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/cookies.jpg" alt="Chocolate chip cookies" width="640" height="512" loading="lazy"></div><div class="body"><span class="eggless">EGGLESS</span><h3>Choco Chip Cookies</h3><p>Box of 12, crisp edges, gooey centre</p><div class="foot"><span class="price">₹240</span><button class="add" aria-label="Add Choco Chip Cookies">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/red-velvet.jpg" alt="Red velvet cupcakes with cream cheese frosting" width="640" height="512" loading="lazy"></div><div class="body"><span class="eggless">EGGLESS</span><h3>Red Velvet Cupcakes</h3><p>Box of 6 with cream cheese frosting</p><div class="foot"><span class="price">₹320</span><button class="add" aria-label="Add Red Velvet Cupcakes">+</button></div></div></article>
+          <article class="card product"><div class="art"><img src="img/wheat-bread.jpg" alt="Sliced whole wheat bread loaf" width="640" height="512" loading="lazy"></div><div class="body"><h3>Whole Wheat Bread</h3><p>Soft, wholesome loaf, 400 g</p><div class="foot"><span class="price">₹60</span><button class="add" aria-label="Add Whole Wheat Bread">+</button></div></div></article>
         </div>
       </div>
     </section>
@@ -216,6 +161,7 @@
           <p class="muted">Birthdays, weddings, anniversaries or office parties — tell us what you have in mind and our bakers will make it happen. Order at least 24 hours in advance.</p>
           <div class="flavours"><span>Chocolate</span><span>Black Forest</span><span>Butterscotch</span><span>Red Velvet</span><span>Pineapple</span><span>Rasmalai</span><span>Mango</span></div>
           <p class="muted">Photo cakes, theme cakes and tiered wedding cakes available on request.</p>
+          <img class="cake-photo" src="img/custom-cake.jpg" alt="Decorated birthday cake with lit candles" width="900" height="640" loading="lazy">
         </div>
         <div class="cake-box">
           <form class="form" data-demo>
@@ -261,7 +207,10 @@
             <ul><li><span>Monday – Friday</span><b>6:00 AM – 10:00 PM</b></li><li><span>Saturday</span><b>6:00 AM – 11:00 PM</b></li><li><span>Sunday</span><b>7:00 AM – 10:00 PM</b></li></ul>
             <p class="muted contact-lines" style="margin:16px 0 0"><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-pin"/></svg> 5, Cross Cut Road, Gandhipuram, Coimbatore</span><span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-phone"/></svg> +91 90000 00000</span></p>
           </div>
-          <div class="map-ph" style="--map-bg:#fdf1e3"><div><span class="pin-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-pin"/></svg></span>Google Map goes here</div></div>
+          <figure class="store-photo">
+            <img src="img/store-counter.jpg" alt="Breads and pastries on the counter inside the bakery" width="900" height="700" loading="lazy">
+            <a class="btn btn-primary btn-sm" href="#visit">Get directions</a>
+          </figure>
         </div>
       </div>
     </section>
@@ -275,7 +224,7 @@
         <div><h4>Order</h4><ul><li><a href="#cakes">Custom cakes</a></li><li><a href="#visit">Store pickup</a></li></ul></div>
         <div><h4>Contact</h4><ul class="foot-contact"><li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-phone"/></svg> +91 90000 00000</li><li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-mail"/></svg> hello@goldencrust.example</li><li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#ic-pin"/></svg> Gandhipuram, Coimbatore</li></ul></div>
       </div>
-      <div class="bottom"><p>© <span data-year>2026</span> Golden Crust Bakery (demo)</p><p>Website by SaaSQube Solutions</p></div>
+      <div class="bottom"><p>© <span data-year>2026</span> Golden Crust Bakery (demo)</p><p>Website by SaaSQube Solutions · Photos from Unsplash</p></div>
     </div>
   </footer>
 
