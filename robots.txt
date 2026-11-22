@@ -1,0 +1,20 @@
+# robots.txt for https://saasqube.tech/
+# Everything public is open to search engines and AI search assistants.
+
+User-agent: *
+Allow: /
+Disallow: /emailjs/
+Disallow: /saasqube-3d-loader-and-motion.patch
+Disallow: /seo-audit/
+
+# AI search and answer engines (these decide whether we can be cited)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+Disallow: /emailjs/
+
+Sitemap: https://saasqube.tech/sitemap.xml

@@ -220,6 +220,15 @@ EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
 
 If `templateId` or `publicKey` is ever emptied, **Send by email** falls back to opening the visitor's email app. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
 
+### SEO
+
+- `robots.txt`, `sitemap.xml` and `llms.txt` live in the site root. Add any new public page to `sitemap.xml` and update its `<lastmod>`.
+- Structured data (JSON-LD) is in the `<head>` of `index.html` (Organization, WebSite, ProfessionalService with services and prices) and `templates/index.html` (CollectionPage). Update prices there if the pricing section changes.
+- The share image for WhatsApp / LinkedIn / X is `assets/og-image.jpg` (1200×630).
+- Demo templates are `noindex` on purpose (fictional businesses).
+- The intro loader plays once per browser session to keep repeat page loads fast.
+- Latest audit and action plan: `seo-audit/`.
+
 ### Deploy
 
 Any static host works: GitHub Pages, Netlify, Vercel, Cloudflare Pages, Render static sites, or ordinary shared hosting (upload the files to `public_html`).

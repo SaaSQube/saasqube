@@ -12,6 +12,9 @@
   var root = document.documentElement;
   var loader = document.getElementById("loader");
   if (!loader) return;
+  // The intro plays once per browser session; on repeat views the head script skips "loading".
+  if (!root.classList.contains("loading")) { loader.remove(); return; }
+  try { sessionStorage.setItem("sq-intro", "1"); } catch (e) { /* private mode: intro just plays again */ }
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var wait = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };

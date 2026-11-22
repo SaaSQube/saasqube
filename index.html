@@ -3,39 +3,256 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SaaSQube Solutions | Website Design &amp; Development Company in India</title>
-  <meta name="description" content="SaaSQube Solutions is a Tamil Nadu-based website design and development company serving businesses across India — Chennai, Bengaluru, Mumbai, Hyderabad, Kochi and beyond. Mobile-first websites, e-commerce stores, web apps, mobile apps, SEO and multilingual sites.">
-  <meta name="keywords" content="website design company India, mobile app development India, web app development India, web development India, website design Tamil Nadu, web design Chennai, website design Coimbatore, web design Madurai, website company Trichy, web design Salem, website design Tiruppur, web design Erode, website design Tirunelveli, website company Bengaluru, web design Mumbai, Hyderabad web design, e-commerce website India, Tamil website, Hindi website, SEO India">
+  <title>Website Design &amp; App Development Company in India | SaaSQube</title>
+  <meta name="description" content="SaaSQube builds fast, mobile-first websites, online stores, web apps and mobile apps for businesses across India. Based in Tamil Nadu. From ₹9,999.">
   <meta name="theme-color" content="#0d1440">
   <link rel="canonical" href="https://saasqube.tech/">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SaaSQube Solutions">
+  <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://saasqube.tech/">
-  <meta property="og:image" content="https://saasqube.tech/assets/saasqube-logo.jpg">
-  <meta property="og:title" content="SaaSQube Solutions — Websites that grow businesses across India">
+  <meta property="og:title" content="SaaSQube Solutions: Websites that grow businesses across India">
   <meta property="og:description" content="Mobile-first websites, online stores, web apps and mobile apps for businesses across India, designed and built in Tamil Nadu.">
+  <meta property="og:image" content="https://saasqube.tech/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SaaSQube Solutions: websites, apps and online stores that bring real customers">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SaaSQube Solutions: Websites that grow businesses across India">
+  <meta name="twitter:description" content="Mobile-first websites, online stores, web apps and mobile apps for businesses across India.">
+  <meta name="twitter:image" content="https://saasqube.tech/assets/og-image.jpg">
+  <link rel="apple-touch-icon" href="assets/logo-mark.png">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script>try{var t=localStorage.getItem("sq-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <link rel="stylesheet" href="css/style.css?v=20261122d">
-  <link rel="stylesheet" href="css/motion.css?v=20261122d">
-  <!-- "loading" shows the intro loader; the timer is a failsafe so the page can never stay covered. -->
-  <script>document.documentElement.classList.add("js","loading");window.__sqLoaderFailsafe=setTimeout(function(){document.documentElement.classList.remove("loading");var l=document.getElementById("loader");if(l)l.remove()},8000);</script>
+  <link rel="stylesheet" href="css/style.css?v=20261122e">
+  <link rel="stylesheet" href="css/motion.css?v=20261122e">
+  <!-- "loading" shows the intro loader, once per browser session (repeat views open instantly, which keeps
+       page speed / LCP fast). The timer is a failsafe so the page can never stay covered. -->
+  <script>(function(d){var r=d.documentElement,show=true;r.classList.add("js");try{show=sessionStorage.getItem("sq-intro")!=="1"}catch(e){}if(!show)return;r.classList.add("loading");window.__sqLoaderFailsafe=setTimeout(function(){r.classList.remove("loading");var l=d.getElementById("loader");if(l)l.remove()},8000)})(document);</script>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "logo": "https://saasqube.tech/assets/saasqube-logo.jpg",
-    "name": "SaaSQube Solutions",
-    "url": "https://saasqube.tech/",
-    "email": "sales@saasqube.tech",
-    "telephone": "+917397063122",
-    "description": "Website design and development company based in Tamil Nadu, serving businesses across India.",
-    "areaServed": [{ "@type": "Country", "name": "India" }, { "@type": "State", "name": "Tamil Nadu" }, { "@type": "City", "name": "Chennai" }, { "@type": "City", "name": "Coimbatore" }, { "@type": "City", "name": "Madurai" }, { "@type": "City", "name": "Tiruchirappalli" }, { "@type": "City", "name": "Salem" }, { "@type": "City", "name": "Tiruppur" }, { "@type": "City", "name": "Erode" }, { "@type": "City", "name": "Tirunelveli" }, { "@type": "City", "name": "Vellore" }, { "@type": "City", "name": "Thoothukudi" }],
-    "address": { "@type": "PostalAddress", "addressRegion": "Tamil Nadu", "addressCountry": "IN" },
-    "priceRange": "₹₹"
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://saasqube.tech/#organization",
+      "name": "SaaSQube Solutions",
+      "alternateName": "SaaSQube",
+      "url": "https://saasqube.tech/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://saasqube.tech/assets/saasqube-logo.jpg",
+        "width": 1254,
+        "height": 1254
+      },
+      "image": "https://saasqube.tech/assets/og-image.jpg",
+      "slogan": "Build. Automate. Scale.",
+      "description": "Website design and development company based in Tamil Nadu, India, building websites, e-commerce stores, web apps and mobile apps for businesses across India.",
+      "email": "sales@saasqube.tech",
+      "telephone": "+917397063122",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "telephone": "+917397063122",
+        "email": "sales@saasqube.tech",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Tamil",
+          "Hindi"
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://saasqube.tech/#website",
+      "url": "https://saasqube.tech/",
+      "name": "SaaSQube Solutions",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://saasqube.tech/#organization"
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://saasqube.tech/#business",
+      "name": "SaaSQube Solutions",
+      "url": "https://saasqube.tech/",
+      "image": "https://saasqube.tech/assets/og-image.jpg",
+      "logo": "https://saasqube.tech/assets/saasqube-logo.jpg",
+      "email": "sales@saasqube.tech",
+      "telephone": "+917397063122",
+      "priceRange": "₹9,999 – ₹44,999+",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "UPI, Bank transfer, Cheque",
+      "parentOrganization": {
+        "@id": "https://saasqube.tech/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "India"
+        },
+        {
+          "@type": "State",
+          "name": "Tamil Nadu"
+        },
+        {
+          "@type": "City",
+          "name": "Chennai"
+        },
+        {
+          "@type": "City",
+          "name": "Coimbatore"
+        },
+        {
+          "@type": "City",
+          "name": "Madurai"
+        },
+        {
+          "@type": "City",
+          "name": "Tiruchirappalli"
+        },
+        {
+          "@type": "City",
+          "name": "Salem"
+        },
+        {
+          "@type": "City",
+          "name": "Tiruppur"
+        },
+        {
+          "@type": "City",
+          "name": "Erode"
+        },
+        {
+          "@type": "City",
+          "name": "Tirunelveli"
+        },
+        {
+          "@type": "City",
+          "name": "Vellore"
+        },
+        {
+          "@type": "City",
+          "name": "Thoothukudi"
+        }
+      ],
+      "knowsLanguage": [
+        "en",
+        "ta",
+        "hi"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Website and app development services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business website design",
+              "description": "Professional, mobile-first websites for shops, clinics, schools, builders, restaurants and service businesses."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-commerce store development",
+              "description": "Online stores with UPI, card and COD payments via Razorpay or PhonePe, inventory, shipping and order tracking."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web app and SaaS development",
+              "description": "Custom web apps, dashboards, booking systems, CRMs and portals."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile app development",
+              "description": "Android and iPhone apps for bookings, orders, loyalty and delivery."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO and Google Business Profile",
+              "description": "Local SEO for near-me searches, Google Business Profile setup and enquiry tracking."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Indian language websites",
+              "description": "Websites in Tamil, Hindi and other Indian languages with a language switch."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Hosting, domain and website care",
+              "description": "Domains, SSL, business email, backups, security updates and content changes."
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Starter package",
+            "price": "9999",
+            "priceCurrency": "INR",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 9999,
+              "priceCurrency": "INR"
+            },
+            "description": "Starter website package for small shops and professionals, from ₹9,999."
+          },
+          {
+            "@type": "Offer",
+            "name": "Business package",
+            "price": "24999",
+            "priceCurrency": "INR",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 24999,
+              "priceCurrency": "INR"
+            },
+            "description": "Business website package for growing businesses that want leads, from ₹24,999."
+          },
+          {
+            "@type": "Offer",
+            "name": "E-commerce package",
+            "price": "44999",
+            "priceCurrency": "INR",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 44999,
+              "priceCurrency": "INR"
+            },
+            "description": "E-commerce store package, from ₹44,999."
+          }
+        ]
+      }
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -635,10 +852,10 @@
     <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M18 22.5l6-6 6 6"/></svg>
   </button>
 
-  <script src="js/theme.js?v=20261122d"></script>
-  <script src="js/cube.js?v=20261122d" defer></script>
-  <script src="js/loader.js?v=20261122d" defer></script>
-  <script src="js/main.js?v=20261122d" defer></script>
-  <script src="js/motion.js?v=20261122d" defer></script>
+  <script src="js/theme.js?v=20261122e"></script>
+  <script src="js/cube.js?v=20261122e" defer></script>
+  <script src="js/loader.js?v=20261122e" defer></script>
+  <script src="js/main.js?v=20261122e" defer></script>
+  <script src="js/motion.js?v=20261122e" defer></script>
 </body>
 </html>
