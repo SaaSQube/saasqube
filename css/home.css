@@ -337,3 +337,48 @@ body.v2 {
 @media (prefers-reduced-motion: reduce) {
   .v2 .hx-note { animation: none; }
 }
+
+/* =========================================================
+   Polish pass (frontend-design principles)
+   - one orchestrated moment: the hero phones and notes enter once
+   - quiet everywhere else: no all-caps labels, no mono numbers
+   ========================================================= */
+.v2 .num { font-family: var(--display); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.v2 .hx-kicker, .v2 .way-badge { text-transform: none; letter-spacing: 0; font-size: .88rem; font-weight: 600; }
+.v2 .hx-kicker { color: var(--ink-2); }
+.v2 .way-badge { font-size: .78rem; }
+
+/* Hero: the memorable thing. A soft logo-coloured glow, then a single entrance. */
+.v2 .hx-visual::before {
+  content: ""; position: absolute; inset: 8% 4% 2% 4%; border-radius: 50%; z-index: 0; filter: blur(40px); opacity: .55;
+  background: radial-gradient(closest-side, rgba(6, 195, 230, .45), transparent), radial-gradient(closest-side at 70% 40%, rgba(155, 44, 245, .35), transparent);
+}
+:root[data-theme="dark"] .v2 .hx-visual::before { opacity: .35; }
+.v2 .hx-note { animation: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .v2 .hx-phone.p1 { animation: hx-rise-l .9s cubic-bezier(.2, .8, .2, 1) .15s both; }
+  .v2 .hx-phone.p2 { animation: hx-rise-r .9s cubic-bezier(.2, .8, .2, 1) .3s both; }
+  .v2 .hx-note { animation: hx-pop .5s cubic-bezier(.3, 1.4, .5, 1) both; }
+  .v2 .hx-note.n1 { animation-delay: 1s; }
+  .v2 .hx-note.n2 { animation-delay: 1.45s; }
+  .v2 .hx-note.n3 { animation-delay: 1.9s; }
+  .js.loading .v2 .hx-phone, .js.loading .v2 .hx-note { animation-play-state: paused; }
+}
+@keyframes hx-rise-l { from { opacity: 0; transform: translateY(60px) rotate(-14deg); } to { opacity: 1; transform: rotate(-6deg); } }
+@keyframes hx-rise-r { from { opacity: 0; transform: translateY(70px) rotate(12deg); } to { opacity: 1; transform: rotate(5deg); } }
+@keyframes hx-pop { from { opacity: 0; transform: translateY(10px) scale(.9); } to { opacity: 1; transform: none; } }
+
+/* Services: lighter cards */
+.v2 .svc { min-height: 0; align-items: center; }
+.v2 .svc-panel { justify-content: center; min-height: 220px; }
+.v2 .svc-big { padding-right: 0; margin: 0 0 18px; }
+.v2 .svc-main > p { margin-bottom: 16px; }
+.v2 .svc ul { margin-bottom: 22px; }
+
+/* Band numbers */
+.v2 .bs b { font-size: clamp(1.6rem, 2.6vw, 2.1rem); }
+
+/* Footer: brand + three link columns */
+.v2 .fx-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+@media (max-width: 1080px) { .v2 .fx-grid > div:last-child { grid-column: auto; } }
+@media (max-width: 720px) { .v2 .fx-grid { grid-template-columns: 1fr 1fr; } }

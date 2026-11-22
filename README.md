@@ -135,7 +135,7 @@ Let's turn it into a digital experience.
 ### Structure
 
 ```
-index.html        Single-page site: hero, services, template slider, why us, process, pricing, about, FAQ, contact
+index.html        Single-page site: hero, services, templates, problems we solve, pricing, FAQ, contact
 404.html          Not-found page
 css/style.css     All styles (light + dark theme, responsive down to small phones).
                   Brand colours from the logo live in :root: --cyan, --brand (blue), --accent (purple), --grad
