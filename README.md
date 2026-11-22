@@ -139,6 +139,8 @@ index.html        Single-page site: hero, services, template slider, why us, pro
 404.html          Not-found page
 css/style.css     All styles (light + dark theme, responsive down to small phones).
                   Brand colours from the logo live in :root: --cyan, --brand (blue), --accent (purple), --grad
+css/home.css      Homepage design (v2): floating pill header, rotating hero, stacked service cards, dark bands
+js/home.js        Homepage extras: rotating hero word, "What do you need?" chips feeding the contact form
 js/theme.js       Light / dark theme switch (shared by the homepage and templates gallery)
 js/main.js        Contact details, mobile menu, scroll effects, template slider, contact form
 js/loader.js, js/cube.js, js/motion.js, css/motion.css
@@ -219,6 +221,11 @@ EmailJS settings are in the `EMAILJS` object at the top of `js/main.js`:
 | `publicKey` | Account → General → Public Key |
 
 If `templateId` or `publicKey` is ever emptied, **Send by email** falls back to opening the visitor's email app. The HTML for both email templates is in `emailjs/`. Variables sent to EmailJS: `name`, `phone`, `email`, `reply_to`, `business`, `city`, `service`, `message` (empty optional fields are sent as "—"). Don't also turn on EmailJS's own Auto-Reply tab, or visitors get two thank-you emails. A hidden spam-trap field quietly drops submissions from bots.
+
+### Social links
+
+- Instagram: https://www.instagram.com/saasqube/ (footer, structured data `sameAs`, llms.txt).
+- LinkedIn: the footer icon points to a placeholder, `https://www.linkedin.com/company/saasqube/`. Once the company page exists, update that URL in `index.html` and add it to `sameAs` in the JSON-LD.
 
 ### SEO
 

@@ -50,7 +50,7 @@
     })(el);
     el.classList.add("split");
   }
-  if (!reduce) $$(".hero h1, .section-head h2, .why-copy h2, .about-copy h2, .contact-copy h2").forEach(splitWords);
+  if (!reduce) $$(".hero h1:not(.no-split), .section-head h2, .why-copy h2, .about-copy h2, .contact-copy h2").forEach(splitWords);
 
   /* ---------- 2. Scroll-driven effects (one rAF per scroll) ---------- */
   var header = $(".site-header");

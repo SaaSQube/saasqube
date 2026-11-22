@@ -26,10 +26,11 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <script>try{var t=localStorage.getItem("sq-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
-  <link rel="stylesheet" href="css/style.css?v=20261122f">
-  <link rel="stylesheet" href="css/motion.css?v=20261122f">
+  <link rel="stylesheet" href="css/style.css?v=20261122g">
+  <link rel="stylesheet" href="css/motion.css?v=20261122g">
+  <link rel="stylesheet" href="css/home.css?v=20261122g">
   <!-- "loading" shows the short intro loader on desktop only, once per browser session. Phones and tablets
        (what Google measures for rankings) and repeat views open instantly, which keeps page speed / LCP fast.
        The timer is a failsafe so the page can never stay covered. -->
@@ -66,7 +67,10 @@
           "Tamil",
           "Hindi"
         ]
-      }
+      },
+      "sameAs": [
+        "https://www.instagram.com/saasqube/"
+      ]
     },
     {
       "@type": "WebSite",
@@ -250,13 +254,16 @@
             "description": "E-commerce store package, from ₹44,999."
           }
         ]
-      }
+      },
+      "sameAs": [
+        "https://www.instagram.com/saasqube/"
+      ]
     }
   ]
 }
   </script>
 </head>
-<body>
+<body class="v2">
   <!-- Shared logo gradients + symbol (used by the inline logo marks) -->
   <svg class="sq-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
     <defs>
@@ -323,13 +330,13 @@
 
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
-          <li><a href="#templates">Templates</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#templates">Templates</a></li>
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary btn-sm">Get a free quote</a>
+        <a href="#contact" class="btn btn-primary btn-sm">Get a quote</a>
       </nav>
     </div>
   </header>
@@ -337,89 +344,198 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>
-        <svg class="fmark m1"><use href="#sq-logo"/></svg>
-        <svg class="fmark m2"><use href="#sq-logo"/></svg>
-        <svg class="fmark m3"><use href="#sq-logo"/></svg>
-      </div>
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <p class="eyebrow"><span class="dot"></span> Based in Tamil Nadu · Serving all of India</p>
-          <h1>Websites that bring <span class="grad">real customers</span> to your business.</h1>
-          <p class="lead">From Chennai to Chandigarh, Kochi to Kolkata, we design and build fast, mobile-first websites, online stores, web apps and mobile apps — in English, Tamil, Hindi or your customers' own language — so businesses across India can be found, trusted and chosen online.</p>
-          <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary" data-magnetic>Start your project</a>
-            <a href="templates/index.html" class="btn btn-ghost" data-magnetic>Browse templates →</a>
+    <section class="hero hx">
+      <div class="container hx-grid">
+        <div class="hx-copy">
+          <p class="hx-kicker"><span class="dot"></span> Based in Tamil Nadu · Serving all of India</p>
+          <h1 class="hx-title no-split">
+            <span class="sr-only">We build websites, online stores, mobile apps and web apps that bring real customers.</span>
+            <span aria-hidden="true">We build</span>
+            <span class="hx-rot" aria-hidden="true"><span class="hx-word">websites</span></span>
+            <span aria-hidden="true">that bring customers</span>
+          </h1>
+          <p class="hx-lead">Mobile-first websites, online stores, web apps and Android &amp; iOS apps, in English, Tamil, Hindi or your customers' own language. Designed, built and looked after by one team, for businesses across India.</p>
+          <div class="hx-cta">
+            <a href="#contact" class="btn btn-primary" data-magnetic>Send a project brief</a>
+            <a href="#templates" class="btn btn-ghost" data-magnetic>See our templates</a>
           </div>
-          <ul class="hero-points">
-            <li>Business Websites</li>
-            <li>Mobile Apps</li>
-            <li>Pan-India service</li>
-          </ul>
         </div>
 
-        <div class="hero-visual reveal" aria-hidden="true">
-          <div class="browser">
-            <div class="browser-bar"><i></i><i></i><i></i><span>yourbusiness.in</span></div>
-            <div class="browser-body">
-              <div class="mock-nav"><b></b><span></span><span></span><span></span></div>
-              <div class="mock-hero">
-                <div class="mock-lines"><b></b><span></span><span class="short"></span><em></em></div>
-                <div class="mock-img"></div>
-              </div>
-              <div class="mock-cards"><div></div><div></div><div></div></div>
-            </div>
+        <div class="hx-visual" aria-hidden="true">
+          <div class="hx-labels"><span><b>Your website</b>what customers see</span><span><b>Your leads</b>what you get</span></div>
+          <div class="hx-phone p1"><img src="assets/hero/bakery.jpg" alt="" width="520" height="1040" fetchpriority="high"></div>
+          <div class="hx-phone p2"><img src="assets/hero/jewellery.jpg" alt="" width="520" height="1040"></div>
+          <div class="hx-note n1">
+            <span class="ic wa"><svg viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm5.8 15.7c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5z"/></svg></span>
+            <div><b>New enquiry</b><small>"Need a 1 kg cake for Saturday"</small></div>
           </div>
-          <div class="float-card fc-1">
-            <span class="fc-icon">📱</span>
-            <div><strong>Looks great</strong><small>on every phone</small></div>
+          <div class="hx-note n2">
+            <span class="ic upi">₹</span>
+            <div><b>Order paid · UPI</b><small>₹1,250 · Golden Crust</small></div>
           </div>
-          <div class="float-card fc-2">
-            <span class="fc-icon">⚡</span>
-            <div><strong>Loads fast</strong><small>even on 4G</small></div>
-          </div>
-          <div class="float-card fc-3">
-            <span class="fc-icon">💬</span>
-            <div><strong>WhatsApp leads</strong><small>straight to you</small></div>
+          <div class="hx-note n3">
+            <span class="ic g">G</span>
+            <div><b>Top result on Google</b><small>"jewellers near me"</small></div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ============ CITIES STRIP ============ -->
-    <section class="cities" aria-label="Cities we serve">
-      <div class="container">
+      <!-- Cities strip (kept from the previous design) -->
+      <div class="container cities hx-strip" aria-label="Cities we serve">
         <p>Serving businesses across India</p>
         <div class="marquee">
           <ul class="marquee-track">
             <li>Chennai</li><li>Bengaluru</li><li>Mumbai</li><li>Salem</li><li>Hyderabad</li><li>Kolkata</li><li>Pune</li><li>Ahmedabad</li><li>Coimbatore</li><li>Kochi</li><li>Jaipur</li><li>Lucknow</li><li>Madurai</li><li>Chandigarh</li><li>Indore</li><li>Bhubaneswar</li><li>Tiruchirappalli</li><li>Mysuru</li><li>Nagpur</li><li>Surat</li>
-            <li aria-hidden="true">Chennai</li><li aria-hidden="true">Bengaluru</li><li aria-hidden="true">Mumbai</li><li aria-hidden="true">Hyderabad</li><li aria-hidden="true">Kolkata</li><li aria-hidden="true">Pune</li><li aria-hidden="true">Ahmedabad</li><li aria-hidden="true">Coimbatore</li><li aria-hidden="true">Kochi</li><li aria-hidden="true">Jaipur</li><li aria-hidden="true">Lucknow</li><li aria-hidden="true">Madurai</li><li aria-hidden="true">Chandigarh</li><li aria-hidden="true">Indore</li><li aria-hidden="true">Bhubaneswar</li><li aria-hidden="true">Tiruchirappalli</li><li aria-hidden="true">Mysuru</li><li aria-hidden="true">Nagpur</li><li aria-hidden="true">Surat</li>
+            <li aria-hidden="true">Chennai</li><li aria-hidden="true">Bengaluru</li><li aria-hidden="true">Mumbai</li><li aria-hidden="true">Salem</li><li aria-hidden="true">Hyderabad</li><li aria-hidden="true">Kolkata</li><li aria-hidden="true">Pune</li><li aria-hidden="true">Ahmedabad</li><li aria-hidden="true">Coimbatore</li><li aria-hidden="true">Kochi</li><li aria-hidden="true">Jaipur</li><li aria-hidden="true">Lucknow</li><li aria-hidden="true">Madurai</li><li aria-hidden="true">Chandigarh</li><li aria-hidden="true">Indore</li><li aria-hidden="true">Bhubaneswar</li><li aria-hidden="true">Tiruchirappalli</li><li aria-hidden="true">Mysuru</li><li aria-hidden="true">Nagpur</li><li aria-hidden="true">Surat</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ AT A GLANCE ============ -->
-    <!--<section class="stats" aria-label="SaaSQube at a glance">
-      <div class="container stats-grid">
-        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="9">9</span><span class="stat-label">Industry templates ready to make yours</span></div>
-        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="38">38</span><span class="stat-label">Tamil Nadu districts we work across</span></div>
-        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num">7–10</span><span class="stat-label">Working days to launch a Starter site</span></div>
-        <div class="stat spot reveal" data-reveal="zoom"><span class="stat-num" data-count="9999" data-prefix="₹">₹9,999</span><span class="stat-label">Starting price, one-time</span></div>
-      </div>
-    </section>-->
-
-    <!-- ============ TEMPLATES ============ -->
-    <section class="section" id="templates">
+    <!-- ============ STATEMENT BAND ============ -->
+    <section class="band" aria-label="How we work">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Templates</p>
-          <h2>Ready-made designs for your industry</h2>
-          <p>Swipe through live demo websites. Pick one you like and we'll make it yours with your logo, colours, photos and content.</p>
+        <p class="band-lines">
+          <span class="bl">Every page designed for phones</span>
+          <span class="bl">Every form tested</span>
+          <span class="bl">Every site ready for Google</span>
+          <span class="bl">Every client supported</span>
+        </p>
+        <div class="band-stats">
+          <div class="bs reveal"><span class="bs-ic"><svg viewBox="0 0 24 24"><path d="M6 4h12M6 9h12M6 4c5 0 8 2 8 5s-3 5-8 5l7 6"/></svg></span><b class="mono">₹9,999</b><span>starting price for a business website, one-time</span></div>
+          <div class="bs reveal"><span class="bs-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><b class="mono">7–10 days</b><span>to launch a Starter website once we have your content</span></div>
+          <div class="bs reveal"><span class="bs-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 10h8"/></svg></span><b class="mono">2–3 days</b><span>to reply to your brief, from a person, not a bot</span></div>
         </div>
+      </div>
+    </section>
 
+    <!-- ============ SERVICES ============ -->
+    <section class="section svc-sec" id="services">
+      <div class="container">
+        <div class="hx-head reveal">
+          <h2>What we build<span class="dotc">.</span></h2>
+          <p>Pick one, or combine a few.</p>
+        </div>
+        <div class="svc-stack">
+          <article class="svc s1" style="--i:1">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span>
+              <h3>Business Websites</h3>
+              <p>Professional, mobile-first sites for shops, clinics, schools, builders, restaurants and service businesses.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Designed for phones first</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>WhatsApp &amp; call buttons</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Google-ready SEO</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="Business website">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">01 / 07</span>
+              <b class="svc-big">Page → Leads</b>
+              <span class="svc-sub">from a 5-page site to a full business portal</span>
+              <span class="svc-chips"><i>HTML &amp; CSS</i><i>WordPress</i><i>React</i><i>Next.js</i><i>Google Maps</i></span>
+            </div>
+          </article>
+          <article class="svc s2" style="--i:2">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg></span>
+              <h3>E-commerce Stores</h3>
+              <p>Sell online across India with your own store, not just a marketplace listing.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>UPI, cards &amp; COD payments</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Orders &amp; inventory</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Shipping &amp; tracking</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="E-commerce store">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">02 / 07</span>
+              <b class="svc-big">UPI ready</b>
+              <span class="svc-sub">Razorpay, PhonePe and Cashfree checkout</span>
+              <span class="svc-chips"><i>Shopify</i><i>WooCommerce</i><i>Razorpay</i><i>PhonePe</i><i>Shiprocket</i></span>
+            </div>
+          </article>
+          <article class="svc s3" style="--i:3">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span>
+              <h3>Web Apps &amp; SaaS</h3>
+              <p>Custom web apps, dashboards, booking systems, CRMs and portals built around how your team works.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Dashboards &amp; admin panels</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Booking &amp; CRM systems</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Secure logins &amp; roles</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="Web app / SaaS">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">03 / 07</span>
+              <b class="svc-big">Built to fit</b>
+              <span class="svc-sub">software shaped around your business, not the other way round</span>
+              <span class="svc-chips"><i>React</i><i>Node.js</i><i>Python</i><i>PostgreSQL</i><i>Firebase</i></span>
+            </div>
+          </article>
+          <article class="svc s4" style="--i:4">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+              <h3>Mobile Apps</h3>
+              <p>Android and iPhone apps for bookings, orders, loyalty and delivery, from one team.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Android &amp; iPhone</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Play Store &amp; App Store release</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Push notifications</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="Mobile app">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">04 / 07</span>
+              <b class="svc-big">One codebase</b>
+              <span class="svc-sub">Android and iOS apps that share one backend</span>
+              <span class="svc-chips"><i>Flutter</i><i>React Native</i><i>Kotlin</i><i>Swift</i><i>Firebase</i></span>
+            </div>
+          </article>
+          <article class="svc s5" style="--i:5">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>
+              <h3>SEO &amp; Google Business</h3>
+              <p>Show up when local customers search, and see which pages bring in enquiries.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Google Business Profile setup</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>"Near me" local SEO</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Enquiry &amp; call tracking</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="SEO &amp; Google">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">05 / 07</span>
+              <b class="svc-big">Near me</b>
+              <span class="svc-sub">be found when customers nearby are searching</span>
+              <span class="svc-chips"><i>Search Console</i><i>Analytics</i><i>Business Profile</i><i>Schema</i></span>
+            </div>
+          </article>
+          <article class="svc s6" style="--i:6">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 3-3 7-7 8"/><path d="m12 21 4.5-10L21 21M13.5 18h6"/></svg></span>
+              <h3>Indian Language Sites</h3>
+              <p>Reach customers in the language they think in, with proper fonts and an easy language switch.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Tamil, Hindi &amp; more</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Fonts that read well on phones</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>One-tap language switch</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="Indian language site">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">06 / 07</span>
+              <b class="svc-big">தமிழ் · हिंदी</b>
+              <span class="svc-sub">speak to every customer in their own language</span>
+              <span class="svc-chips"><i>Tamil</i><i>Hindi</i><i>Malayalam</i><i>Telugu</i><i>Kannada</i><i>English</i></span>
+            </div>
+          </article>
+          <article class="svc s7" style="--i:7">
+            <div class="svc-main">
+              <span class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <h3>Hosting, Domain &amp; Care</h3>
+              <p>Domains, SSL, business email, backups, security updates and quick content changes.</p>
+              <ul><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>.in / .com domain &amp; SSL</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Business email</li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>Backups &amp; updates</li></ul>
+              <a href="#contact" class="btn btn-dark btn-sm" data-service="Hosting &amp; care">Talk to us about this <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="svc-panel" aria-hidden="true">
+              <span class="svc-count mono">07 / 07</span>
+              <b class="svc-big">Always on</b>
+              <span class="svc-sub">we keep your site fast, safe and up to date</span>
+              <span class="svc-chips"><i>SSL</i><i>Cloudflare</i><i>Google Workspace</i><i>Daily backups</i></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TEMPLATES / INDUSTRIES ============ -->
+    <section class="section tpl-sec" id="templates">
+      <div class="container">
+        <div class="hx-head reveal">
+          <h2>Ready-made designs<span class="dotc">.</span></h2>
+          <p>We start from patterns that already work in your industry, then make them yours: your logo, colours, photos and content.</p>
+        </div>
+        <div class="ind-chips reveal">
+          <a href="templates/restaurant/index.html">Restaurant</a><a href="templates/cafe/index.html">Café</a><a href="templates/bakery/index.html">Bakery</a><a href="templates/hospital/index.html">Hospital &amp; clinic</a><a href="templates/labs-scans/index.html">Labs &amp; scans</a><a href="templates/pharmacy/index.html">Pharmacy</a><a href="templates/salon/index.html">Salon &amp; spa</a><a href="templates/school/index.html">School</a><a href="templates/gym/index.html">Gym</a><a href="templates/real-estate/index.html">Real estate</a><a href="templates/mobile-shop/index.html">Mobile shop</a><a href="templates/fashion/index.html">Fashion</a><a href="templates/jewellery/index.html">Jewellery</a><a href="templates/photography/index.html">Photography</a>
+        </div>
         <div class="tslider reveal" role="region" aria-roledescription="carousel" aria-label="Example website templates">
           <ul class="ts-track" tabindex="0" aria-live="off">
             <li class="ts-slide" role="group" aria-roledescription="slide" aria-label="1 of 14: Pharmacy" style="--tc:#0f9d76">
@@ -550,168 +666,87 @@
       </div>
     </section>
 
-    <!-- ============ SERVICES ============ -->
-    <section class="section section-alt" id="services">
+    <!-- ============ PROBLEM → SOLUTION ============ -->
+    <section class="section fix-sec" id="why">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">What we do</p>
-          <h2>Everything your business needs to win online</h2>
-          <p>One team for design, development, hosting and growth — no juggling five vendors.</p>
+        <div class="hx-head left reveal">
+          <h2>Stuck on something?<br>We've probably fixed it before<span class="dotc">.</span></h2>
         </div>
-
-        <div class="cards-grid">
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg>
-            </div>
-            <h3>Business Websites</h3>
-            <p>Professional, mobile-first sites for shops, clinics, schools, builders, restaurants and service businesses.</p>
-          </article>
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg>
-            </div>
-            <h3>E-commerce Stores</h3>
-            <p>Sell online with UPI, cards and COD via Razorpay or PhonePe, inventory, shipping and order tracking.</p>
-          </article>
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
-            </div>
-            <h3>Web Apps &amp; SaaS</h3>
-            <p>Custom web apps, dashboards, booking systems, CRMs and portals built to fit the way your team actually works.</p>
-          </article>
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
-            </div>
-            <h3>Mobile Apps</h3>
-            <p>Android and iPhone apps for bookings, orders, loyalty and delivery, with one codebase for both so you launch faster.</p>
-          </article>
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg>
-            </div>
-            <h3>SEO &amp; Google Business</h3>
-            <p>Rank for "near me" searches, set up Google Business Profile and track what brings in enquiries.</p>
-          </article>
-          <article class="card service spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 3-3 7-7 8"/><path d="m12 21 4.5-10L21 21M13.5 18h6"/></svg>
-            </div>
-            <h3>Indian Language Sites</h3>
-            <p>Reach customers in the language they think in — Tamil, Hindi and other Indian languages, with proper fonts and an easy language switch.</p>
-          </article>
-          <article class="card service card-wide spot tilt reveal">
-            <div class="icon-tile">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-            </div>
-            <h3>Hosting, Domain &amp; Care</h3>
-            <p>.in / .com domains, SSL, business email, backups, security updates and quick content changes.</p>
-          </article>
+        <div class="fix-cols" aria-hidden="true"><span>What you tell us</span><span>What we do about it</span></div>
+        <div class="fix-list">
+          <div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>“Customers can’t find us on Google.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>We set up your Google Business Profile and local SEO, so you show up for “near me” searches.<i class="tag">SEO &amp; Google</i></p>
+          </div><div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span>“Our website looks broken on phones.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>We rebuild it mobile-first, fast on 4G, and test it on real phones before launch.<i class="tag">Business Websites</i></p>
+          </div><div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg></span>“People call to ask prices. We want online orders.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>An online store with UPI, cards and COD, and order alerts straight to your WhatsApp.<i class="tag">E-commerce</i></p>
+          </div><div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg></span>“We still manage bookings on paper and WhatsApp.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>A simple booking or CRM web app your whole team can use from any phone.<i class="tag">Web Apps</i></p>
+          </div><div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>“We need Android and iOS, but have one budget.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>Both apps from one codebase and one team, sharing one backend.<i class="tag">Mobile Apps</i></p>
+          </div><div class="fix reveal">
+            <p class="fix-q"><span class="fix-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 3-3 7-7 8"/><path d="m12 21 4.5-10L21 21M13.5 18h6"/></svg></span>“Most of our customers prefer Tamil.”</p>
+            <p class="fix-a"><span class="arr" aria-hidden="true">→</span>Your site in Tamil, Hindi or both, with fonts that read well and an easy language switch.<i class="tag">Indian Language Sites</i></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ WHY US ============ -->
-    <section class="section" id="why">
-      <div class="container why-grid">
-        <div class="why-copy reveal" data-reveal="left">
-          <p class="eyebrow">Why SaaSQube</p>
-          <h2>Tamil Nadu roots. All-India reach.</h2>
-          <p>We're based in Tamil Nadu and work with businesses all over India — a shop in Madurai, a startup in Bengaluru, a manufacturer in Gujarat or a clinic in Hyderabad. Wherever you are, you get a partner you can call, video-meet and message on WhatsApp — not a ticket number.</p>
-          <a href="#contact" class="btn btn-primary" data-magnetic>Talk to us</a>
-        </div>
-        <ul class="why-list">
-          <li class="spot reveal" data-reveal="right"><span class="why-num">01</span><div><h3>Mobile-first, always</h3><p>Most of your visitors are on phones. Every page is designed for small screens first.</p></div></li>
-          <li class="spot reveal" data-reveal="right"><span class="why-num">02</span><div><h3>Fast on real networks</h3><p>Lightweight pages and optimised images that load quickly on 4G, not just office Wi-Fi.</p></div></li>
-          <li class="spot reveal" data-reveal="right"><span class="why-num">03</span><div><h3>You own everything</h3><p>Domain, code and content are registered in your name. No lock-in, ever.</p></div></li>
-          <li class="spot reveal" data-reveal="right"><span class="why-num">04</span><div><h3>Transparent pricing in ₹</h3><p>Clear quotes with GST invoices. No surprise charges after launch.</p></div></li>
-          <li class="spot reveal" data-reveal="right"><span class="why-num">05</span><div><h3>Works wherever you are</h3><p>Remote-first process with calls, video meetings and WhatsApp — plus support long after launch.</p></div></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ============ PROCESS ============ -->
-    <section class="section section-dark" id="process">
+    <!-- ============ WAYS TO WORK (PRICING) ============ -->
+    <section class="section ways-sec" id="pricing">
       <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">How we work</p>
-          <h2>From first call to launch in four clear steps</h2>
-        </div>
-        <ol class="steps">
-          <li class="step spot reveal" data-reveal="flip"><span class="step-n">1</span><h3>Discover</h3><p>A free call to understand your business, customers and goals. You get a fixed quote.</p></li>
-          <li class="step spot reveal" data-reveal="flip"><span class="step-n">2</span><h3>Design</h3><p>We share a clickable design of your key pages. You review, we refine.</p></li>
-          <li class="step spot reveal" data-reveal="flip"><span class="step-n">3</span><h3>Build</h3><p>We develop, add your content, connect payments, forms and analytics — and test on real phones.</p></li>
-          <li class="step spot reveal" data-reveal="flip"><span class="step-n">4</span><h3>Launch &amp; grow</h3><p>Go live on your domain, submit to Google, and keep improving with ongoing support.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ PRICING ============ -->
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow">Pricing</p>
-          <h2>Simple packages. Honest prices.</h2>
+        <div class="hx-head reveal">
+          <h2>Ways to work with us<span class="dotc">.</span></h2>
           <p>Starting prices, one-time. Every project gets a fixed written quote before we start.</p>
         </div>
-
-        <div class="pricing-grid">
-          <article class="price-card spot tilt reveal">
+        <div class="ways">
+          <article class="way reveal">
+            <span class="way-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></span>
             <h3>Starter</h3>
-            <p class="price-desc">For small shops &amp; professionals getting online.</p>
-            <p class="price"><span>from</span> ₹9,999</p>
-            <ul>
-              <li>Up to 5 pages</li>
-              <li>Mobile-responsive design</li>
-              <li>WhatsApp &amp; call buttons</li>
-              <li>Contact form &amp; Google Maps</li>
-              <li>Basic on-page SEO</li>
-              <li>1 year hosting &amp; SSL</li>
-            </ul>
-            <a href="#contact" class="btn btn-ghost btn-block" data-plan="Starter">Choose Starter</a>
+            <p class="way-for">For small shops &amp; professionals getting online.</p>
+            <p class="way-price"><small>from</small> <b class="mono">₹9,999</b></p>
+            <ul><li>Up to 5 pages</li><li>Mobile-responsive design</li><li>WhatsApp &amp; call buttons</li><li>Contact form &amp; Google Maps</li><li>Basic on-page SEO</li><li>1 year hosting &amp; SSL</li></ul>
+            <a href="#contact" class="btn btn-ghost btn-sm" data-plan="Starter">Choose Starter</a>
           </article>
-
-          <article class="price-card featured spot tilt reveal">
-            <span class="badge">Most popular</span>
+          <article class="way featured reveal">
+            <span class="way-badge">Most popular</span>
+            <span class="way-ic"><svg viewBox="0 0 24 24"><path d="M4 19V9l8-5 8 5v10"/><path d="M9 19v-6h6v6"/></svg></span>
             <h3>Business</h3>
-            <p class="price-desc">For growing businesses that want leads.</p>
-            <p class="price"><span>from</span> ₹24,999</p>
-            <ul>
-              <li>Up to 12 pages</li>
-              <li>Custom design &amp; branding</li>
-              <li>Regional language option</li>
-              <li>Blog / news section</li>
-              <li>Google Business Profile setup</li>
-              <li>Analytics &amp; lead tracking</li>
-              <li>3 months free support</li>
-            </ul>
-            <a href="#contact" class="btn btn-primary btn-block" data-plan="Business">Choose Business</a>
+            <p class="way-for">For growing businesses that want leads.</p>
+            <p class="way-price"><small>from</small> <b class="mono">₹24,999</b></p>
+            <ul><li>Up to 12 pages</li><li>Custom design &amp; branding</li><li>Regional language option</li><li>Blog / news section</li><li>Google Business Profile setup</li><li>Analytics &amp; lead tracking</li><li>3 months free support</li></ul>
+            <a href="#contact" class="btn btn-primary btn-sm" data-plan="Business">Choose Business</a>
           </article>
-
-          <article class="price-card spot tilt reveal">
+          <article class="way reveal">
+            <span class="way-ic"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.2"/><circle cx="17" cy="20.5" r="1.2"/></svg></span>
             <h3>E-commerce</h3>
-            <p class="price-desc">For selling products online across India.</p>
-            <p class="price"><span>from</span> ₹44,999</p>
-            <ul>
-              <li>Unlimited products</li>
-              <li>UPI, cards &amp; COD payments</li>
-              <li>Order &amp; inventory management</li>
-              <li>Shipping integration</li>
-              <li>Coupons &amp; offers</li>
-              <li>Training for your team</li>
-            </ul>
-            <a href="#contact" class="btn btn-ghost btn-block" data-plan="E-commerce">Choose E-commerce</a>
+            <p class="way-for">For selling online across India.</p>
+            <p class="way-price"><small>from</small> <b class="mono">₹44,999</b></p>
+            <ul><li>Unlimited products</li><li>UPI, cards &amp; COD payments</li><li>Order &amp; inventory management</li><li>Shipping integration</li><li>Coupons &amp; offers</li><li>Training for your team</li></ul>
+            <a href="#contact" class="btn btn-ghost btn-sm" data-plan="E-commerce">Choose E-commerce</a>
           </article>
         </div>
-        <p class="pricing-note reveal">Need a custom web app, mobile app or SaaS product? <a href="#contact">Tell us what you have in mind</a> and we'll scope it with you.</p>
+        <p class="ways-note reveal">Need a custom web app, mobile app or SaaS product? <a href="#contact">Tell us what you have in mind</a> and we'll scope it with you.</p>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section section-alt" id="about">
+    <section class="section about-sec" id="about">
       <div class="container about-grid">
+        <div class="about-copy reveal" data-reveal="left">
+          <h2>Tamil Nadu roots.<br>All-India reach<span class="dotc">.</span></h2>
+          <p>SaaSQube Solutions is a website and app development company based in Tamil Nadu, working with businesses all over India: a shop in Madurai, a startup in Bengaluru, a manufacturer in Gujarat or a clinic in Hyderabad. Wherever you are, you get a partner you can call, video-meet and message on WhatsApp, not a ticket number.</p>
+          <ul class="about-points">
+            <li><b>Mobile-first, always.</b> Most of your visitors are on phones, so every page is designed for small screens first.</li>
+            <li><b>You own everything.</b> Domain, code and content are registered in your name. No lock-in.</li>
+            <li><b>Honest pricing in ₹.</b> Fixed quotes with GST invoices and no surprise charges after launch.</li>
+          </ul>
+        </div>
         <div class="about-visual reveal" data-reveal="zoom">
           <div class="cube-play" data-cube-play tabindex="0" role="button" aria-label="SaaSQube 3D logo cube. Press to rebuild it.">
             <span class="cube-glow" aria-hidden="true"></span>
@@ -719,26 +754,19 @@
           </div>
           <button type="button" class="chip" data-cube-replay>↻ Rebuild the cube</button>
         </div>
-        <div class="about-copy reveal" data-reveal="right">
-          <p class="eyebrow">About us</p>
-          <h2>Proudly from Tamil Nadu. Building for all of India.</h2>
-          <p>SaaSQube Solutions is a website design and development company based in Tamil Nadu, working with clients across India. We help small businesses, startups, manufacturers and institutions in every state build a professional presence online — and turn it into a dependable source of customers.</p>
-          <p>Like the cube in our name, we bring every side of your website together: design, technology, content and growth, all built to fit.</p>
-          <div class="values">
-            <div><strong>Clarity</strong><span>Plain-language advice, no jargon.</span></div>
-            <div><strong>Craft</strong><span>Clean code and careful design.</span></div>
-            <div><strong>Commitment</strong><span>We're here long after launch.</span></div>
-          </div>
-        </div>
       </div>
     </section>
 
     <!-- ============ FAQ ============ -->
-    <section class="section" id="faq">
-      <div class="container narrow">
-        <div class="section-head reveal">
-          <p class="eyebrow">FAQ</p>
-          <h2>Questions we hear often</h2>
+    <section class="section faq-sec" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-intro reveal">
+          <h2>Questions we get asked<span class="dotc">.</span></h2>
+          <p>Still have a question? Ask us directly.</p>
+          <div class="faq-btns">
+            <a class="btn btn-dark btn-sm" href="https://wa.me/917397063122" data-config="whatsapp" target="_blank" rel="noopener">Ask on WhatsApp</a>
+            <a class="btn btn-ghost btn-sm" href="mailto:sales@saasqube.tech">Email us</a>
+          </div>
         </div>
         <div class="faq-list">
           <details class="reveal">
@@ -765,48 +793,47 @@
             <summary>What are the payment terms?</summary>
             <p>Typically 50% to start and 50% before launch, with a proper GST invoice. Payment by UPI, bank transfer or cheque.</p>
           </details>
-        </div>
       </div>
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section section-dark" id="contact">
+    <section class="section contact-sec" id="contact">
       <div class="container contact-grid">
         <div class="contact-copy reveal" data-reveal="left">
-          <p class="eyebrow">Contact</p>
-          <h2>Let's build your website.</h2>
-          <p>Wherever you are in India, tell us a little about your business and we'll get back within 2–3 working days with ideas and a free quote.</p>
-          <ul class="contact-list">
-            <li><span>📞</span><a href="tel:+917397063122" data-config="phone">+91 7397-063122</a></li>
-            <li><span>✉️</span><a href="mailto:sales@saasqube.tech" data-config="email">sales@saasqube.tech</a></li>
-            <li><span>💬</span><a href="https://wa.me/917397063122" data-config="whatsapp" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
-            <li><span>📍</span><span data-config="address">Tamil Nadu, India</span></li>
+          <h2>Tell us what you need<span class="dotc">.</span></h2>
+          <p>A few lines is enough to start. We reply within 2–3 working days with ideas and a free quote.</p>
+          <ol class="c-steps">
+            <li><span>1</span><div><b>We read your brief</b>A person reads it, not a bot.</div></li>
+            <li><span>2</span><div><b>A short call</b>A few questions about your business, scope and timing.</div></li>
+            <li><span>3</span><div><b>A fixed quote</b>A clear price in ₹ before any work starts.</div></li>
+          </ol>
+          <ul class="c-links">
+            <li><a href="tel:+917397063122" data-config="phone">+91 7397-063122</a></li>
+            <li><a href="mailto:sales@saasqube.tech" data-config="email">sales@saasqube.tech</a></li>
           </ul>
         </div>
 
-        <form class="contact-form reveal" data-reveal="right" id="contact-form" novalidate>
+        <form class="contact-form c-form reveal" data-reveal="right" id="contact-form" novalidate>
+          <fieldset class="c-chips">
+            <legend>What do you need? <span>Pick one or more</span></legend>
+            <label class="chip-opt"><input type="checkbox" value="Business website"><span>Business website</span></label><label class="chip-opt"><input type="checkbox" value="E-commerce store"><span>E-commerce store</span></label><label class="chip-opt"><input type="checkbox" value="Web app / SaaS"><span>Web app / SaaS</span></label><label class="chip-opt"><input type="checkbox" value="Mobile app"><span>Mobile app</span></label><label class="chip-opt"><input type="checkbox" value="SEO & Google"><span>SEO &amp; Google</span></label><label class="chip-opt"><input type="checkbox" value="Indian language site"><span>Indian language site</span></label><label class="chip-opt"><input type="checkbox" value="Redesign of existing site"><span>Redesign of existing site</span></label><label class="chip-opt"><input type="checkbox" value="Hosting & care"><span>Hosting &amp; care</span></label><label class="chip-opt"><input type="checkbox" value="Not sure yet"><span>Not sure yet</span></label>
+          </fieldset>
+          <input type="hidden" name="service" value="Not sure yet">
           <div class="field-row">
-            <label>Your name<input type="text" name="name" autocomplete="name" required></label>
-            <label>Phone / WhatsApp<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
+            <label>Your name<input type="text" name="name" autocomplete="name" placeholder="Priya Raman" required></label>
+            <label>Phone / WhatsApp<input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210" required></label>
           </div>
           <div class="field-row">
-            <label>Business name<input type="text" name="business" autocomplete="organization"></label>
-            <label>City / State<input type="text" name="city" autocomplete="address-level2" placeholder="e.g. Chennai, Pune, Kochi"></label>
+            <label>Email<input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@business.com" required></label>
+            <label><span>Business name <span class="opt">optional</span></span><input type="text" name="business" autocomplete="organization" placeholder="Golden Crust Bakery"></label>
           </div>
-          <div class="field-row">
-            <label>Email<input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></label>
-            <label>What do you need?
-              <select name="service">
-                <option>Business website</option><option>E-commerce store</option><option>Web app / SaaS</option><option>Mobile app</option><option>Redesign of existing site</option><option>SEO &amp; Google Business</option><option>Not sure yet</option>
-              </select>
-            </label>
-          </div>
+          <label><span>City / State <span class="opt">optional</span></span><input type="text" name="city" autocomplete="address-level2" placeholder="e.g. Chennai, Pune, Kochi"></label>
           <!-- Spam trap: hidden from people, bots tend to fill it in -->
           <label class="hp" aria-hidden="true">Leave this empty<input type="text" name="company_site" tabindex="-1" autocomplete="off"></label>
-          <label>Tell us about your project<textarea name="message" rows="4" placeholder="A few lines about your business and what you'd like the website to do."></textarea></label>
+          <label>About the project<textarea name="message" rows="3" placeholder="What do you sell, who are your customers, and when do you need it live?"></textarea></label>
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary" data-send="whatsapp">Send on WhatsApp</button>
-            <button type="submit" class="btn btn-ghost light" data-send="email">Send by email</button>
+            <button type="submit" class="btn btn-primary" data-send="email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3 3 10.5l7 2.5 2.5 7z"/><path d="m10 13 11-10"/></svg>Send project brief</button>
+            <button type="submit" class="btn btn-ghost" data-send="whatsapp">Send on WhatsApp</button>
           </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -815,22 +842,34 @@
   </main>
 
   <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="#top" class="brand light" aria-label="SaaSQube Solutions home">
+  <footer class="site-footer fx">
+    <div class="container fx-grid">
+      <div class="fx-brand">
+        <a href="#top" class="brand" aria-label="SaaSQube Solutions home">
           <svg class="brand-mark sq-mark" viewBox="0 2 100 100" width="40" height="40" aria-hidden="true" focusable="false"><g class="sq-spin" stroke-width="8" stroke-linejoin="round"><polygon class="sq-p sq-tl" points="43.6 12.3 43.6 39.1 16.5 25.7" fill="url(#sqg-tl)" stroke="url(#sqg-tl)"/><polygon class="sq-p sq-tr" points="56.4 12.3 83.5 25.7 56.4 39.1" fill="url(#sqg-tr)" stroke="url(#sqg-tr)"/><polygon class="sq-p sq-l" points="8.4 36 43.6 53.4 43.6 91.7 8.4 74.3" fill="url(#sqg-l)" stroke="url(#sqg-l)"/><polygon class="sq-p sq-r" points="56.4 53.4 91.6 36 91.6 74.3 56.4 91.7" fill="url(#sqg-r)" stroke="url(#sqg-r)"/></g></svg>
           <span class="brand-text">SaaS<strong>Qube</strong><small>Build · Automate · Scale</small></span>
         </a>
-        <p>Website design &amp; development company based in Tamil Nadu, serving businesses across India.</p>
+        <a class="fx-mail" href="mailto:sales@saasqube.tech">sales@saasqube.tech</a>
+        <p class="fx-meta"><a href="tel:+917397063122">+91 7397-063122</a><br>Tamil Nadu, India · Serving all of India</p>
+        <ul class="fx-social">
+          <li><a href="https://wa.me/917397063122" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 32 32"><path fill="currentColor" stroke="none" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm5.8 15.7c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5 0-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.6.9 3.6.7.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.3.2-1.5z"/></svg></a></li>
+          <li><a href="https://www.instagram.com/saasqube/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></a></li>
+          <!-- LinkedIn: placeholder until the company page is created; update the URL then. -->
+          <li><a href="https://www.linkedin.com/company/saasqube/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a></li>
+          <li><a href="mailto:sales@saasqube.tech" aria-label="Email"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg></a></li>
+        </ul>
       </div>
       <div>
-        <h4>Services</h4>
-        <ul><li><a href="#services">Business websites</a></li><li><a href="#services">E-commerce</a></li><li><a href="#services">Web apps</a></li><li><a href="#services">Mobile apps</a></li><li><a href="#services">SEO</a></li></ul>
+        <h4>What we do</h4>
+        <ul><li><a href="#services">Business websites</a></li><li><a href="#services">E-commerce stores</a></li><li><a href="#services">Web apps &amp; SaaS</a></li><li><a href="#services">Mobile apps</a></li><li><a href="#services">SEO &amp; Google</a></li><li><a href="#services">Indian language sites</a></li><li><a href="#services">Hosting &amp; care</a></li></ul>
+      </div>
+      <div>
+        <h4>Templates</h4>
+        <ul><li><a href="templates/restaurant/index.html">Restaurant</a></li><li><a href="templates/cafe/index.html">Café</a></li><li><a href="templates/bakery/index.html">Bakery</a></li><li><a href="templates/hospital/index.html">Hospital</a></li><li><a href="templates/jewellery/index.html">Jewellery</a></li><li><a href="templates/real-estate/index.html">Real estate</a></li><li><a href="templates/index.html">All templates →</a></li></ul>
       </div>
       <div>
         <h4>Company</h4>
-        <ul><li><a href="#about">About</a></li><li><a href="templates/index.html">Templates</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
+        <ul><li><a href="#about">About</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li><li><a href="https://www.instagram.com/saasqube/" target="_blank" rel="noopener">Instagram</a></li></ul>
       </div>
       <div>
         <h4>Tamil Nadu</h4>
@@ -853,10 +892,11 @@
     <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="tt-track" cx="24" cy="24" r="21"/><circle class="tt-ring" cx="24" cy="24" r="21" pathLength="100"/><path class="tt-arrow" d="M24 31V17M18 22.5l6-6 6 6"/></svg>
   </button>
 
-  <script src="js/theme.js?v=20261122f"></script>
-  <script src="js/cube.js?v=20261122f" defer></script>
-  <script src="js/loader.js?v=20261122f" defer></script>
-  <script src="js/main.js?v=20261122f" defer></script>
-  <script src="js/motion.js?v=20261122f" defer></script>
+  <script src="js/theme.js?v=20261122g"></script>
+  <script src="js/cube.js?v=20261122g" defer></script>
+  <script src="js/loader.js?v=20261122g" defer></script>
+  <script src="js/main.js?v=20261122g" defer></script>
+  <script src="js/motion.js?v=20261122g" defer></script>
+  <script src="js/home.js?v=20261122g" defer></script>
 </body>
 </html>
