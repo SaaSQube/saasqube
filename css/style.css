@@ -68,6 +68,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip; /* clip, unlike hidden, keeps position: sticky working on iOS Safari */
 }
 
 img, svg { display: block; max-width: 100%; }

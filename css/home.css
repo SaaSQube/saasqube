@@ -313,7 +313,6 @@ body.v2 {
   .v2 .svc { min-height: 0; }
 }
 @media (max-width: 720px) {
-  .v2 .svc { position: relative; top: 0; }
   .v2 .fix, .v2 .fix-cols { grid-template-columns: 1fr; gap: 10px; }
   .v2 .fix-cols span:last-child { display: none; }
   .v2 .fix-a { padding-left: 50px; }
@@ -382,3 +381,16 @@ body.v2 {
 .v2 .fx-grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
 @media (max-width: 1080px) { .v2 .fx-grid > div:last-child { grid-column: auto; } }
 @media (max-width: 720px) { .v2 .fx-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Phones: keep the stacking-cards effect, with compact cards that fit the screen */
+@media (max-width: 720px) {
+  .v2 .svc { top: calc(84px + var(--i) * 8px); gap: 14px; padding: 20px; border-radius: 24px; }
+  .v2 .svc-ic { width: 40px; height: 40px; margin-bottom: 12px; }
+  .v2 .svc h3 { font-size: 1.45rem; margin-bottom: 6px; }
+  .v2 .svc-main > p { font-size: .92rem; margin-bottom: 12px; }
+  .v2 .svc ul { gap: 6px; margin-bottom: 16px; }
+  .v2 .svc li { font-size: .88rem; }
+  .v2 .svc-panel { min-height: 0; padding: 14px 16px; border-radius: 16px; order: -1; }
+  .v2 .svc-big { font-size: 1.7rem; margin: 0 0 10px; }
+  .v2 .svc-chips i { font-size: .74rem; padding: 5px 10px; }
+}
