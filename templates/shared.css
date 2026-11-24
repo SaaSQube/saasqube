@@ -219,3 +219,14 @@ p { margin: 0 0 1em; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Line icons (templates/icons.svg) ---------- */
+.ti {
+  display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -.2em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.emoji-tile { color: var(--primary); }
+.emoji-tile .ti { width: .95em; height: .95em; vertical-align: middle; }
+.t-logo .mark .ti { width: 22px; height: 22px; vertical-align: middle; }
+.topbar .ti { width: 1.05em; height: 1.05em; opacity: .9; }
+.t-footer .ti { opacity: .8; margin-right: 2px; }
